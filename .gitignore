@@ -1,0 +1,19 @@
+healthkools/node_modules/
+.expo/
+healthkools/.expo/
+.idea/
+dist/
+healthkools/dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+healthkools/web-build/
+
+# macOS
+.DS_Store
+/healthkools/node_modules/
