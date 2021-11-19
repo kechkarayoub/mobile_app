@@ -14,6 +14,7 @@ npm-debug.*
 web-build/
 healthkools/web-build/
 healthkools/yarn.lock
+healthkools/yarn-error.log
 
 # macOS
 .DS_Store
