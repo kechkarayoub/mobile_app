@@ -16,7 +16,7 @@ class Home extends React.Component {
           <View style={styles.home}>
             <ImageBackground source={logos.logo} style={styles.background}/>
             {selected_view === "sign_in" ?
-              <SignIn/>
+              <SignIn t={this.props.t}/>
             :
               <>
               </>

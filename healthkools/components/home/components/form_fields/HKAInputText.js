@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Image } from 'react-native';
+import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
 
 class HKAInputText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      current_language: props.current_language,
       icon_url: props.icon_url,
       keyboardType: props.keyboardType,
       placeholder: props.placeholder,
@@ -13,12 +14,29 @@ class HKAInputText extends React.Component {
       value: props.value,
     }
   }
+  static getDerivedStateFromProps(props, state) {
+    var new_state = {};
+    var return_new_state = false;
+    if (props.current_language !== state.current_language) {
+      new_state.current_language = props.current_language;
+      return_new_state = true;
+    }
+    if (props.placeholder !== state.placeholder) {
+      new_state.placeholder = props.placeholder;
+      return_new_state = true;
+    }
+    if (props.value !== state.value) {
+      new_state.value = props.value;
+      return_new_state = true;
+    }
+    return return_new_state ? new_state : null;
+  }
   render() {
-    const {icon_url, keyboardType, placeholder, secureTextEntry, underlineColorAndroid, value} = this.state;
+    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, underlineColorAndroid, value} = this.state;
     return (
       <View style={styles.inputContainer}>
         <TextInput style={[styles.inputs, this.props.style || {}]}
-          default_value={value}
+          value={value}
           placeholder={placeholder}
           secureTextEntry={secureTextEntry}
           keyboardType={keyboardType}
@@ -55,6 +73,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    display: 'flex',
   },
   inputs:{
     height:45,
@@ -66,7 +85,7 @@ const styles = StyleSheet.create({
     width:30,
     height:30,
     marginRight:15,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });
 export default HKAInputText;

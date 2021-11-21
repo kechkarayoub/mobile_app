@@ -1,38 +1,53 @@
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert, I18nManager as RNI18nManager, } from 'react-native';
 import HKAInputText from './form_fields/HKAInputText';
 import HKATouchableOpacity from './form_fields/HKATouchableOpacity';
+// import {set_locale, t} from '../../../i18n'
+import { Updates } from 'expo';
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email_or_username: '',
+      current_language: "en",
+      username_or_email: '',
       password: '',
     }
   }
   onClickListener = (viewId) => {
+    var current_language = "en";
+    // if("restore_password" == viewId){
+    //   set_locale("ar");
+    //   current_language = "ar";
+    // }
+    // else{
+    //   set_locale("fr");
+    //   current_language = "fr";
+    // }
+    // this.setState({"current_language": current_language})
     Alert.alert("Alert", "Button pressed "+viewId);
   }
   render() {
-    const email_or_username = this.state.email_or_username, password = this.state.password;
+    const username_or_email = this.state.username_or_email, password = this.state.password, current_language = this.state.current_language;
+    const {t} = this.props;
+
     return (
         <View style={styles.body}>
-          <HKAInputText placeholder={"Email or username"} underlineColorAndroid='transparent'
-            onChangeText={email_or_username => this.setState({email_or_username: email_or_username})}
-            icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={email_or_username}
+          <HKAInputText placeholder={t("Username or email")} underlineColorAndroid='transparent'
+            onChangeText={username_or_email => this.setState({username_or_email: username_or_email})}
+            icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={username_or_email} current_language={current_language}
           />
-          <HKAInputText placeholder={"Password"} underlineColorAndroid='transparent' secureTextEntry={true}
+          <HKAInputText placeholder={t("Password")} underlineColorAndroid='transparent' secureTextEntry={true}
             onChangeText={password => this.setState({password: password})}
-            icon_url="https://img.icons8.com/nolan/40/000000/key.png" value={password}
+            icon_url="https://img.icons8.com/nolan/40/000000/key.png" value={password} current_language={current_language}
           />
           <HKATouchableOpacity is_not_button={true} onPress={() => this.onClickListener('restore_password')}
-            text={'Forgot your password?'} style={{marginBottom: 25}}
+            text={"Forgot your password?"} style={{marginBottom: 25}}
           />
           <HKATouchableOpacity onPress={() => this.onClickListener('login')}
-            text={'Login'} style={styles.loginButton}
+            text={t("Sign in")} style={styles.loginButton}
           />
           <HKATouchableOpacity onPress={() => this.onClickListener('register')}
-            text={'Register'} style={styles.loginButton}
+            text={t("Sign up")} style={styles.loginButton}
           />
         </View>
     )
