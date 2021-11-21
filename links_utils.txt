@@ -1,0 +1,1 @@
+i18n: https://phrase.com/blog/posts/react-native-i18n-with-expo-and-i18next-part-2/
