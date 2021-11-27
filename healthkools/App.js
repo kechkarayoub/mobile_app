@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, I18nManager as RNI18nManager } from 'react-native';
-import Home from './components/home';
+import Home from './Components/Home';
 import i18n from './i18n';
 import { Updates } from 'expo';
+import { Provider } from 'react-redux'
+import Store from './Store/configureStore'
 export default class App extends Component{
   state = { isI18nInitialized: false };
   componentDidMount() {
@@ -25,9 +27,11 @@ export default class App extends Component{
   }
   render(){
     return (
-      <View style={styles.container}>
-        <Home t={str => str}/>
-      </View>
+      <Provider store={Store}>
+        <View style={styles.container}>
+          <Home t={str => str}/>
+        </View>
+      </Provider>
     );
   }
 }
