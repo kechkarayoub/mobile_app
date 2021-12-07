@@ -9,7 +9,6 @@ import {logos} from '../../images';
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       first_name: '',
       last_name: '',

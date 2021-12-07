@@ -6,10 +6,10 @@ import HKATouchableOpacity from '../../FormFields/HKATouchableOpacity';
 import { connect } from 'react-redux'
 import { Updates } from 'expo';
 import {logos} from '../../images';
+import {set, get} from '../../../Store/locale';
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       current_language: "en",
       username_or_email: '',
@@ -27,7 +27,12 @@ class SignIn extends React.Component {
     //   current_language = "fr";
     // }
     // this.setState({"current_language": current_language})
-    Alert.alert("Alert", "Button pressed "+viewId);
+
+    Alert.alert("Alert", "current_language "+this.props.current_language);
+    set("currentlanguage", "ar");
+    get('currentlanguage', cl => {
+      console.log("saved cl: ", 'cl')
+    });
   }
   render() {
     const username_or_email = this.state.username_or_email, password = this.state.password, current_language = this.state.current_language;
