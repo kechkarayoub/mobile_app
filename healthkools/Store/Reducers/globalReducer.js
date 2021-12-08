@@ -6,9 +6,7 @@ var locale_splited = Localization.locale.split("-")[0];
 if(supported_languages.indexOf(locale_splited) !== -1){
   current_language = locale_splited;
 }
-get('currentlanguage', cl => {
-  current_language = cl;
-});
+      
 const initialState = { current_language: current_language }
 
 function changeLanguage(state, action) {

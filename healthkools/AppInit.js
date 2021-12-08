@@ -6,13 +6,16 @@ import i18n from './i18n';
 import { Updates } from 'expo';
 import { Provider } from 'react-redux'
 import Store from './Store/configureStore'
-import AppInit from './AppInit'
 import { connect } from 'react-redux'
 import {set, get} from './Store/locale';
-class App extends Component{
+import {get_current_languages} from './utils'
+class AppInit extends Component{
   constructor(props) {
     super(props);
-    this.state = { isI18nInitialized: false };
+    get_current_languages(current_language => {
+      const action = { type: "CHANGE_LANGUAGE", value: current_language }
+      this.props.dispatch(action);
+    });
   }
   componentDidMount() {
       // i18n.init()
@@ -33,12 +36,19 @@ class App extends Component{
   }
   render(){
     return (
-      <Provider store={Store}>
-          <AppInit/>
-      </Provider>
+        <View style={styles.container}>
+          <Home t={str => str}/>
+        </View>
     );
   }
 }
 
-
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+const mapStateToProps = (state) => {
+  return {}
+}
+export default connect(mapStateToProps)(AppInit);
