@@ -7,7 +7,10 @@ import { Updates } from 'expo';
 import { Provider } from 'react-redux'
 import Store from './Store/configureStore'
 export default class App extends Component{
-  state = { isI18nInitialized: false };
+  constructor(props) {
+    super(props);
+    this.state = { isI18nInitialized: false };
+  }
   componentDidMount() {
       // i18n.init()
       //     .then(() => {

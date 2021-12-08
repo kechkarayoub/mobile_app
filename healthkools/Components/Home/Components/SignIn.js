@@ -31,7 +31,7 @@ class SignIn extends React.Component {
     Alert.alert("Alert", "current_language "+this.props.current_language);
     set("currentlanguage", "ar");
     get('currentlanguage', cl => {
-      console.log("saved cl: ", 'cl')
+      console.log("saved cl: ", cl)
     });
   }
   render() {
