@@ -15,7 +15,17 @@ import fr from './translations/fr/translations.json';
 //I18n.translations = {
 //  ar, en, fr
 //};
-
+export const resources = {
+  ar: {
+    translations: require('./translations/ar/translations.json'),
+  },
+  en: {
+    translations: require('./translations/en/translations.json'),
+  },
+  fr: {
+    translations: require('./translations/fr/translations.json'),
+  },
+};
 export const fallback = "en";
 export const supportedLocales = {
     en: {

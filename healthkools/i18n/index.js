@@ -1,21 +1,17 @@
 import i18next from 'i18next';
-import { I18nManager as RNI18nManager } from 'react-native';
+import { I18nextProvider } from 'react-i18next';
 import { Updates } from 'expo';
 import * as config from './config';
 import date from './date';
 import languageDetector from './language_detector';
 import translationLoader from './translation_loader';
+import 'intl-pluralrules'
 const i18n = {
-    /**
-     * @returns {Promise}
-     */
-    init: () => {
+    init: (currentlanguage) => {
         return new Promise((resolve, reject) => {
             i18next
-                .use(languageDetector)
-                .use(translationLoader)
                 .init({
-                    fallbackLng: config.fallback,
+                    fallbackLng: currentlanguage || config.fallback,
                     ns: config.namespaces,
                     defaultNS: config.defaultNamespace,
                     interpolation: {
@@ -26,6 +22,8 @@ const i18n = {
                             }
                         }
                     },
+                    lng: currentlanguage || config.fallback,
+                    resources: config.resources,
                 }, (error) => {
                     if (error) { return reject(error); }
                     date.init(i18next.language)
@@ -34,6 +32,7 @@ const i18n = {
                 });
         });
     },
+    services: i18next.services,
     /**
      * @param {string} key
      * @param {Object} options

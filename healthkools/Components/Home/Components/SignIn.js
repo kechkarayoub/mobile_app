@@ -27,12 +27,13 @@ class SignIn extends React.Component {
     //   current_language = "fr";
     // }
     // this.setState({"current_language": current_language})
-
+    if("restore_password" == viewId){
+      current_language = "ar"
+    }
     Alert.alert("Alert", "current_language "+this.props.current_language);
-    set("currentlanguage", "ar");
-    get('currentlanguage', cl => {
-      console.log("saved cl: ", cl)
-    });
+    set("currentlanguage", current_language);
+    const action = { type: "CHANGE_LANGUAGE", value: current_language }
+    this.props.dispatch(action);
   }
   render() {
     const username_or_email = this.state.username_or_email, password = this.state.password, current_language = this.state.current_language;
