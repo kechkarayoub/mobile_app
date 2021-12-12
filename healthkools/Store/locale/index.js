@@ -78,7 +78,6 @@ export const get = async (key, callback) => {
     }
   })
   .then(ret => {
-    console.log("ret: ", ret);
     if(callback){
       callback(ret);
     }

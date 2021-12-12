@@ -3,12 +3,12 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, I18nManager as RNI18nManager } from 'react-native';
 import Home from './Components/Home';
 import i18n, {t} from './i18n';
-import { Updates } from 'expo';
+import * as Updates from 'expo-updates'
 import { Provider } from 'react-redux'
 import Store from './Store/configureStore'
 import { connect } from 'react-redux'
 import {set, get} from './Store/locale';
-import {get_current_languages} from './utils'
+import {get_current_languages, get_initial_route_name} from './utils'
 import { I18nextProvider } from 'react-i18next';
 class AppInit extends Component{
   constructor(props) {
@@ -20,6 +20,10 @@ class AppInit extends Component{
       const action = { type: "CHANGE_LANGUAGE", value: current_language }
       this.props.dispatch(action);
     });
+    //get_initial_route_name(initial_route_name => {
+    //  const action = { type: "CHANGE_INITIAL_ROUTE_NAME", value: initial_route_name }
+    //  this.props.dispatch(action);
+    //});
   }
   componentDidMount() {
     this.handleInitLanguage();
@@ -35,10 +39,10 @@ class AppInit extends Component{
   }
   componentDidUpdate(prevProps, prevState){
     if(prevState.current_language != this.state.current_language){
-      this.handleInitLanguage();
+      this.handleInitLanguage(true);
     }
   }
-  handleInitLanguage = () => {
+  handleInitLanguage = (reload) => {
       i18n.init(this.state.current_language)
           .then(() => {
               const RNDir = RNI18nManager.isRTL ? 'RTL' : 'LTR';
@@ -49,7 +53,9 @@ class AppInit extends Component{
                   RNI18nManager.forceRTL(isLocaleRTL);
                   // RN won't set the layout direction if we
                   // don't restart the app's JavaScript.
-                  // Updates.reloadFromCache();
+                  if(reload){
+                    Updates.reloadAsync();
+                  }
               }
               i18n.services.pluralResolver.addRule('pl', {
                 numbers: [1, 2, 3],

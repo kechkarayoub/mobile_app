@@ -32,6 +32,7 @@ class SignIn extends React.Component {
     }
     Alert.alert("Alert", "current_language "+this.props.current_language);
     set("currentlanguage", current_language);
+    set("initialroutename", "SignIn");
     const action = { type: "CHANGE_LANGUAGE", value: current_language }
     this.props.dispatch(action);
   }
@@ -51,7 +52,7 @@ class SignIn extends React.Component {
             icon_url="https://img.icons8.com/nolan/40/000000/key.png" value={password} current_language={current_language}
           />
           <HKATouchableOpacity is_not_button={true} onPress={() => this.onClickListener('restore_password')}
-            text={"Forgot your password?"} style={{marginBottom: 25}}
+            text={t("Forgot your password?")} style={{marginBottom: 25}}
           />
           <HKATouchableOpacity onPress={() => this.onClickListener('login')}
             text={t("Sign in")} style={styles.loginButton}

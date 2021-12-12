@@ -1,4 +1,4 @@
 import { createStore } from 'redux';
-import changeLanguage from './Reducers/globalReducer'
+import gloabalReducer from './Reducers/globalReducer'
 
-export default createStore(changeLanguage)
+export default createStore(gloabalReducer);

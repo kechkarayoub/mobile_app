@@ -6,10 +6,10 @@ var locale_splited = Localization.locale.split("-")[0];
 if(supported_languages.indexOf(locale_splited) !== -1){
   current_language = locale_splited;
 }
-      
+
 const initialState = { current_language: current_language }
 
-function changeLanguage(state, action) {
+function gloabalReducer(state, action) {
   state = state || initialState;
   let nextState
   switch (action.type) {
@@ -19,9 +19,14 @@ function changeLanguage(state, action) {
         current_language: action.value
       }
       return nextState
+    case 'CHANGE_INITIAL_ROUTE_NAME':
+      nextState = {
+        ...state,
+        initial_route_name: action.value
+      }
+      return nextState
   default:
     return state
   }
 }
-
-export default changeLanguage;
+export default gloabalReducer;
