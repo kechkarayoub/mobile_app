@@ -5,12 +5,21 @@ import SignUp from '../Components/SignUp';
 import React from 'react';
 import { connect } from 'react-redux'
 
+import {t} from '../../../i18n';
 import { StyleSheet, View, ImageBackground } from 'react-native';
 const Stack = createNativeStackNavigator();
 class HomeStackNavigator extends React.Component  {
     constructor(props) {
       super(props);
-      this.state = { initial_route_name: props.initial_route_name };
+      this.state = {
+        initial_route_name: props.initial_route_name,
+        current_language: props.current_language,
+      };
+      if(!t("Arabic")){
+        setTimeout(() => {
+          this.setState({current_language: this.state.current_language});
+        }, 10);
+      }
     }
     //static getDerivedStateFromProps(props, state) {
     //  var new_state = {};
@@ -24,7 +33,6 @@ class HomeStackNavigator extends React.Component  {
     //componentDidUpdate(prevProps, prevState){
     //}
     render() {
-      const t = this.props.t;
       //const initialRouteName = this.state.initial_route_name || 'SignUp';
       //console.log("initialRouteName: ", initialRouteName)
       return (
@@ -43,7 +51,8 @@ class HomeStackNavigator extends React.Component  {
 }
 const mapStateToProps = (state) => {
   return {
-    initial_route_name: state.initial_route_name
+    current_language: state.current_language,
+    initial_route_name: state.initial_route_name,
   }
 }
 export default connect(mapStateToProps)(HomeStackNavigator);

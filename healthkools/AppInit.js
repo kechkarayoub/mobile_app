@@ -73,7 +73,7 @@ class AppInit extends Component{
     return (
       <I18nextProvider i18n={i18n}>
         <View style={styles.container}>
-          <Home t={t}/>
+          <Home />
         </View>
       </I18nextProvider>
     );

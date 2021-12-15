@@ -6,6 +6,7 @@ import HKATouchableOpacity from '../../FormFields/HKATouchableOpacity';
 import { connect } from 'react-redux'
 import { Updates } from 'expo';
 import {logos} from '../../images';
+import {t} from '../../../i18n';
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +16,11 @@ class SignUp extends React.Component {
       current_language: "en",
       username_or_email: '',
       password: '',
+    }
+    if(!t("Arabic")){
+      setTimeout(() => {
+        this.setState({current_language: this.state.current_language});
+      }, 10);
     }
   }
   onClickListener = (viewId) => {
@@ -33,7 +39,6 @@ class SignUp extends React.Component {
   render() {
     const username_or_email = this.state.username_or_email, password = this.state.password, current_language = this.state.current_language;
     const {first_name, last_name} = this.state;
-    const {t} = this.props;
 
     return (
         <View style={styles.body}>
