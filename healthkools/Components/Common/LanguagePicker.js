@@ -1,6 +1,6 @@
 import React from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux'
 
 import {set, get} from '../../Store/locale';
@@ -13,32 +13,40 @@ class LanguagePicker extends React.Component {
     this.state = {
       open: false,
       current_language: props.current_language,
+      items: [
+        {
+          value: "ar",
+          label: t("Arabic"),
+          icon: () => <Image source={require('../../assets/flags/flag-ar-16.png')} style={styles.iconStyle} />,
+        },
+        {
+          value: "en",
+          label: t("English"),
+          icon: () => <Image source={require('../../assets/flags/flag-en-16.png')} style={styles.iconStyle} />,
+        },
+        {
+          value: "fr",
+          label: t("French"),
+          icon: () => <Image source={require('../../assets/flags/flag-fr-16.png')} style={styles.iconStyle} />,
+        },
+      ],
     };
-    this.languages_data = {
-      "ar": {
-        name: t("Arabic"),
-      },
-      "en": {
-        name: t("English"),
-      },
-      "fr": {
-        name: t("French"),
-      },
-    }
     if(!t("Arabic")){
       setTimeout(() => {
-        this.languages_data = {
-          "ar": {
-            name: t("Arabic"),
-          },
-          "en": {
-            name: t("English"),
-          },
-          "fr": {
-            name: t("French"),
-          },
-        };
-        this.setState({current_language: this.state.current_language});
+        this.setState({
+          items: this.state.items.map(item => {
+            if(item.value === "ar"){
+              item.label = t("Arabic");
+            }
+            if(item.value === "en"){
+              item.label = t("English");
+            }
+            if(item.value === "fr"){
+              item.label = t("French");
+            }
+            return item;
+          }),
+        });
       }, 10);
     }
   }
@@ -54,18 +62,20 @@ class LanguagePicker extends React.Component {
   }
   componentDidUpdate(prevProps, prevState){
     if(prevState.current_language !== this.state.current_language){
-
-      this.languages_data = {
-        "ar": {
-          name: t("Arabic"),
-        },
-        "en": {
-          name: t("English"),
-        },
-        "fr": {
-          name: t("French"),
-        },
-      }
+        this.setState({
+          items: this.state.items.map(item => {
+            if(item.value === "ar"){
+              item.label = t("Arabic");
+            }
+            if(item.value === "en"){
+              item.label = t("English");
+            }
+            if(item.value === "fr"){
+              item.label = t("French");
+            }
+            return item;
+          }),
+        });
     }
   }
   handleChangeLanguage = new_language => {
@@ -91,15 +101,12 @@ class LanguagePicker extends React.Component {
     }));
   }
   render() {
-    const { open, value, items } = this.state;
+    const { open, current_language, items } = this.state;
     return(
       <DropDownPicker
-      key={this.state.current_language}
         open={open}
-        value={value}
-        items={supported_languages.map(sl => {
-           return { label: this.languages_data[sl].name, value: sl };
-         })}
+        value={current_language}
+        items={items}
         setOpen={this.setOpen}
         setValue={this.setValue}
         setItems={this.setItems}
@@ -108,11 +115,9 @@ class LanguagePicker extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-    body: {
-      flex: 1,
-      backgroundColor: '#1fa1cf',
-      justifyContent: 'center',
-      alignItems: 'center',
+    iconStyle: {
+      width: 36,
+      height: 20,
     },
     loginButton: {
       backgroundColor: "#00b5ec",
