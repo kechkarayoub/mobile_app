@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
       elevation: 19,
     },
     background: {
-      top: 25,
+      top: 0,
       position: 'absolute',
       width: '100%',
       height: '100%',
