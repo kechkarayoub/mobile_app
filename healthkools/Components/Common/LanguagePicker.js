@@ -110,6 +110,10 @@ class LanguagePicker extends React.Component {
         setOpen={this.setOpen}
         setValue={this.setValue}
         setItems={this.setItems}
+        dropDownContainerStyle={styles.dropDownContainerStyle}
+        style={styles.style}
+        selectedItemLabelStyle={styles.selectedItemLabelStyle}
+        selectedItemContainerStyle={styles.selectedItemContainerStyle}
       />
     )
   }
@@ -119,23 +123,19 @@ const styles = StyleSheet.create({
       width: 36,
       height: 20,
     },
-    loginButton: {
-      backgroundColor: "#00b5ec",
-      shadowColor: "#808080",
-      shadowOffset: {
-        width: 0,
-        height: 9,
-      },
-      shadowOpacity: 0.50,
-      shadowRadius: 12.35,
-      elevation: 19,
+    style: {
+      borderColor: 'transparent',
+      borderRadius: 0,
+      borderBottomColor: '#1fa1cf'
     },
-    background: {
-      top: 25,
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-      opacity: 0.2
+    dropDownContainerStyle: {
+      borderColor: '#1fa1cf',
+    },
+    selectedItemLabelStyle: {
+      color: '#1fa1cf',
+      fontWeight: "bold",
+    },
+    selectedItemContainerStyle: {
     },
 });
 const mapStateToProps = (state) => {
