@@ -3,6 +3,7 @@ healthkools/node_modules/
 healthkools/.expo/
 .idea/
 dist/
+lib/
 healthkools/dist/
 npm-debug.*
 *.jks
