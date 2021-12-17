@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import Store from './Store/configureStore'
 import { connect } from 'react-redux'
 import {set, get} from './Store/locale';
-import {get_current_languages, get_initial_route_name} from './utils'
+import {get_current_languages} from './utils'
 import { I18nextProvider } from 'react-i18next';
 class AppInit extends Component{
   constructor(props) {
@@ -20,10 +20,6 @@ class AppInit extends Component{
       const action = { type: "CHANGE_LANGUAGE", value: current_language }
       this.props.dispatch(action);
     });
-    //get_initial_route_name(initial_route_name => {
-    //  const action = { type: "CHANGE_INITIAL_ROUTE_NAME", value: initial_route_name }
-    //  this.props.dispatch(action);
-    //});
   }
   componentDidMount() {
     this.handleInitLanguage();

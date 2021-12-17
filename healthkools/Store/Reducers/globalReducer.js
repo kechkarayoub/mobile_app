@@ -19,12 +19,6 @@ function gloabalReducer(state, action) {
         current_language: action.value
       }
       return nextState
-    case 'CHANGE_INITIAL_ROUTE_NAME':
-      nextState = {
-        ...state,
-        initial_route_name: action.value
-      }
-      return nextState
   default:
     return state
   }

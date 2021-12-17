@@ -11,8 +11,3 @@ export const get_current_languages = async (callback) => {
     callback(cl);
   });
 };
-export const get_initial_route_name = async (callback) => {
-  await get('initialroutename', irn => {
-    callback(irn);
-  });
-};
