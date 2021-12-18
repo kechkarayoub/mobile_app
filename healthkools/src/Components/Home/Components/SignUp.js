@@ -46,18 +46,22 @@ class SignUp extends React.Component {
           <HKAInputText placeholder={t("Last name")} underlineColorAndroid='transparent'
             onChangeText={last_name => this.setState({last_name: last_name})}
             icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={last_name} current_language={current_language}
+            test_id={"last_name"}
           />
           <HKAInputText placeholder={t("First name")} underlineColorAndroid='transparent'
             onChangeText={first_name => this.setState({first_name: first_name})}
             icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={first_name} current_language={current_language}
+            test_id={"first_name"}
           />
           <HKAInputText placeholder={t("Username or email")} underlineColorAndroid='transparent'
             onChangeText={username_or_email => this.setState({username_or_email: username_or_email})}
-            icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={username_or_email} current_language={current_language}
+            icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={username_or_email}
+            current_language={current_language} test_id={"username_or_email"}
           />
           <HKAInputText placeholder={t("Password")} underlineColorAndroid='transparent' secureTextEntry={true}
             onChangeText={password => this.setState({password: password})}
             icon_url="https://img.icons8.com/nolan/40/000000/key.png" value={password} current_language={current_language}
+            test_id={"password"}
           />
           <HKATouchableOpacity onPress={() => this.onClickListener('register')}
             text={t("Sign up")} style={styles.loginButton}

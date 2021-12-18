@@ -10,6 +10,7 @@ class HKAInputText extends React.Component {
       keyboardType: props.keyboardType,
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
+      test_id: props.test_id,
       underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
     }
@@ -32,7 +33,7 @@ class HKAInputText extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, underlineColorAndroid, value} = this.state;
+    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
     return (
       <View style={styles.inputContainer}>
         <TextInput style={[styles.inputs, this.props.style || {}]}
@@ -41,6 +42,7 @@ class HKAInputText extends React.Component {
           secureTextEntry={secureTextEntry}
           keyboardType={keyboardType}
           underlineColorAndroid={underlineColorAndroid}
+          testID={test_id}
           onChangeText={(value) => {
             if(this.props.onChangeText){
               this.props.onChangeText(value);
