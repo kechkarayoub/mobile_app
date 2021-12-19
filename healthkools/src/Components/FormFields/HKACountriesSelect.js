@@ -1,20 +1,17 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
-
-class HKAInputText extends React.Component {
+import Select from "react-select-native";
+class HKACountriesSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       current_language: props.current_language,
       icon_url: props.icon_url,
-      keyboardType: props.keyboardType,
       placeholder: props.placeholder,
-      secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
-      underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
-      multiline: props.multiline,
-      numberOfLines: props.numberOfLines,
+      countries_options: props.countries_options,
+      disabled: props.disabled,
     }
   }
   static getDerivedStateFromProps(props, state) {
@@ -22,6 +19,7 @@ class HKAInputText extends React.Component {
     var return_new_state = false;
     if (props.current_language !== state.current_language) {
       new_state.current_language = props.current_language;
+      new_state.countries_options = props.countries_options;
       return_new_state = true;
     }
     if (props.placeholder !== state.placeholder) {
@@ -32,36 +30,39 @@ class HKAInputText extends React.Component {
       new_state.value = props.value;
       return_new_state = true;
     }
+    if (props.disabled !== state.disabled) {
+      new_state.disabled = props.disabled;
+      return_new_state = true;
+    }
     return return_new_state ? new_state : null;
   }
   render() {
-    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
+    const {current_language, icon_url, disabled, placeholder, countries_options, test_id, value} = this.state;
+    var selected_country_option = value ? countries_options.filter(c_o => c_o.value === value)[0] : null;
+    console.log("countries_options: ", countries_options)
+    console.log("selected_country_option: ", selected_country_option)
     return (
-      <View style={styles.inputContainer}>
-        <TextInput style={[styles.inputs, this.props.style || {}]}
-          value={value}
-          multiline={multiline}
-          numberOfLines={numberOfLines}
-          placeholder={placeholder}
-          secureTextEntry={secureTextEntry}
-          keyboardType={keyboardType}
-          underlineColorAndroid={underlineColorAndroid}
-          testID={test_id}
-          onChangeText={(value) => {
-            if(this.props.onChangeText){
-              this.props.onChangeText(value);
+      <View style={styles.selectContainer}>
+        {/*<Select
+          onChange={value => {
+            if(this.props.onSelect){
+              this.props.onSelect(value);
             }
             else{
               this.setState({value: value})
             }
-          }}/>
-        <Image style={styles.inputIcon} source={{uri: icon_url}}/>
+          }}
+          options={countries_options}
+          value={selected_country_option}
+          defaultValue={countries_options[0].value}
+        />*/}
+        <Image style={styles.selectIcon} source={{uri: icon_url}}/>
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
-  inputContainer: {
+  selectContainer: {
     borderBottomColor: '#F5FCFF',
     backgroundColor: '#FFFFFF',
     borderRadius:30,
@@ -81,17 +82,17 @@ const styles = StyleSheet.create({
     elevation: 5,
     display: 'flex',
   },
-  inputs:{
+  select:{
     height:45,
     marginLeft:16,
     borderBottomColor: '#FFFFFF',
     flex:1,
   },
-  inputIcon:{
+  selectIcon:{
     width:30,
     height:30,
     marginRight:15,
     justifyContent: 'center',
   },
 });
-export default HKAInputText;
+export default HKACountriesSelect;

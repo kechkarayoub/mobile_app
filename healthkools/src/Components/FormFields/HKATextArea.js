@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
 
-class HKAInputText extends React.Component {
+class HKATextArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,8 +37,8 @@ class HKAInputText extends React.Component {
   render() {
     const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
     return (
-      <View style={styles.inputContainer}>
-        <TextInput style={[styles.inputs, this.props.style || {}]}
+      <View style={styles.textAreaContainer}>
+        <TextInput style={[styles.textArea, this.props.style || {}]}
           value={value}
           multiline={multiline}
           numberOfLines={numberOfLines}
@@ -61,7 +61,7 @@ class HKAInputText extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-  inputContainer: {
+  textAreaContainer: {
     borderBottomColor: '#F5FCFF',
     backgroundColor: '#FFFFFF',
     borderRadius:30,
@@ -81,11 +81,11 @@ const styles = StyleSheet.create({
     elevation: 5,
     display: 'flex',
   },
-  inputs:{
+  textArea:{
     height:45,
     marginLeft:16,
-    borderBottomColor: '#FFFFFF',
     flex:1,
+    padding: 5,
   },
   inputIcon:{
     width:30,
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default HKAInputText;
+export default HKATextArea;
