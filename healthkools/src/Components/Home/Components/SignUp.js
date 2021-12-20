@@ -9,7 +9,6 @@ import { connect } from 'react-redux'
 import { Updates } from 'expo';
 import {logos} from '../../images';
 import {t} from '../../../i18n';
-import {get_contries_select_options} from "../../../utils/countries_list"
 import moment from 'moment';
 class SignUp extends React.Component {
   constructor(props) {
@@ -35,12 +34,10 @@ class SignUp extends React.Component {
       valid_messages: {},
     }
     this.geo_info_api_done = true;
-    this.countries_options = get_contries_select_options(props.current_language, t);
     if(!t("Arabic")){
       setTimeout(() => {
         this.setState({current_language: this.state.current_language});
       }, 10);
-      this.countries_options = get_contries_select_options(this.state.current_language, t);
     }
   }
   static getDerivedStateFromProps(props, state) {
@@ -55,7 +52,6 @@ class SignUp extends React.Component {
   componentDidUpdate(prevProps, prevState){
     if(prevState.current_language !== this.state.current_language){
       this.setState({current_language: this.state.current_languag})
-      this.countries_options = get_contries_select_options(this.state.current_language, t);
     }
   }
   onClickListener = (viewId) => {
@@ -112,7 +108,7 @@ class SignUp extends React.Component {
           <HKACountriesSelect placeholder={t("Country")} underlineColorAndroid='transparent'
             onSelect={country_code => this.setState({country_code: country_code})} value={country_code}
             icon_url="https://img.icons8.com/nolan/40/000000/email.png"
-            current_language={current_language} test_id={"country"} countries_options={this.countries_options}
+            current_language={current_language} test_id={"country"}
           />
           <HKATextArea placeholder={t("Address")} underlineColorAndroid='transparent'
             onChangeText={address => this.setState({address: address})} value={address}

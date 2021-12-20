@@ -1,4 +1,5 @@
-
+import React from 'react';
+import Flag from 'react-native-flags';
 export const countries = [
     {
         country_code: "AF",
@@ -1712,7 +1713,11 @@ export const get_contries_select_options = (current_language) => {
     });
     var countries_options = [];
     countries_.map(country => {
-        countries_options.push({label: country.translations[current_language], value: country.country_code,});
+        countries_options.push({
+          label: country.translations[current_language],
+          value: country.country_code,
+          icon: () => <Flag code={country.country_code} size={32} />,
+        });
     });
     return countries_options;
 };
