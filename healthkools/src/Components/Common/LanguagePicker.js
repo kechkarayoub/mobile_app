@@ -32,16 +32,17 @@ class LanguagePicker extends React.Component {
       ],
     };
     if(!t("Arabic")){
+      // Translate languages labels
       setTimeout(() => {
         this.setState({
           items: this.state.items.map(item => {
             if(item.value === "ar"){
               item.label = t("Arabic");
             }
-            if(item.value === "en"){
+            else if(item.value === "en"){
               item.label = t("English");
             }
-            if(item.value === "fr"){
+            else if(item.value === "fr"){
               item.label = t("French");
             }
             return item;
@@ -62,25 +63,27 @@ class LanguagePicker extends React.Component {
   }
   componentDidUpdate(prevProps, prevState){
     if(prevState.current_language !== this.state.current_language){
-        this.setState({
-          items: this.state.items.map(item => {
-            if(item.value === "ar"){
-              item.label = t("Arabic");
-            }
-            if(item.value === "en"){
-              item.label = t("English");
-            }
-            if(item.value === "fr"){
-              item.label = t("French");
-            }
-            return item;
-          }),
-        });
+      // Translate languages labels
+      this.setState({
+        items: this.state.items.map(item => {
+          if(item.value === "ar"){
+            item.label = t("Arabic");
+          }
+          else if(item.value === "en"){
+            item.label = t("English");
+          }
+          else if(item.value === "fr"){
+            item.label = t("French");
+          }
+          return item;
+        }),
+      });
     }
   }
   handleChangeLanguage = new_language => {
     if(new_language !== this.props.current_language){
       set("currentlanguage", new_language);
+      // Dispatch an action to change current languages in global state
       const action = { type: "CHANGE_LANGUAGE", value: new_language };
       this.props.dispatch(action);
     }
@@ -92,6 +95,7 @@ class LanguagePicker extends React.Component {
   }
 
   setValue =(callback) => {
+    // callback() return selected value
     this.handleChangeLanguage(callback());
   }
 
