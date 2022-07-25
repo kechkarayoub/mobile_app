@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
 
-class HKAInputText extends React.Component {
+class CustomInputText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default HKAInputText;
+export default CustomInputText;

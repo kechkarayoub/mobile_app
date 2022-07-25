@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 
-class HKATouchableOpacity extends React.Component {
+class CustomTouchableOpacity extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
     height: 20,
   }
 });
-export default HKATouchableOpacity;
+export default CustomTouchableOpacity;

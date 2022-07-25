@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {get_contries_select_options} from "../../utils/countries_list";
-class HKACountriesSelect extends React.Component {
+class CustomCountriesSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -129,4 +129,4 @@ const mapStateToProps = (state) => {
     current_language: state.current_language,
   }
 }
-export default HKACountriesSelect;
+export default CustomCountriesSelect;
