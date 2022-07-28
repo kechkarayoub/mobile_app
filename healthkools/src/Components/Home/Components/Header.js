@@ -13,10 +13,10 @@ class Header extends React.Component {
 }
 const styles = StyleSheet.create({
     header: {
-      flex: 1,
       alignItems: 'center',
       borderBottomWidth: 3,
-      borderColor: "#fff"
+      borderColor: "#fff",
+      flex: 1,
     },
     logo: {
       maxHeight: '90%',

@@ -13,10 +13,10 @@ class Footer extends React.Component {
 }
 const styles = StyleSheet.create({
     footer: {
-      flex: 1,
       alignItems: 'center',
+      borderColor: "#fff",
       borderTopWidth: 3,
-      borderColor: "#fff"
+      flex: 1,
     },
     logo: {
       marginTop: 5,

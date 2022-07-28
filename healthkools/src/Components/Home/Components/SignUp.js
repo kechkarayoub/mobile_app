@@ -17,8 +17,8 @@ class SignUp extends React.Component {
       address: "",
       birthday: moment().add(-30, "years").toDate(),
       country_code: "",
-      country_name: "",
       current_language: props.current_language,
+      country_name: "",
       email: "",
       error_messages: {},
       first_name: "",
@@ -35,6 +35,7 @@ class SignUp extends React.Component {
     }
     this.geo_info_api_done = true;
     if(!t("Arabic")){
+      // Initialize t translation function) if it is not initistialised
       setTimeout(() => {
         this.setState({current_language: this.state.current_language});
       }, 10);
@@ -127,13 +128,14 @@ class SignUp extends React.Component {
 }
 const styles = StyleSheet.create({
     body: {
-      flex: 1,
-      backgroundColor: '#1fa1cf',
-      justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#1fa1cf',
+      flex: 1,
+      justifyContent: 'center',
     },
     loginButton: {
       backgroundColor: "#00b5ec",
+      elevation: 19, // works on android
       shadowColor: "#808080",
       shadowOffset: {
         width: 0,
@@ -141,14 +143,13 @@ const styles = StyleSheet.create({
       },
       shadowOpacity: 0.50,
       shadowRadius: 12.35,
-      elevation: 19,
     },
     background: {
-      top: 0,
-      position: 'absolute',
-      width: '100%',
       height: '100%',
-      opacity: 0.2
+      opacity: 0.2,
+      position: 'absolute',
+      top: 0,
+      width: '100%',
     },
 });
 const mapStateToProps = (state) => {

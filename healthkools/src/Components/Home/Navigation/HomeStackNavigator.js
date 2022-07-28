@@ -15,6 +15,7 @@ class HomeStackNavigator extends React.Component  {
         current_language: props.current_language,
       };
       if(!t("Arabic")){
+        // Initialize t translation function) if it is not initistialised
         setTimeout(() => {
           this.setState({current_language: this.state.current_language});
         }, 10);

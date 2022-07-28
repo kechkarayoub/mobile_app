@@ -8,13 +8,13 @@ class CustomInputText extends React.Component {
       current_language: props.current_language,
       icon_url: props.icon_url,
       keyboardType: props.keyboardType,
+      multiline: props.multiline,
+      numberOfLines: props.numberOfLines,
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
       underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
-      multiline: props.multiline,
-      numberOfLines: props.numberOfLines,
     }
   }
   static getDerivedStateFromProps(props, state) {
@@ -38,15 +38,10 @@ class CustomInputText extends React.Component {
     const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
     return (
       <View style={styles.inputContainer}>
-        <TextInput style={[styles.inputs, this.props.style || {}]}
-          value={value}
+        <TextInput 
+          keyboardType={keyboardType}
           multiline={multiline}
           numberOfLines={numberOfLines}
-          placeholder={placeholder}
-          secureTextEntry={secureTextEntry}
-          keyboardType={keyboardType}
-          underlineColorAndroid={underlineColorAndroid}
-          testID={test_id}
           onChangeText={(value) => {
             if(this.props.onChangeText){
               this.props.onChangeText(value);
@@ -54,7 +49,14 @@ class CustomInputText extends React.Component {
             else{
               this.setState({value: value})
             }
-          }}/>
+          }}
+          placeholder={placeholder}
+          secureTextEntry={secureTextEntry}
+          style={[styles.inputs, this.props.style || {}]}
+          testID={test_id}
+          value={value}
+          underlineColorAndroid={underlineColorAndroid}
+        />
         <Image style={styles.inputIcon} source={{uri: icon_url}}/>
       </View>
     )
@@ -62,36 +64,36 @@ class CustomInputText extends React.Component {
 }
 const styles = StyleSheet.create({
   inputContainer: {
-    borderBottomColor: '#F5FCFF',
+    alignItems:'center',
     backgroundColor: '#FFFFFF',
-    borderRadius:30,
+    borderBottomColor: '#F5FCFF',
     borderBottomWidth: 1,
-    width:300,
+    borderRadius:30,
+    display: 'flex',
+    elevation: 5, // works on android
+    flexDirection: 'row',
     height:45,
     marginBottom:20,
-    flexDirection: 'row',
-    alignItems:'center',
     shadowColor: "#808080",
     shadowOffset: {
-      width: 0,
       height: 2,
+      width: 0,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
-    display: 'flex',
+    width:300,
   },
   inputs:{
+    flex:1,
+    borderBottomColor: '#FFFFFF',
     height:45,
     marginLeft:16,
-    borderBottomColor: '#FFFFFF',
-    flex:1,
   },
   inputIcon:{
-    width:30,
     height:30,
-    marginRight:15,
     justifyContent: 'center',
+    marginRight:15,
+    width:30,
   },
 });
 export default CustomInputText;

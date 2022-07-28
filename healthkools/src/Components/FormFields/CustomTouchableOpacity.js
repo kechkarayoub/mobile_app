@@ -17,23 +17,23 @@ class CustomTouchableOpacity extends React.Component {
 }
 const styles = StyleSheet.create({
   buttonContainer: {
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:20,
-    width:300,
-    borderRadius:30,
-    backgroundColor:'transparent'
+    backgroundColor: 'transparent',
+    borderRadius: 30,
+    flexDirection: 'row',
+    height: 45,
+    justifyContent: 'center',
+    marginBottom: 20,
+    width: 300,
   },
   notButtonCotainer: {
-    height:15,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    marginBottom:10,
-    width:300,
-    backgroundColor:'transparent'
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    height: 15,
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+    width: 300,
   },
   buttonText: {
     color: 'white',

@@ -8,13 +8,13 @@ class CustomTextArea extends React.Component {
       current_language: props.current_language,
       icon_url: props.icon_url,
       keyboardType: props.keyboardType,
+      multiline: props.multiline,
+      numberOfLines: props.numberOfLines,
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
       underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
-      multiline: props.multiline,
-      numberOfLines: props.numberOfLines,
     }
   }
   static getDerivedStateFromProps(props, state) {
@@ -38,15 +38,11 @@ class CustomTextArea extends React.Component {
     const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
     return (
       <View style={styles.textAreaContainer}>
-        <TextInput style={[styles.textArea, this.props.style || {}]}
-          value={value}
+        <TextInput 
+          keyboardType={keyboardType}
           multiline={multiline}
           numberOfLines={numberOfLines}
           placeholder={placeholder}
-          secureTextEntry={secureTextEntry}
-          keyboardType={keyboardType}
-          underlineColorAndroid={underlineColorAndroid}
-          testID={test_id}
           onChangeText={(value) => {
             if(this.props.onChangeText){
               this.props.onChangeText(value);
@@ -54,7 +50,13 @@ class CustomTextArea extends React.Component {
             else{
               this.setState({value: value})
             }
-          }}/>
+          }}
+          secureTextEntry={secureTextEntry}
+          style={[styles.textArea, this.props.style || {}]}
+          testID={test_id}
+          underlineColorAndroid={underlineColorAndroid}
+          value={value}
+        />
         <Image style={styles.inputIcon} source={{uri: icon_url}}/>
       </View>
     )
@@ -62,15 +64,16 @@ class CustomTextArea extends React.Component {
 }
 const styles = StyleSheet.create({
   textAreaContainer: {
-    borderBottomColor: '#F5FCFF',
+    alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    borderRadius:30,
+    borderBottomColor: '#F5FCFF',
     borderBottomWidth: 1,
-    width:300,
-    height:45,
-    marginBottom:20,
+    borderRadius: 30,
+    elevation: 5, // works on android
+    display: 'flex',
     flexDirection: 'row',
-    alignItems:'center',
+    marginBottom: 20,
+    height: 45,
     shadowColor: "#808080",
     shadowOffset: {
       width: 0,
@@ -78,20 +81,19 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
-    display: 'flex',
+    width: 300,
   },
   textArea:{
-    height:45,
-    marginLeft:16,
-    flex:1,
+    flex: 1,
+    height: 45,
+    marginLeft: 16,
     padding: 5,
   },
   inputIcon:{
-    width:30,
-    height:30,
-    marginRight:15,
+    height: 30,
     justifyContent: 'center',
+    marginRight: 15,
+    width: 30,
   },
 });
 export default CustomTextArea;

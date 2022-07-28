@@ -25,8 +25,8 @@ class Home extends React.Component {
 }
 const styles = StyleSheet.create({
     home: {
-      flex: 1,
       backgroundColor: '#1fa1cf',
+      flex: 1,
       paddingTop: 25
     },
 });

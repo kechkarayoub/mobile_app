@@ -11,8 +11,6 @@ class LanguagePicker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      current_language: props.current_language,
       items: [
         {
           value: "ar",
@@ -30,6 +28,8 @@ class LanguagePicker extends React.Component {
           icon: () => <Image source={require('../../../assets/flags/flag-fr-16.png')} style={styles.iconStyle} />,
         },
       ],
+      current_language: props.current_language,
+      open: false,
     };
     if(!t("Arabic")){
       // Translate languages labels
@@ -100,6 +100,7 @@ class LanguagePicker extends React.Component {
   }
 
   setItems = (callback) => {
+    // Modify or add new items
     this.setState(state => ({
       items: callback(state.items)
     }));
@@ -108,16 +109,16 @@ class LanguagePicker extends React.Component {
     const { open, current_language, items } = this.state;
     return(
       <DropDownPicker
-        open={open}
-        value={current_language}
+        dropDownContainerStyle={styles.dropDownContainerStyle}
         items={items}
+        open={open}
+        selectedItemContainerStyle={styles.selectedItemContainerStyle}
+        selectedItemLabelStyle={styles.selectedItemLabelStyle}
         setOpen={this.setOpen}
         setValue={this.setValue}
         setItems={this.setItems}
-        dropDownContainerStyle={styles.dropDownContainerStyle}
         style={styles.style}
-        selectedItemLabelStyle={styles.selectedItemLabelStyle}
-        selectedItemContainerStyle={styles.selectedItemContainerStyle}
+        value={current_language}
       />
     )
   }

@@ -13,10 +13,11 @@ class SignIn extends React.Component {
     super(props);
     this.state = {
       current_language: "en",
-      username_or_email: '',
       password: '',
+      username_or_email: '',
     }
     if(!t("Arabic")){
+      // Initialize t translation function) if it is not initistialised
       setTimeout(() => {
         this.setState({current_language: this.state.current_language});
       }, 10);
@@ -71,28 +72,28 @@ class SignIn extends React.Component {
 }
 const styles = StyleSheet.create({
     body: {
-      flex: 1,
-      backgroundColor: '#1fa1cf',
-      justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#1fa1cf',
+      flex: 1,
+      justifyContent: 'center',
     },
     loginButton: {
       backgroundColor: "#00b5ec",
+      elevation: 19, // works on android
       shadowColor: "#808080",
       shadowOffset: {
-        width: 0,
         height: 9,
+        width: 0,
       },
       shadowOpacity: 0.50,
       shadowRadius: 12.35,
-      elevation: 19,
     },
     background: {
-      top: 0,
-      position: 'absolute',
-      width: '100%',
       height: '100%',
-      opacity: 0.2
+      opacity: 0.2,
+      position: 'absolute',
+      top: 0,
+      width: '100%',
     },
 });
 const mapStateToProps = (state) => {
