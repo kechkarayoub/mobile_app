@@ -4,6 +4,7 @@ import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
 import HomeStackNavigator from './Navigation/HomeStackNavigator';
 import LanguagePicker from '../Common/LanguagePicker';
+import {COLORS} from "../../variables/colors";
 
 import {logos} from '../images';
 class Home extends React.Component {
@@ -25,7 +26,7 @@ class Home extends React.Component {
 }
 const styles = StyleSheet.create({
     home: {
-      backgroundColor: '#1fa1cf',
+      backgroundColor: COLORS.default_color,
       flex: 1,
       paddingTop: 25
     },

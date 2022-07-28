@@ -10,6 +10,7 @@ import { Updates } from 'expo';
 import {logos} from '../../images';
 import {t} from '../../../i18n';
 import moment from 'moment';
+import {COLORS} from "../../../variables/colors";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -129,7 +130,7 @@ class SignUp extends React.Component {
 const styles = StyleSheet.create({
     body: {
       alignItems: 'center',
-      backgroundColor: '#1fa1cf',
+      backgroundColor: COLORS.default_color,
       flex: 1,
       justifyContent: 'center',
     },

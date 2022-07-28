@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import {set, get} from '../../Store/locale';
 import i18n, {t} from '../../i18n';
 import {supported_languages} from '../../config/global';
+import {COLORS} from "../../variables/colors";
 
 class LanguagePicker extends React.Component {
   constructor(props) {
@@ -131,13 +132,13 @@ const styles = StyleSheet.create({
     style: {
       borderColor: 'transparent',
       borderRadius: 0,
-      borderBottomColor: '#1fa1cf'
+      borderBottomColor: COLORS.default_color,
     },
     dropDownContainerStyle: {
-      borderColor: '#1fa1cf',
+      borderColor: COLORS.default_color,
     },
     selectedItemLabelStyle: {
-      color: '#1fa1cf',
+      color: COLORS.default_color,
       fontWeight: "bold",
     },
     selectedItemContainerStyle: {

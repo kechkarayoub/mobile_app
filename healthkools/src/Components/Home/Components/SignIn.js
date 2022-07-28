@@ -8,6 +8,7 @@ import { Updates } from 'expo';
 import {logos} from '../../images';
 import {set, get} from '../../../Store/locale';
 import {t} from '../../../i18n';
+import {COLORS} from "../../../variables/colors";
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +74,7 @@ class SignIn extends React.Component {
 const styles = StyleSheet.create({
     body: {
       alignItems: 'center',
-      backgroundColor: '#1fa1cf',
+      backgroundColor: COLORS.default_color,
       flex: 1,
       justifyContent: 'center',
     },

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {get_contries_select_options} from "../../utils/countries_list";
+import {COLORS} from "../../variables/colors";
 class CustomCountriesSelect extends React.Component {
   constructor(props) {
     super(props);
@@ -114,12 +115,12 @@ const styles = StyleSheet.create({
       zIndex: 300, // works on ios
     },
     dropDownContainerStyle: {
-      borderColor: '#1fa1cf',
+      borderColor: COLORS.default_color,
       elevation: 300, // works on android
       zIndex: 300, // works on ios
     },
     selectedItemLabelStyle: {
-      color: '#1fa1cf',
+      color: COLORS.default_color,
       fontWeight: "bold",
     },
     selectedItemContainerStyle: {
