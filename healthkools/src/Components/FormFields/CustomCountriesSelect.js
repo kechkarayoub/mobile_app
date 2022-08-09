@@ -73,13 +73,14 @@ class CustomCountriesSelect extends React.Component {
     const {current_language, icon_url, disabled, open, placeholder, countries_options, test_id, value} = this.state;
     return(
       <DropDownPicker
-        containerStyle={styles.containerStyle}
+        containerStyle={[styles.containerStyle]}
         dropDownContainerStyle={styles.dropDownContainerStyle}
         items={countries_options}
         language={current_language}
         onChangeValue={(value) => {
           this.handleChangeCountry(value);
         }}
+        listMode="MODAL"
         open={open}
         searchable={true}
         selectedItemLabelStyle={styles.selectedItemLabelStyle}
