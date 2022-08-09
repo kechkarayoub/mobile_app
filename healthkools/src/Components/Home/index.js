@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
 import HomeStackNavigator from './Navigation/HomeStackNavigator';
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     home: {
       backgroundColor: COLORS.default_color,
       flex: 1,
-      paddingTop: 25
+      paddingTop: StatusBar.currentHeight,
     },
 });
 export default Home;

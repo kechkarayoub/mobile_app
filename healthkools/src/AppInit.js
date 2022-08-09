@@ -17,8 +17,10 @@ class AppInit extends Component{
       current_language: props.current_language,
     };
     get_current_languages(current_language => {
-      const action = { type: "CHANGE_LANGUAGE", value: current_language }
-      this.props.dispatch(action);
+      if(this.state.current_language !== current_language){
+        const action = { type: "CHANGE_LANGUAGE", value: current_language }
+        this.props.dispatch(action);
+      }
     });
   }
   componentDidMount() {

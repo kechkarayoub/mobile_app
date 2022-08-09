@@ -32,16 +32,16 @@ class HomeStackNavigator extends React.Component  {
     // }
     render() {
       return (
-            <NavigationContainer>
-              <Stack.Navigator initialRouteName={"SignIn"} screenOptions={{headerTitleAlign: 'center'}}>
-                <Stack.Screen name="SignIn" options={{title: t("Sign in")}}>
-                  {props => <SignIn {...props} t={t}/>}
-                </Stack.Screen>
-                <Stack.Screen name="SignUp" options={{title: t("Sign up")}}>
-                  {props => <SignUp {...props} t={t} />}
-                </Stack.Screen>
-              </Stack.Navigator>
-            </NavigationContainer>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName={"SignIn"} screenOptions={{headerTitleAlign: 'center'}}>
+            <Stack.Screen name="SignIn" options={{title: t("Sign in")}}>
+              {props => <SignIn {...props} t={t}/>}
+            </Stack.Screen>
+            <Stack.Screen name="SignUp" options={{title: t("Sign up")}}>
+              {props => <SignUp {...props} t={t} />}
+            </Stack.Screen>
+          </Stack.Navigator>
+        </NavigationContainer>
       )
     }
 }
