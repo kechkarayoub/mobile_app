@@ -42,7 +42,7 @@ class CustomCountriesSelect extends React.Component {
     if(prevState.current_language !== this.state.current_language){
       this.setState({
         current_language: this.state.current_language,
-        countries_options: get_contries_select_options(props.current_language),
+        countries_options: get_contries_select_options(this.state.current_language),
       });
     }
   }

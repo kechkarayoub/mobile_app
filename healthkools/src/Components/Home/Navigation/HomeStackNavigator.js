@@ -32,7 +32,7 @@ class HomeStackNavigator extends React.Component  {
     // }
     render() {
       return (
-        <NavigationContainer>
+        <NavigationContainer style={styles.navigationStyle}>
           <Stack.Navigator initialRouteName={"SignIn"} screenOptions={{headerTitleAlign: 'center'}}>
             <Stack.Screen name="SignIn" options={{title: t("Sign in")}}>
               {props => <SignIn {...props} t={t}/>}
@@ -45,6 +45,11 @@ class HomeStackNavigator extends React.Component  {
       )
     }
 }
+const styles = StyleSheet.create({
+    navigationStyle: {
+      flex: 1,
+    },
+});
 const mapStateToProps = (state) => {
   return {
     current_language: state.current_language,
