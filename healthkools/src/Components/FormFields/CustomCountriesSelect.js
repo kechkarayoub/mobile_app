@@ -60,37 +60,41 @@ class CustomCountriesSelect extends React.Component {
     });
   }
 
-  // setValue =(callback) => {
-  // }
-
-  setItems = (callback) => {
-    // Modify or add new items
-    this.setState(state => ({
-      items: callback(state.countries_options),
-    }));
+  setValue =(callback) => {
+    if(this.props.onSelect){
+      this.props.onSelect(callback());
+    }
+    else{
+      this.setState({value: callback()}, () => console.log(this.state.value));
+    }
   }
   render() {
     const {current_language, icon_url, disabled, open, placeholder, countries_options, test_id, value} = this.state;
     return(
+      <View style={[styles.selectContainer]}>
       <DropDownPicker
         containerStyle={[styles.containerStyle]}
         dropDownContainerStyle={styles.dropDownContainerStyle}
         items={countries_options}
         language={current_language}
         onChangeValue={(value) => {
-          this.handleChangeCountry(value);
+          //this.handleChangeCountry(value);
         }}
         listMode="MODAL"
         open={open}
+        disabled={disabled}
+        testID={test_id}
         searchable={true}
+        placeholder={placeholder}
         selectedItemLabelStyle={styles.selectedItemLabelStyle}
         selectedItemContainerStyle={styles.selectedItemContainerStyle}
-        setItems={this.setItems}
         setOpen={this.setOpen}
         style={styles.style}
         value={value}
-        // setValue={this.setValue}
+        setValue={this.setValue}
       />
+      <Image style={styles.inputIcon} source={{uri: icon_url}}/>
+    </View>
     )
   }
 }
@@ -99,11 +103,28 @@ const styles = StyleSheet.create({
     //   width: 36,
     //   height: 20,
     // },
+    selectContainer: {
+      alignItems:'center',
+      backgroundColor: '#FFFFFF',
+      borderRadius: 30,
+      height: 50,
+      marginBottom: 20,
+      display: 'flex',
+      elevation: 5, // works on android
+      flexDirection: 'row',
+      width:300,
+      justifyContent: 'space-between',
+      elevation: 300, // works on android
+      zIndex: 300, // works on ios
+    },
     style: {
       elevation: 30, // works on android
       borderColor: '#FFFFFF',
       borderRadius:30,
       zIndex: 30, // works on ios
+      shadowOffset:{  width: 0,  height: 0,  },
+      shadowColor: 'transparent',
+      shadowOpacity: 0,
     },
     containerStyle: {
       backgroundColor: '#FFFFFF',
@@ -111,9 +132,12 @@ const styles = StyleSheet.create({
       borderBottomColor: '#F5FCFF',
       borderRadius: 30,
       elevation: 300, // works on android
-      marginBottom: 20,
-      width: 300,
+      marginRight: 0,
       zIndex: 300, // works on ios
+      width: 255,
+      shadowOffset:{  width: 0,  height: 0,  },
+      shadowColor: 'transparent',
+      shadowOpacity: 0,
     },
     dropDownContainerStyle: {
       borderColor: COLORS.default_color,
@@ -125,6 +149,12 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
     },
     selectedItemContainerStyle: {
+    },
+    inputIcon:{
+      height:30,
+      justifyContent: 'center',
+      marginRight:15,
+      width:30,
     },
 });
 const mapStateToProps = (state) => {
