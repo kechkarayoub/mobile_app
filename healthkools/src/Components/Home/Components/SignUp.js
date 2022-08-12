@@ -11,6 +11,7 @@ import {logos} from '../../images';
 import {t} from '../../../i18n';
 import moment from 'moment';
 import {COLORS} from "../../../variables/colors";
+import {images} from "../_ressources";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -80,43 +81,43 @@ class SignUp extends React.Component {
           <ScrollView contentContainerStyle={styles.scrollView}>
               <CustomInputText placeholder={t("First name")} underlineColorAndroid='transparent'
                 onChangeText={first_name => this.setState({first_name: first_name})}
-                icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={first_name} current_language={current_language}
-                test_id={"first_name"}
+                icon_url={images.nameIcon} value={first_name} current_language={current_language}
+                test_id={"first_name"} type_input="first_name" iconStyle={{height:20}}
               />
               <CustomInputText placeholder={t("Last name")} underlineColorAndroid='transparent'
                 onChangeText={last_name => this.setState({last_name: last_name})}
-                icon_url="https://img.icons8.com/nolan/40/000000/email.png" value={last_name} current_language={current_language}
-                test_id={"last_name"}
+                icon_url={images.nameIcon} value={last_name} current_language={current_language}
+                test_id={"last_name"} type_input="last_name" iconStyle={{height:20}}
               />
               <CustomInputText placeholder={t("Email")} underlineColorAndroid='transparent'
                 onChangeText={email => this.setState({email: email})} value={email}
-                icon_url="https://img.icons8.com/nolan/40/000000/email.png"
-                current_language={current_language} test_id={"email"}
+                icon_url={images.emailIcon}  iconStyle={{height:26, width: 25, marginRight: 18}}
+                current_language={current_language} test_id={"email"}  type_input="email"
               />
               <CustomInputText placeholder={t("Username")} underlineColorAndroid='transparent'
                 onChangeText={username => this.setState({username: username})} value={username}
-                icon_url="https://img.icons8.com/nolan/40/000000/email.png"
-                current_language={current_language} test_id={"username"}
+                icon_url={images.usernameIcon}
+                current_language={current_language} test_id={"username"} type_input="username"
               />
               <CustomInputText placeholder={t("Password")} underlineColorAndroid='transparent' secureTextEntry={true}
                 onChangeText={password => this.setState({password: password})}
-                icon_url="https://img.icons8.com/nolan/40/000000/key.png" value={password} current_language={current_language}
-                test_id={"password"}
+                icon_url={images.passwordIcon} value={password} current_language={current_language}
+                test_id={"password"} type_input="password"  iconStyle={{height:28, width: 24, marginRight: 18}}
               />
               <CustomInputText placeholder={t("Confirm password")} underlineColorAndroid='transparent' secureTextEntry={true}
                 onChangeText={password_confirmation => this.setState({password_confirmation: password_confirmation})}
-                icon_url="https://img.icons8.com/nolan/40/000000/key.png" value={password_confirmation} current_language={current_language}
-                test_id={"password_confirmation"}
+                icon_url={images.passwordIcon} value={password_confirmation} current_language={current_language}
+                test_id={"password_confirmation"} type_input="password" iconStyle={{height:28, width: 24, marginRight: 18}}
               />
               <CustomCountriesSelect placeholder={t("Country")} underlineColorAndroid='transparent'
                 onSelect={country_code => this.setState({country_code: country_code})} value={country_code}
-                icon_url="https://img.icons8.com/nolan/40/000000/email.png"
-                current_language={current_language} test_id={"country"}
+                icon_url={images.countryIcon} iconStyle={{width: 24, marginRight: 18}}
+                current_language={current_language} test_id={"country"} type_select="country"
               />
               <CustomTextArea placeholder={t("Address")} underlineColorAndroid='transparent'
                 onChangeText={address => this.setState({address: address})} value={address}
-                icon_url="https://img.icons8.com/nolan/40/000000/email.png" multiline={true}
-                current_language={current_language} test_id={"address"} numberOfLines={2}
+                icon_url={images.addressIcon} multiline={true}
+                current_language={current_language} test_id={"address"} numberOfLines={2} type_textares="address"
               />
               <CustomTouchableOpacity onPress={() => this.onClickListener('register')}
                 text={t("Sign up")} style={styles.loginButton}

@@ -13,6 +13,7 @@ class CustomCountriesSelect extends React.Component {
       icon_url: props.icon_url,
       placeholder: props.placeholder,
       open: false,
+      type_select: props.type_select,
       test_id: props.test_id,
       value: props.value,
     }
@@ -69,7 +70,7 @@ class CustomCountriesSelect extends React.Component {
     }
   }
   render() {
-    const {current_language, icon_url, disabled, open, placeholder, countries_options, test_id, value} = this.state;
+    const {current_language, icon_url, disabled, open, placeholder, countries_options, test_id, type_select, value} = this.state;
     return(
       <View style={[styles.selectContainer]}>
       <DropDownPicker
@@ -86,6 +87,7 @@ class CustomCountriesSelect extends React.Component {
         testID={test_id}
         searchable={true}
         placeholder={placeholder}
+        placeholderStyle={styles.placeholder}
         selectedItemLabelStyle={styles.selectedItemLabelStyle}
         selectedItemContainerStyle={styles.selectedItemContainerStyle}
         setOpen={this.setOpen}
@@ -93,7 +95,7 @@ class CustomCountriesSelect extends React.Component {
         value={value}
         setValue={this.setValue}
       />
-      <Image style={styles.inputIcon} source={{uri: icon_url}}/>
+      <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
     </View>
     )
   }
@@ -155,6 +157,10 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       marginRight:15,
       width:30,
+    },
+    placeholder: {
+      color: "grey",
+      opacity: 0.8,
     },
 });
 const mapStateToProps = (state) => {

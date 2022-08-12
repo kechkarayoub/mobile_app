@@ -13,6 +13,7 @@ class CustomTextArea extends React.Component {
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
+      type_textarea: props.type_textarea,
       underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
     }
@@ -35,10 +36,10 @@ class CustomTextArea extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
+    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, type_textarea, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
     return (
       <View style={styles.textAreaContainer}>
-        <TextInput 
+        <TextInput
           keyboardType={keyboardType}
           multiline={multiline}
           numberOfLines={numberOfLines}
@@ -57,7 +58,7 @@ class CustomTextArea extends React.Component {
           underlineColorAndroid={underlineColorAndroid}
           value={value}
         />
-        <Image style={styles.inputIcon} source={{uri: icon_url}}/>
+        <Image style={styles.inputIcon} source={icon_url}/>
       </View>
     )
   }
