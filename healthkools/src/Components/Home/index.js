@@ -6,7 +6,6 @@ import HomeStackNavigator from './Navigation/HomeStackNavigator';
 import LanguagePicker from '../Common/LanguagePicker';
 import {COLORS} from "../../variables/colors";
 
-import {logos} from '../images';
 class Home extends React.Component {
   constructor(props) {
     super(props);

@@ -5,11 +5,10 @@ import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
 // import {set_locale, t} from '../../../i18n'
 import { connect } from 'react-redux'
 import { Updates } from 'expo';
-import {logos} from '../../images';
 import {set, get} from '../../../Store/locale';
 import {t} from '../../../i18n';
 import {COLORS} from "../../../variables/colors";
-import {images} from "../_ressources";
+import {icons, logos} from "../../../_ressources";
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -51,12 +50,12 @@ class SignIn extends React.Component {
           <ImageBackground source={logos.logo} style={styles.background}/>
           <CustomInputText placeholder={t("Username or email")} underlineColorAndroid='transparent'
             onChangeText={username_or_email => this.setState({username_or_email: username_or_email})}
-            icon_url={images.emailIcon} value={username_or_email}  iconStyle={{height:26, width: 25, marginRight: 18}}
+            icon_url={icons.emailIcon} value={username_or_email}  iconStyle={{height:26, width: 25, marginRight: 18}}
             current_language={current_language} test_id={"username_or_email"}  type_input="email"
           />
           <CustomInputText placeholder={t("Password")} underlineColorAndroid='transparent' secureTextEntry={true}
             onChangeText={password => this.setState({password: password})} iconStyle={{height:28, width: 24, marginRight: 18}}
-            icon_url={images.passwordIcon} value={password} current_language={current_language} type_input="password"
+            icon_url={icons.passwordIcon} value={password} current_language={current_language} type_input="password"
             test_id={"password"}
           />
           <CustomTouchableOpacity is_not_button={true} onPress={() => this.onClickListener('restore_password')}
