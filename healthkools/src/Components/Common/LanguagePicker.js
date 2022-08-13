@@ -31,6 +31,7 @@ class LanguagePicker extends React.Component {
       ],
       current_language: props.current_language,
       open: false,
+      test_id: props.test_id,
     };
     if(!t("Arabic")){
       // Translate languages labels
@@ -107,7 +108,7 @@ class LanguagePicker extends React.Component {
     }));
   }
   render() {
-    const { open, current_language, items } = this.state;
+    const { open, current_language, items, test_id } = this.state;
     return(
       <DropDownPicker
         dropDownContainerStyle={styles.dropDownContainerStyle}
@@ -119,6 +120,7 @@ class LanguagePicker extends React.Component {
         setValue={this.setValue}
         setItems={this.setItems}
         style={styles.style}
+        testID={test_id}
         value={current_language}
       />
     )
