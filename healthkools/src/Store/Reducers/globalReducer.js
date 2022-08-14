@@ -1,6 +1,5 @@
 import * as Localization from 'expo-localization';
 import {supported_languages} from '../../config/global';
-import {get} from '../locale';
 var current_language = "fr";
 var locale_splited = Localization.locale.split("-")[0];
 if(supported_languages.indexOf(locale_splited) !== -1){

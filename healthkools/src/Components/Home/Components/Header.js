@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import {logos} from '../../images';
 
 class Header extends React.Component {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Image } from 'react-native';
+import PropTypes from 'prop-types';
 
 class CustomTextArea extends React.Component {
   constructor(props) {
@@ -7,16 +8,29 @@ class CustomTextArea extends React.Component {
     this.state = {
       current_language: props.current_language,
       icon_url: props.icon_url,
-      keyboardType: props.keyboardType,
       multiline: props.multiline,
       numberOfLines: props.numberOfLines,
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
-      type_textarea: props.type_textarea,
       underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
     }
+  }
+  static get propTypes() {
+    return {
+      current_language: PropTypes.string,
+      icon_url: PropTypes.object,
+      multiline: PropTypes.boolean,
+      numberOfLines: PropTypes.number,
+      onChangeText: PropTypes.fun,
+      placeholder: PropTypes.string,
+      secureTextEntry: PropTypes.boolean,
+      style: PropTypes.object,
+      test_id: PropTypes.string,
+      underlineColorAndroid: PropTypes.string,
+      value: PropTypes.string,
+    };
   }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
@@ -36,11 +50,10 @@ class CustomTextArea extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, type_textarea, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
+    const {icon_url, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
     return (
       <View style={styles.textAreaContainer}>
         <TextInput
-          keyboardType={keyboardType}
           multiline={multiline}
           numberOfLines={numberOfLines}
           placeholder={placeholder}

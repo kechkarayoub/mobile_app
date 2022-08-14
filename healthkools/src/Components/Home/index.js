@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
-import SignIn from "./Components/SignIn";
-import SignUp from "./Components/SignUp";
 import HomeStackNavigator from './Navigation/HomeStackNavigator';
 import LanguagePicker from '../Common/LanguagePicker';
+import PropTypes from 'prop-types';
 import {COLORS} from "../../variables/colors";
 
 class Home extends React.Component {
@@ -13,8 +12,12 @@ class Home extends React.Component {
       selected_view: 'sign_in',
     };
   }
+  static get propTypes() {
+    return {
+        t: PropTypes.func
+    };
+  }
   render() {
-    const selected_view = this.state.selected_view;
       return (
           <View style={styles.home}>
             <LanguagePicker />

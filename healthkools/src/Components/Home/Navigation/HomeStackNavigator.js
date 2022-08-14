@@ -5,8 +5,9 @@ import SignUp from '../Components/SignUp';
 import React from 'react';
 import { connect } from 'react-redux'
 
+import PropTypes from 'prop-types';
 import {t} from '../../../i18n';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import { StyleSheet } from 'react-native';
 const Stack = createNativeStackNavigator();
 class HomeStackNavigator extends React.Component  {
     constructor(props) {
@@ -20,6 +21,11 @@ class HomeStackNavigator extends React.Component  {
           this.setState({current_language: this.state.current_language});
         }, 10);
       }
+    }
+    static get propTypes() {
+      return {
+          current_language: PropTypes.string
+      };
     }
     // static getDerivedStateFromProps(props, state) {
     //  var new_state = {};

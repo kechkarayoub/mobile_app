@@ -1,13 +1,13 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Alert, ImageBackground, I18nManager as RNI18nManager, } from 'react-native';
+import { ScrollView, StyleSheet, View, Alert, ImageBackground, } from 'react-native';
 import CustomInputText from '../../FormFields/CustomInputText';
 import CustomTextArea from '../../FormFields/CustomTextArea';
 import CustomCountriesSelect from '../../FormFields/CustomCountriesSelect';
 import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
 // import {set_locale, t} from '../../../i18n'
 import { connect } from 'react-redux'
-import { Updates } from 'expo';
 import {t} from '../../../i18n';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import {COLORS} from "../../../variables/colors";
 import {icons, logos} from "../../../_ressources";
@@ -51,13 +51,24 @@ class SignUp extends React.Component {
     }
     return return_new_state ? new_state : null;
   }
+  static get propTypes() {
+    return {
+      birthday: PropTypes.date,
+      current_language: PropTypes.string,
+      error_messages: PropTypes.object,
+      gender: PropTypes.string,
+      invalid_messages: PropTypes.object,
+      is_valid_phone_number: PropTypes.boolean,
+      navigation: PropTypes.object,
+      phone_number: PropTypes.string,
+    };
+  }
   componentDidUpdate(prevProps, prevState){
     if(prevState.current_language !== this.state.current_language){
       this.setState({current_language: this.state.current_languag})
     }
   }
   onClickListener = (viewId) => {
-    var current_language = "en";
     // if("restore_password" == viewId){
     //   set_locale("ar");
     //   current_language = "ar";
@@ -70,9 +81,9 @@ class SignUp extends React.Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
   render() {
-    const {address, birthday, country_code, current_language, email, error_messages, first_name, gender, invalid_messages,
-      is_valid_phone_number, last_name, network_error, password, password_confirmation, phone_number, registration_messages,
-      username, valid_messages} = this.state;
+    const {address, country_code, current_language, email, first_name,
+      last_name, password, password_confirmation,
+      username} = this.state;
 
     return (
         <View style={styles.body}>

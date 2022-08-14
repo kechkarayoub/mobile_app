@@ -1,9 +1,19 @@
 import React from 'react';
-import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 class CustomTouchableOpacity extends React.Component {
   constructor(props) {
     super(props);
+  }
+  static get propTypes() {
+    return {
+      is_not_button: PropTypes.boolean,
+      onPress: PropTypes.fun,
+      style: PropTypes.object,
+      text: PropTypes.string,
+      textStyle: PropTypes.object,
+    };
   }
   render() {
     return (

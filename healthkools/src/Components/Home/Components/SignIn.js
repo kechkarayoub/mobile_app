@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Alert, ImageBackground, I18nManager as RNI18nManager, } from 'react-native';
+import { StyleSheet, View, Alert, ImageBackground } from 'react-native';
 import CustomInputText from '../../FormFields/CustomInputText';
 import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
 // import {set_locale, t} from '../../../i18n'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { Updates } from 'expo';
-import {set, get} from '../../../Store/locale';
+import {set} from '../../../Store/locale';
 import {t} from '../../../i18n';
 import {COLORS} from "../../../variables/colors";
 import {icons, logos} from "../../../_ressources";
@@ -23,6 +23,13 @@ class SignIn extends React.Component {
         this.setState({current_language: this.state.current_language});
       }, 10);
     }
+  }
+  static get propTypes() {
+    return {
+      current_language: PropTypes.string,
+      dispatch: PropTypes.object,
+      navigation: PropTypes.object,
+    };
   }
   onClickListener = (viewId) => {
     var current_language = "en";

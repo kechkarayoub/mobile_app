@@ -1,15 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, I18nManager as RNI18nManager } from 'react-native';
+import { StyleSheet, View, I18nManager as RNI18nManager } from 'react-native';
 import Home from './Components/Home';
-import i18n, {t} from './i18n';
+import i18n from './i18n';
 import * as Updates from 'expo-updates'
-import { Provider } from 'react-redux'
-import Store from './Store/configureStore'
 import { connect } from 'react-redux'
-import {set, get} from './Store/locale';
 import {get_current_languages} from './utils'
 import { I18nextProvider } from 'react-i18next';
+import PropTypes from 'prop-types';
 class AppInit extends Component{
   constructor(props) {
     super(props);
@@ -25,6 +22,12 @@ class AppInit extends Component{
   }
   componentDidMount() {
     this.handleInitLanguage();
+  }
+  static get propTypes() {
+    return {
+      current_language: PropTypes.string,
+      dispatch: PropTypes.fun,
+    };
   }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};

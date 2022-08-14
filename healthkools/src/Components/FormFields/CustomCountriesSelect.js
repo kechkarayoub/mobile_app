@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {get_contries_select_options} from "../../utils/countries_list";
+import PropTypes from 'prop-types';
 import {COLORS} from "../../variables/colors";
 class CustomCountriesSelect extends React.Component {
   constructor(props) {
@@ -17,6 +18,19 @@ class CustomCountriesSelect extends React.Component {
       test_id: props.test_id,
       value: props.value,
     }
+  }
+  static get propTypes() {
+    return {
+      current_language: PropTypes.string,
+      disabled: PropTypes.string,
+      icon_url: PropTypes.object,
+      iconStyle: PropTypes.object,
+      onSelect: PropTypes.fun,
+      placeholder: PropTypes.string,
+      test_id: PropTypes.string,
+      type_select: PropTypes.string,
+      value: PropTypes.string,
+    };
   }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
@@ -70,7 +84,8 @@ class CustomCountriesSelect extends React.Component {
     }
   }
   render() {
-    const {current_language, icon_url, disabled, open, placeholder, countries_options, test_id, type_select, value} = this.state;
+    const {current_language, icon_url, disabled, open, placeholder,
+      countries_options, test_id, value} = this.state;
     return(
       <View style={[styles.selectContainer]}>
       <DropDownPicker
@@ -78,9 +93,6 @@ class CustomCountriesSelect extends React.Component {
         dropDownContainerStyle={styles.dropDownContainerStyle}
         items={countries_options}
         language={current_language}
-        onChangeValue={(value) => {
-          //this.handleChangeCountry(value);
-        }}
         listMode="MODAL"
         open={open}
         disabled={disabled}
@@ -112,7 +124,6 @@ const styles = StyleSheet.create({
       height: 50,
       marginBottom: 20,
       display: 'flex',
-      elevation: 5, // works on android
       flexDirection: 'row',
       width:300,
       justifyContent: 'space-between',
@@ -163,9 +174,4 @@ const styles = StyleSheet.create({
       opacity: 0.8,
     },
 });
-const mapStateToProps = (state) => {
-  return {
-    current_language: state.current_language,
-  }
-}
 export default CustomCountriesSelect;

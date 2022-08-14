@@ -2,9 +2,9 @@
 //import {getLocales} from 'react-native-localize';
 //import i18n from "i18n-js";
 //import {Localization} from "expo";
-import ar from './translations/ar/translations.json';
-import en from './translations/en/translations.json';
-import fr from './translations/fr/translations.json';
+// import ar from './translations/ar/translations.json';
+// import en from './translations/en/translations.json';
+// import fr from './translations/fr/translations.json';
 
 //i18n.translations = {ar, en, fr};
 //i18n.locale = "en";

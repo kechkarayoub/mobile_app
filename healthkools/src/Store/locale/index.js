@@ -22,7 +22,7 @@ const locale_storage = new Storage({
   // the corresponding sync method will be invoked returning
   // the latest data.
   sync: {
-    async current_language(params) {
+    async current_language(/*params*/) {
       var current_language = "fr";
       var locale_splited = Localization.locale.split("-")[0];
       if(supported_languages.indexOf(locale_splited) !== -1){
@@ -103,7 +103,7 @@ export const remove = (key) => {
   });
 }
 
-export const clear = (key) => {
+export const clear = () => {
   locale_storage.clearMap();
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Image, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Image } from 'react-native';
+import PropTypes from 'prop-types';
 
 class CustomInputText extends React.Component {
   constructor(props) {
@@ -7,9 +8,6 @@ class CustomInputText extends React.Component {
     this.state = {
       current_language: props.current_language,
       icon_url: props.icon_url,
-      keyboardType: props.keyboardType,
-      multiline: props.multiline,
-      numberOfLines: props.numberOfLines,
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
@@ -17,6 +15,21 @@ class CustomInputText extends React.Component {
       underlineColorAndroid: props.underlineColorAndroid,
       value: props.value,
     }
+  }
+  static get propTypes() {
+    return {
+      current_language: PropTypes.string,
+      icon_url: PropTypes.object,
+      iconStyle: PropTypes.object,
+      onChangeText: PropTypes.fun,
+      placeholder: PropTypes.string,
+      secureTextEntry: PropTypes.boolean,
+      style: PropTypes.object,
+      test_id: PropTypes.string,
+      type_input: PropTypes.string,
+      underlineColorAndroid: PropTypes.string,
+      value: PropTypes.string,
+    };
   }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
@@ -36,13 +49,10 @@ class CustomInputText extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {current_language, icon_url, keyboardType, placeholder, secureTextEntry, test_id, type_input, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
+    const {icon_url, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
     return (
       <View style={styles.inputContainer}>
         <TextInput
-          keyboardType={keyboardType}
-          multiline={multiline}
-          numberOfLines={numberOfLines}
           onChangeText={(value) => {
             if(this.props.onChangeText){
               this.props.onChangeText(value);

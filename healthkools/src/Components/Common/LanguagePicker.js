@@ -3,9 +3,9 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux'
 
-import {set, get} from '../../Store/locale';
-import i18n, {t} from '../../i18n';
-import {supported_languages} from '../../config/global';
+import PropTypes from 'prop-types';
+import {set} from '../../Store/locale';
+import {t} from '../../i18n';
 import {COLORS} from "../../variables/colors";
 
 class LanguagePicker extends React.Component {
@@ -54,6 +54,13 @@ class LanguagePicker extends React.Component {
     }
   }
 
+  static get propTypes() {
+    return {
+      current_language: PropTypes.string,
+      dispatch: PropTypes.fun,
+      test_id: PropTypes.string,
+    };
+  }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;

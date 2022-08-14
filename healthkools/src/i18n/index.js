@@ -1,10 +1,11 @@
 import i18next from 'i18next';
-import { I18nextProvider } from 'react-i18next';
-import { Updates } from 'expo';
+// import { I18nextProvider } from 'react-i18next';
+// import { Updates } from 'expo';
 import * as config from './config';
 import date from './date';
-import languageDetector from './language_detector';
-import translationLoader from './translation_loader';
+// import languageDetector from './language_detector';
+// import translationLoader from './translation_loader';
+import { I18nManager as RNI18nManager } from 'react-native';
 import 'intl-pluralrules'
 const i18n = {
     init: (currentlanguage) => {
