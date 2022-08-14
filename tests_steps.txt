@@ -1,0 +1,8 @@
+Run tests:
+    yarn test
+    """ If yarn run flow will be executed for the first time; then run: 'yarn run flow init' before"""
+    yarn run flow
+    yarn run lint
+
+Compile files by babel:
+    yarn run babel src/ -d lib/

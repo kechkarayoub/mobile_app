@@ -16,17 +16,17 @@ class LanguagePicker extends React.Component {
         {
           value: "ar",
           label: t("Arabic"),
-          icon: () => <Image source={require('../../../assets/flags/flag-ar-16.png')} style={styles.iconStyle} />,
+          icon: () => <Image source={require('../../assets/flags/flag-ar-16.png')} style={styles.iconStyle} />,
         },
         {
           value: "en",
           label: t("English"),
-          icon: () => <Image source={require('../../../assets/flags/flag-en-16.png')} style={styles.iconStyle} />,
+          icon: () => <Image source={require('../../assets/flags/flag-en-16.png')} style={styles.iconStyle} />,
         },
         {
           value: "fr",
           label: t("French"),
-          icon: () => <Image source={require('../../../assets/flags/flag-fr-16.png')} style={styles.iconStyle} />,
+          icon: () => <Image source={require('../../assets/flags/flag-fr-16.png')} style={styles.iconStyle} />,
         },
       ],
       current_language: props.current_language,
