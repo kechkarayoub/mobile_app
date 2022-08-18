@@ -5,6 +5,8 @@ healthkools/.expo/
 dist/
 lib/
 healthkools/dist/
+coverage/
+cache
 npm-debug.*
 *.jks
 *.p8
