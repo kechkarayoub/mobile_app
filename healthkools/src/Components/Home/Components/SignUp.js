@@ -51,18 +51,18 @@ class SignUp extends React.Component {
     }
     return return_new_state ? new_state : null;
   }
-  static get propTypes() {
-    return {
-      birthday: PropTypes.date,
-      current_language: PropTypes.string,
-      error_messages: PropTypes.object,
-      gender: PropTypes.string,
-      invalid_messages: PropTypes.object,
-      is_valid_phone_number: PropTypes.boolean,
-      navigation: PropTypes.object,
-      phone_number: PropTypes.string,
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //     birthday: PropTypes.date,
+  //     current_language: PropTypes.string,
+  //     error_messages: PropTypes.object,
+  //     gender: PropTypes.string,
+  //     invalid_messages: PropTypes.object,
+  //     is_valid_phone_number: PropTypes.boolean,
+  //     navigation: PropTypes.object,
+  //     phone_number: PropTypes.string,
+  //   };
+  // }
   componentDidUpdate(prevProps, prevState){
     if(prevState.current_language !== this.state.current_language){
       this.setState({current_language: this.state.current_languag})

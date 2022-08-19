@@ -23,12 +23,12 @@ class AppInit extends Component{
   componentDidMount() {
     this.handleInitLanguage();
   }
-  static get propTypes() {
-    return {
-      current_language: PropTypes.string,
-      dispatch: PropTypes.fun,
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //     current_language: PropTypes.string,
+  //     dispatch: PropTypes.fun,
+  //   };
+  // }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;

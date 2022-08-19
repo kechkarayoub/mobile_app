@@ -24,13 +24,13 @@ class SignIn extends React.Component {
       }, 10);
     }
   }
-  static get propTypes() {
-    return {
-      current_language: PropTypes.string,
-      dispatch: PropTypes.object,
-      navigation: PropTypes.object,
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //     current_language: PropTypes.string,
+  //     dispatch: PropTypes.object,
+  //     navigation: PropTypes.object,
+  //   };
+  // }
   onClickListener = (viewId) => {
     var current_language = "en";
     // if("restore_password" == viewId){

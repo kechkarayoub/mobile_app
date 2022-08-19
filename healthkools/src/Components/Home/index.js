@@ -12,11 +12,11 @@ class Home extends React.Component {
       selected_view: 'sign_in',
     };
   }
-  static get propTypes() {
-    return {
-        t: PropTypes.func
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //       t: PropTypes.func
+  //   };
+  // }
   render() {
       return (
           <View style={styles.home}>

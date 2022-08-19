@@ -17,21 +17,21 @@ class CustomTextArea extends React.Component {
       value: props.value,
     }
   }
-  static get propTypes() {
-    return {
-      current_language: PropTypes.string,
-      icon_url: PropTypes.object,
-      multiline: PropTypes.boolean,
-      numberOfLines: PropTypes.number,
-      onChangeText: PropTypes.fun,
-      placeholder: PropTypes.string,
-      secureTextEntry: PropTypes.boolean,
-      style: PropTypes.object,
-      test_id: PropTypes.string,
-      underlineColorAndroid: PropTypes.string,
-      value: PropTypes.string,
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //     current_language: PropTypes.string,
+  //     icon_url: PropTypes.object,
+  //     multiline: PropTypes.boolean,
+  //     numberOfLines: PropTypes.number,
+  //     onChangeText: PropTypes.fun,
+  //     placeholder: PropTypes.string,
+  //     secureTextEntry: PropTypes.boolean,
+  //     style: PropTypes.object,
+  //     test_id: PropTypes.string,
+  //     underlineColorAndroid: PropTypes.string,
+  //     value: PropTypes.string,
+  //   };
+  // }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;

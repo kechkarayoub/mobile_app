@@ -22,11 +22,11 @@ class HomeStackNavigator extends React.Component  {
         }, 10);
       }
     }
-    static get propTypes() {
-      return {
-          current_language: PropTypes.string
-      };
-    }
+    // static get propTypes() {
+    //   return {
+    //       current_language: PropTypes.string
+    //   };
+    // }
     // static getDerivedStateFromProps(props, state) {
     //  var new_state = {};
     //  var return_new_state = false;

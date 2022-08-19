@@ -6,15 +6,15 @@ class CustomTouchableOpacity extends React.Component {
   constructor(props) {
     super(props);
   }
-  static get propTypes() {
-    return {
-      is_not_button: PropTypes.boolean,
-      onPress: PropTypes.fun,
-      style: PropTypes.object,
-      text: PropTypes.string,
-      textStyle: PropTypes.object,
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //     is_not_button: PropTypes.boolean,
+  //     onPress: PropTypes.fun,
+  //     style: PropTypes.object,
+  //     text: PropTypes.string,
+  //     textStyle: PropTypes.object,
+  //   };
+  // }
   render() {
     return (
       <TouchableOpacity style={[this.props.is_not_button ? styles.notButtonCotainer : styles.buttonContainer, this.props.style || {}]}
