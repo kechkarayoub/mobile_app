@@ -3,6 +3,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux'
 
+import {flags} from "../../_ressources";
 import PropTypes from 'prop-types';
 import {set} from '../../Store/locale';
 import {t} from '../../i18n';
@@ -16,17 +17,17 @@ class LanguagePicker extends React.Component {
         {
           value: "ar",
           label: t("Arabic"),
-          icon: () => <Image source={require('../../assets/flags/flag-ar-16.png')} style={styles.iconStyle} />,
+          icon: () => <Image source={flags.flag_ar} style={styles.iconStyle} />,
         },
         {
           value: "en",
           label: t("English"),
-          icon: () => <Image source={require('../../assets/flags/flag-en-16.png')} style={styles.iconStyle} />,
+          icon: () => <Image source={flags.flag_en} style={styles.iconStyle} />,
         },
         {
           value: "fr",
           label: t("French"),
-          icon: () => <Image source={require('../../assets/flags/flag-fr-16.png')} style={styles.iconStyle} />,
+          icon: () => <Image source={flags.flag_fr} style={styles.iconStyle} />,
         },
       ],
       current_language: props.current_language,
