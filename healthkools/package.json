@@ -63,7 +63,7 @@
   },
   "private": true,
   "jest": {
-    "preset": "react-native",
+    "preset": "jest-expo",
     "moduleDirectories": [
       "node_modules",
       "src"
