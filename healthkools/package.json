@@ -64,15 +64,27 @@
   "private": true,
   "jest": {
     "preset": "react-native",
-    "cacheDirectory": "./cache",
-    "coveragePathIgnorePatterns": [],
-    "coverageThreshold": {},
-    "testEnvironment": "node",
-    "setupFiles": [
-      "./jestSetupFile.js"
+    "moduleDirectories": [
+      "node_modules",
+      "src"
     ],
-    "transformIgnorePatterns": [
-      "/node_modules/(?!(@react-native|react-native)).*/"
-    ]
+  "transform": {
+    "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+    "\\.(ts|tsx)$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+  },
+  "setupFiles": ["<rootDir>/jestSetupFile.js"],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+    },
+    "transformIgnorePatterns": []
   }
 }
