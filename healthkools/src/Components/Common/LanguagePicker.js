@@ -34,6 +34,9 @@ class LanguagePicker extends React.Component {
       open: false,
       test_id: props.test_id,
     };
+    // if the t function is not yet configured,
+    // then we translate the labels after a timeout (10ms);
+    // the time required for the configuration of the function t
     if(!t("Arabic")){
       // Translate languages labels
       setTimeout(() => {
@@ -72,6 +75,7 @@ class LanguagePicker extends React.Component {
     return return_new_state ? new_state : null;
   }
   componentDidUpdate(prevProps, prevState){
+    // if current_language is changed, we translating languages labels
     if(prevState.current_language !== this.state.current_language){
       // Translate languages labels
       this.setState({
