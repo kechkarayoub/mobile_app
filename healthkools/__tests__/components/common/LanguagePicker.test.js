@@ -2,21 +2,43 @@ import React from "react";
 import { render, screen, fireEvent } from '@testing-library/react-native';
 import LanguagePicker from '../../../src/Components/Common/LanguagePicker';
 import { Provider } from 'react-redux'
-import Store from '../../../src/Store/configureStore'
+import store from '../../../src/Store/configureStore'
+import i18n from '../../../src/i18n';
+import renderer from 'react-test-renderer';
+import { I18nextProvider } from 'react-i18next';
+const current_language = "fr";
+i18n.init(current_language).then(() => {})
+.catch((error) => {});
+beforeAll(() => {
+  }
+);
 
 describe('LanguagePicker component', () => {
   test('Should render without crash', async () => {
     render(
-      <Provider store={Store}>
-        <LanguagePicker current_language="fr" />
+      <Provider store={store}>
+        <LanguagePicker />
       </Provider>
     );
   });
-  // test('Should contains general information response data', async () => {
-  //   render(<Home i18n={i18next}/>);
-  //   const contact_email = await screen.findByText(general_information_response.contact_email);
-  //   const site_name = await screen.findByText(moment().format("YYYY") + " © " + (general_information_response.site_name || "Healthkools"));
-  //   expect(contact_email).toBeInTheDocument();
-  //   expect(site_name).toBeInTheDocument();
-  // });
+  test('Should contains props data', async () => {
+    render(
+      <Provider store={store}>
+          <LanguagePicker current_language={current_language} test_id='test_id' />
+      </Provider>
+    );
+    const drop_down_pickers_by_test_id = screen.queryAllByTestId('test_id');
+    expect(drop_down_pickers_by_test_id).toHaveLength(1);
+    const drop_down_pickers_by_text_en = screen.queryAllByText('Anglais');
+    expect(drop_down_pickers_by_text_en).toHaveLength(0);
+    const drop_down_pickers_by_text_ar = screen.queryAllByText('Arabe');
+    expect(drop_down_pickers_by_text_ar).toHaveLength(0);
+    const drop_down_pickers_by_text_fr = screen.queryAllByText('Français');
+    expect(drop_down_pickers_by_text_fr).toHaveLength(1);
+    // for(let i=0; i<10000000000; i++){
+    //
+    // }
+      // screen.debug()
+
+  });
 });
