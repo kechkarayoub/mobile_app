@@ -44,7 +44,7 @@ class CustomCountriesSelect extends React.Component {
       return_new_state = true;
     }
     if(props.value !== state.value) {
-      new_state.value = props.value;
+      new_state.value = (props.onSelect ? props : state).value;
       return_new_state = true;
     }
     if(props.disabled !== state.disabled) {
@@ -61,14 +61,6 @@ class CustomCountriesSelect extends React.Component {
       });
     }
   }
-  handleChangeCountry = new_country => {
-    if(this.props.onSelect){
-      this.props.onSelect(new_country);
-    }
-    else{
-      this.setState({value: new_country});
-    }
-  }
   setOpen = (open)=> {
     this.setState({
       open: open,
@@ -76,11 +68,12 @@ class CustomCountriesSelect extends React.Component {
   }
 
   setValue =(callback) => {
+    var new_val = callback()
     if(this.props.onSelect){
-      this.props.onSelect(callback());
+      this.props.onSelect(new_val);
     }
     else{
-      this.setState({value: callback()}, () => console.log(this.state.value));
+      this.setState({value: new_val}, () => console.log(this.state.value));
     }
   }
   render() {
@@ -88,27 +81,27 @@ class CustomCountriesSelect extends React.Component {
       countries_options, test_id, value} = this.state;
     return(
       <View style={[styles.selectContainer]}>
-      <DropDownPicker
-        containerStyle={[styles.containerStyle]}
-        dropDownContainerStyle={styles.dropDownContainerStyle}
-        items={countries_options}
-        language={current_language}
-        listMode="MODAL"
-        open={open}
-        disabled={disabled}
-        testID={test_id}
-        searchable={true}
-        placeholder={placeholder}
-        placeholderStyle={styles.placeholder}
-        selectedItemLabelStyle={styles.selectedItemLabelStyle}
-        selectedItemContainerStyle={styles.selectedItemContainerStyle}
-        setOpen={this.setOpen}
-        style={styles.style}
-        value={value}
-        setValue={this.setValue}
-      />
-      <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
-    </View>
+        <DropDownPicker
+          containerStyle={[styles.containerStyle]}
+          dropDownContainerStyle={styles.dropDownContainerStyle}
+          items={countries_options}
+          language={current_language}
+          listMode="MODAL"
+          open={open}
+          disabled={disabled}
+          testID={test_id}
+          searchable={true}
+          placeholder={placeholder}
+          placeholderStyle={styles.placeholder}
+          selectedItemLabelStyle={styles.selectedItemLabelStyle}
+          selectedItemContainerStyle={styles.selectedItemContainerStyle}
+          setOpen={this.setOpen}
+          style={styles.style}
+          value={value}
+          setValue={this.setValue}
+        />
+        <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
+      </View>
     )
   }
 }
