@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
 import LanguagePicker from '../../../src/Components/Common/LanguagePicker';
 import { Provider } from 'react-redux'
 import store from '../../../src/Store/configureStore'
@@ -39,6 +39,37 @@ describe('LanguagePicker component', () => {
     //
     // }
       // screen.debug()
+
+  });
+  test('Should language change', async () => {
+    render(
+      <Provider store={store}>
+        <LanguagePicker current_language={current_language} test_id='test_id' />
+      </Provider>
+    );
+    const drop_down_picker_by_test_id = screen.queryByTestId('test_id');
+    var drop_down_pickers_by_text_en = screen.queryAllByText('Anglais');
+    expect(drop_down_pickers_by_text_en).toHaveLength(0);
+    var drop_down_pickers_by_text_ar = screen.queryAllByText('Arabe');
+    expect(drop_down_pickers_by_text_ar).toHaveLength(0);
+    var drop_down_pickers_by_text_fr = screen.queryAllByText('Français');
+    expect(drop_down_pickers_by_text_fr).toHaveLength(1);
+    fireEvent(drop_down_picker_by_test_id, 'setOpen', true);
+    drop_down_pickers_by_text_en = screen.queryAllByText('Anglais');
+    expect(drop_down_pickers_by_text_en).toHaveLength(1);
+    drop_down_pickers_by_text_ar = screen.queryAllByText('Arabe');
+    expect(drop_down_pickers_by_text_ar).toHaveLength(1);
+    drop_down_pickers_by_text_fr = screen.queryAllByText('Français');
+    expect(drop_down_pickers_by_text_fr).toHaveLength(2);
+    const drop_down_picker_by_text_en = screen.queryByText('Anglais');
+    fireEvent.press(drop_down_picker_by_text_en);
+    drop_down_pickers_by_text_en = screen.queryAllByText('Anglais');
+    expect(drop_down_pickers_by_text_en).toHaveLength(1);
+    drop_down_pickers_by_text_ar = screen.queryAllByText('Arabe');
+    expect(drop_down_pickers_by_text_ar).toHaveLength(0);
+    drop_down_pickers_by_text_fr = screen.queryAllByText('Français');
+    expect(drop_down_pickers_by_text_fr).toHaveLength(0);
+      //screen.debug()
 
   });
 });
