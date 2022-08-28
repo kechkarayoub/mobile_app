@@ -3,10 +3,13 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react-nativ
 import LanguagePicker from '../../../src/Components/Common/LanguagePicker';
 import { Provider } from 'react-redux'
 import store from '../../../src/Store/configureStore'
+import {set} from '../../../src/Store/locale';
 import i18n from '../../../src/i18n';
+import {get_current_languages} from '../../../src/utils'
 import renderer from 'react-test-renderer';
 import { I18nextProvider } from 'react-i18next';
 const current_language = "fr";
+set("currentlanguage", current_language);
 i18n.init(current_language).then(() => {})
 .catch((error) => {});
 beforeAll(() => {
@@ -69,6 +72,19 @@ describe('LanguagePicker component', () => {
     expect(drop_down_pickers_by_text_ar).toHaveLength(0);
     drop_down_pickers_by_text_fr = screen.queryAllByText('Français');
     expect(drop_down_pickers_by_text_fr).toHaveLength(0);
+    var new_stored_language = "";
+    var while_cond = true;
+    var cond = true;
+    while(while_cond){
+      if(cond){
+        cond = false;
+        await get_current_languages(c_l => {
+          new_stored_language = c_l;
+          while_cond = false;
+        });
+      }
+    }
+    expect(new_stored_language).toBe("en");
       //screen.debug()
 
   });
