@@ -43,7 +43,7 @@ class CustomInputText extends React.Component {
       return_new_state = true;
     }
     if (props.value !== state.value) {
-      new_state.value = props.value;
+      new_state.value = (props.onChangeText ? props : state).value;
       return_new_state = true;
     }
     return return_new_state ? new_state : null;
@@ -68,7 +68,9 @@ class CustomInputText extends React.Component {
           value={value}
           underlineColorAndroid={underlineColorAndroid}
         />
-        <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
+        {icon_url &&
+          <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
+        }
       </View>
     )
   }

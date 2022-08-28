@@ -100,7 +100,9 @@ class CustomCountriesSelect extends React.Component {
           value={value}
           setValue={this.setValue}
         />
-        <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
+        {icon_url &&
+          <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
+        }
       </View>
     )
   }
