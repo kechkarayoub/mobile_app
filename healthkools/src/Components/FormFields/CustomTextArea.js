@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     borderBottomColor: '#F5FCFF',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     borderRadius: 30,
     elevation: 5, // works on android
     display: 'flex',
