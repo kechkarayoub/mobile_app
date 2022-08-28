@@ -13,12 +13,13 @@ class CustomTouchableOpacity extends React.Component {
   //     style: PropTypes.object,
   //     text: PropTypes.string,
   //     textStyle: PropTypes.object,
+  //     test_id: PropTypes.string,
   //   };
   // }
   render() {
     return (
       <TouchableOpacity style={[this.props.is_not_button ? styles.notButtonCotainer : styles.buttonContainer, this.props.style || {}]}
-        onPress={this.props.onPress}
+        onPress={this.props.onPress} testID={this.props.test_id}
       >
         <Text style={[this.props.is_not_button ? styles.notButtonText : styles.buttonText, this.props.textStyle || {}]}>{this.props.text}</Text>
       </TouchableOpacity>
