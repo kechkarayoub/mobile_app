@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Alert, ImageBackground, } from 'react-native';
 import CustomInputText from '../../FormFields/CustomInputText';
 import CustomTextArea from '../../FormFields/CustomTextArea';
+import CustomPhoneNumber from '../../FormFields/CustomPhoneNumber';
 import CustomCountriesSelect from '../../FormFields/CustomCountriesSelect';
 import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
 // import {set_locale, t} from '../../../i18n'
@@ -11,6 +12,8 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import {COLORS} from "../../../variables/colors";
 import {icons, logos} from "../../../_ressources";
+import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
+const phoneUtil = PhoneNumberUtil.getInstance();
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +34,7 @@ class SignUp extends React.Component {
       password_sign_in: "",
       password_confirmation: "",
       phone_number: "",
+      formatted_phone_number: "",
       username: "",
       valid_messages: {},
     }
@@ -61,6 +65,7 @@ class SignUp extends React.Component {
   //     is_valid_phone_number: PropTypes.boolean,
   //     navigation: PropTypes.object,
   //     phone_number: PropTypes.string,
+  //     formatted_phone_number: PropTypes.string,
   //   };
   // }
   componentDidUpdate(prevProps, prevState){
@@ -80,10 +85,19 @@ class SignUp extends React.Component {
     // this.setState({"current_language": current_language})
     Alert.alert("Alert", "Button pressed "+viewId);
   }
+
+  handleRegister = () => {
+    var {formatted_phone_number, phone_number} = this.state;
+    var phone_number_valid = false;
+    if(formatted_phone_number){
+      try {phone_number_valid = phoneUtil.isValidNumber(phoneUtil.parse(formatted_phone_number));}catch (error){}
+    }
+  }
+
   render() {
     const {address, country_code, current_language, email, first_name,
-      last_name, password, password_confirmation,
-      username} = this.state;
+      last_name, password, password_confirmation, phone_number, formatted_phone_number,
+      username, is_valid_phone_number} = this.state;
 
     return (
         <View style={styles.body}>
@@ -123,6 +137,11 @@ class SignUp extends React.Component {
                 onSelect={country_code => this.setState({country_code: country_code})} value={country_code}
                 icon_url={icons.countryIcon} iconStyle={{width: 24, marginRight: 18}}
                 current_language={current_language} test_id={"country"} type_select="country"
+              />
+              <CustomPhoneNumber placeholder={t("Phone number")} underlineColorAndroid='transparent'
+                onChangeText={(phone_number, formatted_phone_number) => this.setState({phone_number: phone_number, formatted_phone_number: formatted_phone_number})} value={phone_number} formatted_text={formatted_phone_number}
+                icon_url={icons.phoneIcon} iconStyle={{width: 25, marginRight: 10}} disabled={false} country_code={country_code}
+                current_language={current_language} test_id={"phone_number"} type_phone_number="phone" is_valid_phone_number={is_valid_phone_number}
               />
               <CustomTextArea placeholder={t("Address")} underlineColorAndroid='transparent'
                 onChangeText={address => this.setState({address: address})} value={address}

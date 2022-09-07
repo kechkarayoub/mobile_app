@@ -3,6 +3,7 @@ const countryIcon = require("./assets/icons/country.png");
 const emailIcon = require("./assets/icons/email.png");
 const nameIcon = require("./assets/icons/name.png");
 const passwordIcon = require("./assets/icons/password.png");
+const phoneIcon = require("./assets/icons/phone.png");
 const usernameIcon = require("./assets/icons/username.png");
 const logo = require('./assets/logo_temp.jpg');
 const flag_ar = require('./assets/flags/flag-ar-16.png');
@@ -15,6 +16,7 @@ export const icons = {
   emailIcon,
   nameIcon,
   passwordIcon,
+  phoneIcon,
   usernameIcon,
 };
 export const logos = {
