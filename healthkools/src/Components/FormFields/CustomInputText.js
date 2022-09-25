@@ -8,6 +8,7 @@ class CustomInputText extends React.Component {
     this.state = {
       current_language: props.current_language,
       icon_url: props.icon_url,
+      keyboardType: props.keyboardType || "default",
       placeholder: props.placeholder,
       secureTextEntry: props.secureTextEntry,
       test_id: props.test_id,
@@ -16,21 +17,36 @@ class CustomInputText extends React.Component {
       value: props.value,
     }
   }
-  // static get propTypes() {
-  //   return {
-  //     current_language: PropTypes.string,
-  //     icon_url: PropTypes.object,
-  //     iconStyle: PropTypes.object,
-  //     onChangeText: PropTypes.fun,
-  //     placeholder: PropTypes.string,
-  //     secureTextEntry: PropTypes.boolean,
-  //     style: PropTypes.object,
-  //     test_id: PropTypes.string,
-  //     type_input: PropTypes.string,
-  //     underlineColorAndroid: PropTypes.string,
-  //     value: PropTypes.string,
-  //   };
-  // }
+  static propTypes = {
+    containerStyle: PropTypes.object,
+    current_language: PropTypes.string,
+    icon_url: PropTypes.object,
+    iconStyle: PropTypes.object,
+    keyboardType: PropTypes.string,
+    onChangeText: PropTypes.function,
+    placeholder: PropTypes.string,
+    secureTextEntry: PropTypes.boolean,
+    style: PropTypes.object,
+    test_id: PropTypes.string,
+    type_input: PropTypes.string,
+    underlineColorAndroid: PropTypes.string,
+    value: PropTypes.string,
+  }
+  static defaultProps = {
+    containerStyle: {},
+    current_language: 'en',
+    icon_url: null,
+    iconStyle: {},
+    keyboardType: '',
+    onChangeText: () => {},
+    placeholder: '',
+    secureTextEntry: false,
+    style: {},
+    test_id: '',
+    type_input: '',
+    underlineColorAndroid: '',
+    value: '',
+  }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;
@@ -49,9 +65,9 @@ class CustomInputText extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {icon_url, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
+    const {icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
     return (
-      <View style={styles.inputContainer}>
+      <View style={this.props.containerStyle || styles.inputContainer}>
         <TextInput
           onChangeText={(value) => {
             if(this.props.onChangeText){
@@ -61,6 +77,7 @@ class CustomInputText extends React.Component {
               this.setState({value: value})
             }
           }}
+          keyboardType={keyboardType}
           placeholder={placeholder}
           secureTextEntry={secureTextEntry}
           style={[styles.inputs, this.props.style || {}]}
@@ -77,16 +94,16 @@ class CustomInputText extends React.Component {
 }
 const styles = StyleSheet.create({
   inputContainer: {
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: '#FFFFFF',
     borderBottomColor: '#F5FCFF',
     borderBottomWidth: 0,
-    borderRadius:30,
+    borderRadius: 30,
     display: 'flex',
     elevation: 5, // works on android
     flexDirection: 'row',
-    height:45,
-    marginBottom:20,
+    height: 45,
+    marginBottom: 20,
     shadowColor: "#808080",
     shadowOffset: {
       height: 2,
@@ -94,19 +111,19 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    width:300,
+    width: 300,
   },
   inputs:{
-    flex:1,
     borderBottomColor: '#FFFFFF',
+    flex: 1,
     height:45,
     marginLeft:16,
   },
   inputIcon:{
-    height:30,
+    height: 30,
     justifyContent: 'center',
-    marginRight:15,
-    width:30,
+    marginRight: 15,
+    width: 30,
   },
 });
 export default CustomInputText;
