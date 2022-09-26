@@ -10,14 +10,14 @@ class CustomTouchableOpacityWithIcon extends React.Component {
   constructor(props) {
     super(props);
   }
-  static propTypes = {
-    icon_name: PropTypes.string,
-    onPress: PropTypes.function,
-    style: PropTypes.object,
-    text: PropTypes.string,
-    textStyle: PropTypes.object,
-    test_id: PropTypes.string,
-  }
+  // static propTypes = {
+  //   icon_name: PropTypes.string,
+  //   onPress: PropTypes.function,
+  //   style: PropTypes.object,
+  //   text: PropTypes.string,
+  //   textStyle: PropTypes.object,
+  //   test_id: PropTypes.string,
+  // }
 
   static defaultProps = {
     icon_name: 'close',

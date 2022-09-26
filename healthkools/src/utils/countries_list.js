@@ -2150,6 +2150,6 @@ export const get_countries = (current_language) => {
 
 export const get_contry_by_code = (country_code) => {
     return countries.filter(country => {
-        return country.phohe_code_int == country_code || country.phone_code_str == country_code;
+        return country.country_code == country_code || country.phone_code_int == country_code || country.phone_code_str == country_code;
     })[0];
 };

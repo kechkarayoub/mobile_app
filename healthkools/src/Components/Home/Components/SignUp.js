@@ -5,6 +5,7 @@ import CustomTextArea from '../../FormFields/CustomTextArea';
 import CustomPhoneNumber from '../../FormFields/CustomPhoneNumber';
 import CustomCountriesSelect from '../../FormFields/CustomCountriesSelect';
 import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
+import {get_contry_by_code} from "../../../utils/countries_list";
 // import {set_locale, t} from '../../../i18n'
 import { connect } from 'react-redux'
 import {t} from '../../../i18n';
@@ -21,6 +22,7 @@ class SignUp extends React.Component {
       address: "",
       birthday: moment().add(-30, "years").toDate(),
       country_code: "",
+      country_phone_code: "",
       current_language: props.current_language,
       country_name: "",
       email: "",
@@ -95,7 +97,7 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const {address, country_code, current_language, email, first_name,
+    const {address, country_code, country_phone_code, current_language, email, first_name,
       last_name, password, password_confirmation, phone_number, formatted_phone_number,
       username, is_valid_phone_number} = this.state;
 
@@ -134,13 +136,22 @@ class SignUp extends React.Component {
                 test_id={"password_confirmation"} type_input="password" iconStyle={{height:28, width: 24, marginRight: 18}}
               />
               <CustomCountriesSelect placeholder={t("Country")} underlineColorAndroid='transparent'
-                onSelect={country_code => this.setState({country_code: country_code})} value={country_code}
+                onSelect={(country_code) => {
+                  var new_state = {country_code: country_code};
+                  if(country_code && !this.state.phone_number){
+                    var selected_country = country_code && get_contry_by_code(country_code);
+                    if(selected_country){
+                      new_state.country_phone_code = selected_country.phone_code_str;
+                    }
+                  }
+                  this.setState(new_state);
+                }} value={country_code}
                 icon_url={icons.countryIcon} iconStyle={{width: 24, marginRight: 18}}
                 current_language={current_language} test_id={"country"} type_select="country"
               />
-              <CustomPhoneNumber placeholder={t("Phone number")} underlineColorAndroid='transparent'
-                onChangeText={(phone_number, formatted_phone_number) => this.setState({phone_number: phone_number, formatted_phone_number: formatted_phone_number})} value={phone_number} formatted_text={formatted_phone_number}
-                icon_url={icons.phoneIcon} iconStyle={{width: 25, marginRight: 10}} disabled={false} country_code={country_code}
+              <CustomPhoneNumber country_search_place_holder={t("Search by country or by code")} placeholder={t("Phone number")} underlineColorAndroid='transparent'
+                onChangeText={(phone_number, country_phone_code) => this.setState({phone_number: phone_number, country_phone_code: country_phone_code})} value={phone_number}
+                icon_url={icons.phoneIcon} iconStyle={{width: 25, marginRight: 10}} disabled={false} country_phone_code={country_phone_code}
                 current_language={current_language} test_id={"phone_number"} type_phone_number="phone" is_valid_phone_number={is_valid_phone_number}
               />
               <CustomTextArea placeholder={t("Address")} underlineColorAndroid='transparent'

@@ -25,3 +25,16 @@ export const get_local_number_from_international = (international_number) => {
     return international_number;
   }
 };
+export const get_country_phone_code_from_number = (international_number) => {
+  try{
+    var pu = phoneUtil.parse(international_number);
+    var country_phone_code = pu.getCountryCode();
+    if(country_phone_code){
+      country_phone_code += "";
+      return country_phone_code.indexOf("+") !== -1 ? country_phone_code : "+" + country_phone_code;
+    }
+    return "";
+  } catch(err){
+    return "";
+  }
+};
