@@ -46,6 +46,7 @@ describe('CustomInputText component', () => {
         test_id='test_id'
         placeholder="PlaceholderTest"
         value="value_test"
+        onChangeText={null}
       />
     );
 

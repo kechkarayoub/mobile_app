@@ -34,6 +34,6 @@ describe('CustomTouchableOpacity component', () => {
     const touchable_opacity_with_icon_by_test_id = screen.queryByTestId('test_id');
     fireEvent.press(touchable_opacity_with_icon_by_test_id);
     expect(onPress).toHaveBeenCalled();
-    screen.debug()
+    // screen.debug()
   });
 });
