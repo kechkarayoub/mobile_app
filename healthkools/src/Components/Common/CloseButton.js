@@ -42,11 +42,11 @@ class CloseButton extends React.Component {
         justifyContent={this.props.justifyContent || "flex-end"}
         marginBottom={this.props.marginBottom || 15}
         marginRight={this.props.marginRight || -35}
-        testID={this.props.test_id || 'test_id'}
         zIndex={this.props.zIndex || 2}
         fill spacing={4}
       >
         <IconButton style={styles.button} onPress={this.props.onPress}
+          testID={this.props.test_id || 'test_id'}
           icon={props => <Icon name="close" color={COLORS.default_color} size={BUTTON_SIZE/2} {...props} />}
         />
       </Stack>
