@@ -73,7 +73,7 @@ class CustomCountriesSelect extends React.Component {
       this.props.onSelect(new_val);
     }
     else{
-      this.setState({value: new_val}, () => console.log(this.state.value));
+      this.setState({value: new_val});
     }
   }
   render() {
