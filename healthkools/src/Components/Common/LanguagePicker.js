@@ -58,13 +58,19 @@ class LanguagePicker extends React.Component {
     }
   }
 
-  // static get propTypes() {
-  //   return {
-  //     current_language: PropTypes.string,
-  //     dispatch: PropTypes.fun,
-  //     test_id: PropTypes.string,
-  //   };
-  // }
+  static propTypes = {
+    current_language: PropTypes.string,
+    dispatch: PropTypes.func,
+    test_id: PropTypes.string,
+  }
+
+  static defaultProps = {
+    current_language: "fr",
+    dispatch: () => {},
+    test_id: 'test_id',
+  }
+
+
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;
