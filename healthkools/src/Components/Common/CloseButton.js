@@ -13,16 +13,16 @@ class CloseButton extends React.Component {
     super(props);
   }
 
-  // static propTypes = {
-  //   alignItems: PropTypes.string,
-  //   elevation: PropTypes.number,
-  //   justifyContent: PropTypes.string,
-  //   marginBottom: PropTypes.number,
-  //   marginRight: PropTypes.number,
-  //   onPress: PropTypes.fun,
-  //   test_id: PropTypes.string,
-  //   zIndex: PropTypes.number,
-  // }
+  static propTypes = {
+    alignItems: PropTypes.string,
+    elevation: PropTypes.number,
+    justifyContent: PropTypes.string,
+    marginBottom: PropTypes.number,
+    marginRight: PropTypes.number,
+    onPress: PropTypes.func,
+    test_id: PropTypes.string,
+    zIndex: PropTypes.number,
+  }
 
   static defaultProps = {
     alignItems: "flex-end",
