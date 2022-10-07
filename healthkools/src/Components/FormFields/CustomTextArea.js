@@ -17,21 +17,38 @@ class CustomTextArea extends React.Component {
       value: props.value,
     }
   }
-  // static get propTypes() {
-  //   return {
-  //     current_language: PropTypes.string,
-  //     icon_url: PropTypes.object,
-  //     multiline: PropTypes.boolean,
-  //     numberOfLines: PropTypes.number,
-  //     onChangeText: PropTypes.fun,
-  //     placeholder: PropTypes.string,
-  //     secureTextEntry: PropTypes.boolean,
-  //     style: PropTypes.object,
-  //     test_id: PropTypes.string,
-  //     underlineColorAndroid: PropTypes.string,
-  //     value: PropTypes.string,
-  //   };
-  // }
+
+  static propTypes = {
+    current_language: PropTypes.string,
+    icon_url: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+    ]),
+    multiline: PropTypes.bool,
+    numberOfLines: PropTypes.number,
+    onChangeText: PropTypes.func,
+    placeholder: PropTypes.string,
+    secureTextEntry: PropTypes.bool,
+    style: PropTypes.object,
+    test_id: PropTypes.string,
+    type_input: PropTypes.string,
+    underlineColorAndroid: PropTypes.string,
+    value: PropTypes.string,
+  }
+  static defaultProps = {
+    current_language: 'en',
+    icon_url: null,
+    multiline: false,
+    numberOfLines: 1,
+    onChangeText: () => {},
+    placeholder: '',
+    secureTextEntry: false,
+    style: null,
+    test_id: '',
+    type_input: '',
+    underlineColorAndroid: '',
+    value: '',
+  }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;

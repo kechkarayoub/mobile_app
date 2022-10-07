@@ -46,23 +46,23 @@ class CustomPhoneNumber extends React.Component {
     this.all_countries = get_countries(this.state.current_language);
     this.list = this.all_countries;
   }
-  // static propTypes = {
-  //   current_language: PropTypes.string,
-  //   country_phone_code: PropTypes.string,
-  //   country_select_test_id: PropTypes.string,
-  //   country_search_place_holder: PropTypes.string,
-  //   disabled: PropTypes.boolean,
-  //   is_valid_phone_number: PropTypes.boolean,
-  //   icon_url: PropTypes.object,
-  //   iconStyle: PropTypes.object,
-  //   onChangeText: PropTypes.function,
-  //   placeholder: PropTypes.string,
-  //   style: PropTypes.object,
-  //   test_id: PropTypes.string,
-  //   type_phone_number: PropTypes.string,
-  //   underlineColorAndroid: PropTypes.string,
-  //   value: PropTypes.string,
-  // }
+  static propTypes = {
+    current_language: PropTypes.string,
+    country_phone_code: PropTypes.string,
+    country_select_test_id: PropTypes.string,
+    country_search_place_holder: PropTypes.string,
+    disabled: PropTypes.bool,
+    is_valid_phone_number: PropTypes.bool,
+    icon_url: PropTypes.object,
+    iconStyle: PropTypes.object,
+    onChangeText: PropTypes.func,
+    placeholder: PropTypes.string,
+    style: PropTypes.object,
+    test_id: PropTypes.string,
+    type_phone_number: PropTypes.string,
+    underlineColorAndroid: PropTypes.string,
+    value: PropTypes.string,
+  }
   static defaultProps = {
     current_language: '',
     country_phone_code: '',
