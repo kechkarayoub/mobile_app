@@ -185,7 +185,7 @@ class CustomPhoneNumber extends React.Component {
           </View>
           <View style={styles.phoneInputContainerStyle}>
             <CustomInputText placeholder={placeholder} underlineColorAndroid='transparent'
-              onChangeText={this.props.onChangeText ? (text) => this.inputTextChange(text) : false} style={styles.phoneInputStyle}
+              onChangeText={this.props.onChangeText ? (text) => this.inputTextChange(text) : null} style={styles.phoneInputStyle}
               value={value} containerStyle={styles.phoneInputContainerStyle2}
               test_id={test_id} type_input="phone_number"
               keyboardType='number-pad' icon_url={icon_url} iconStyle={[styles.inputIcon, this.props.iconStyle]}

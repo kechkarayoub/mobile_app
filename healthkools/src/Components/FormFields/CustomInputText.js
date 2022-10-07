@@ -17,21 +17,27 @@ class CustomInputText extends React.Component {
       value: props.value,
     }
   }
-  // static propTypes = {
-  //   containerStyle: PropTypes.object,
-  //   current_language: PropTypes.string,
-  //   icon_url: PropTypes.number,
-  //   iconStyle: PropTypes.object,
-  //   keyboardType: PropTypes.string,
-  //   onChangeText: PropTypes.function,
-  //   placeholder: PropTypes.string,
-  //   secureTextEntry: PropTypes.boolean,
-  //   style: PropTypes.object,
-  //   test_id: PropTypes.string,
-  //   type_input: PropTypes.string,
-  //   underlineColorAndroid: PropTypes.string,
-  //   value: PropTypes.string,
-  // }
+  static propTypes = {
+    containerStyle: PropTypes.object,
+    current_language: PropTypes.string,
+    icon_url: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+    ]),
+    iconStyle: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
+    ]),
+    keyboardType: PropTypes.string,
+    onChangeText: PropTypes.func,
+    placeholder: PropTypes.string,
+    secureTextEntry: PropTypes.bool,
+    style: PropTypes.object,
+    test_id: PropTypes.string,
+    type_input: PropTypes.string,
+    underlineColorAndroid: PropTypes.string,
+    value: PropTypes.string,
+  }
   static defaultProps = {
     containerStyle: null,
     current_language: 'en',

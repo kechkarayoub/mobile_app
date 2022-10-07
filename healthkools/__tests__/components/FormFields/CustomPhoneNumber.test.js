@@ -82,7 +82,7 @@ describe('CustomPhoneNumber component', () => {
         test_id='test_id'
         placeholder="PlaceholderTest"
         value="0612"
-        onChangeText={false}
+        onChangeText={null}
         country_phone_code="ma"
       />
     );

@@ -19,19 +19,33 @@ class CustomCountriesSelect extends React.Component {
       value: props.value,
     }
   }
-  // static get propTypes() {
-  //   return {
-  //     current_language: PropTypes.string,
-  //     disabled: PropTypes.string,
-  //     icon_url: PropTypes.object,
-  //     iconStyle: PropTypes.object,
-  //     onSelect: PropTypes.fun,
-  //     placeholder: PropTypes.string,
-  //     test_id: PropTypes.string,
-  //     type_select: PropTypes.string,
-  //     value: PropTypes.string,
-  //   };
-  // }
+
+  static propTypes = {
+    current_language: PropTypes.string,
+    disabled: PropTypes.bool,
+    icon_url: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object
+    ]),
+    iconStyle: PropTypes.object,
+    onSelect: PropTypes.func,
+    placeholder: PropTypes.string,
+    test_id: PropTypes.string,
+    type_select: PropTypes.string,
+    value: PropTypes.string,
+  }
+
+  static defaultProps = {
+    current_language: "fr",
+    disabled: false,
+    icon_url: null,
+    iconStyle: null,
+    onSelect: () => {},
+    placeholder: "",
+    test_id: 'country_select_test_id',
+    type_select: "",
+    value: "",
+  }
   static getDerivedStateFromProps(props, state) {
     var new_state = {};
     var return_new_state = false;

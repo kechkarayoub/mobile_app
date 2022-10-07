@@ -73,6 +73,7 @@ describe('CustomCountriesSelect component', () => {
         test_id='test_id'
         placeholder="PlaceholderTest"
         value="MA"
+        onSelect={null}
       />
     );
     const countries_selects_by_test_id = screen.queryAllByTestId('test_id');
