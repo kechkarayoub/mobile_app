@@ -30,6 +30,7 @@ class CustomPhoneNumber extends React.Component {
     this.state = {
       country_phone_code: country_phone_code,
       country_search_place_holder: props.country_search_place_holder,
+      country_select_test_id: props.country_select_test_id,
       current_language: props.current_language,
       disabled: props.disabled,
       icon_url: props.icon_url,
@@ -48,6 +49,7 @@ class CustomPhoneNumber extends React.Component {
   // static propTypes = {
   //   current_language: PropTypes.string,
   //   country_phone_code: PropTypes.string,
+  //   country_select_test_id: PropTypes.string,
   //   country_search_place_holder: PropTypes.string,
   //   disabled: PropTypes.boolean,
   //   is_valid_phone_number: PropTypes.boolean,
@@ -64,6 +66,7 @@ class CustomPhoneNumber extends React.Component {
   static defaultProps = {
     current_language: '',
     country_phone_code: '',
+    country_select_test_id: 'country_select_test_id',
     country_search_place_holder: '',
     disabled: false,
     is_valid_phone_number: true,
@@ -88,7 +91,7 @@ class CustomPhoneNumber extends React.Component {
       new_state.value = (props.onChangeText ? props : state).value;
       return_new_state = true;
     }
-    if (!state.value && props.country_phone_code !== state.country_phone_code) {
+    if (!state.value && !state.country_phone_code && props.country_phone_code !== state.country_phone_code) {
       new_state.country_phone_code = props.country_phone_code;
       new_state.selected_country = props.country_phone_code && get_contry_by_code(props.country_phone_code);
       return_new_state = true;
@@ -169,7 +172,7 @@ class CustomPhoneNumber extends React.Component {
     this.props.onChangeText(number, this.state.country_phone_code)
   }
   render() {
-    const {country_phone_code, country_search_place_holder, disabled, icon_url, is_valid_phone_number, is_visible_code_select, placeholder, searched_country, selected_country, test_id, underlineColorAndroid, value} = this.state;
+    const {country_phone_code, country_search_place_holder, country_select_test_id, disabled, icon_url, is_valid_phone_number, is_visible_code_select, placeholder, searched_country, selected_country, test_id, underlineColorAndroid, value} = this.state;
     return (
       <View style={styles.componentContainer}>
         <View style={styles.codeNumberContainerStyle} >
@@ -177,14 +180,14 @@ class CustomPhoneNumber extends React.Component {
             <CustomTouchableOpacityWithIcon  onPress={() => this.openSelectCountry()}
               text={selected_country ? selected_country.phone_code_str : ''} style={styles.buttonCodeStyle}
               textStyle={styles.buttonSelectCountryStyle} is_not_button={true}
-              icon_name="caret-down"
+              icon_name="caret-down" test_id={country_select_test_id}
             />
           </View>
           <View style={styles.phoneInputContainerStyle}>
             <CustomInputText placeholder={placeholder} underlineColorAndroid='transparent'
-              onChangeText={text => this.inputTextChange(text)} style={styles.phoneInputStyle}
+              onChangeText={this.props.onChangeText ? (text) => this.inputTextChange(text) : false} style={styles.phoneInputStyle}
               value={value} containerStyle={styles.phoneInputContainerStyle2}
-              test_id={"phone_number"} type_input="phone_number"
+              test_id={test_id} type_input="phone_number"
               keyboardType='number-pad' icon_url={icon_url} iconStyle={[styles.inputIcon, this.props.iconStyle]}
             />
           </View>
