@@ -53,7 +53,10 @@ class CustomPhoneNumber extends React.Component {
     country_search_place_holder: PropTypes.string,
     disabled: PropTypes.bool,
     is_valid_phone_number: PropTypes.bool,
-    icon_url: PropTypes.object,
+    icon_url: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+    ]),
     iconStyle: PropTypes.object,
     onChangeText: PropTypes.func,
     placeholder: PropTypes.string,
