@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import ErrorComponent from "../Common/ErrorComponent";
 import {get_contries_select_options} from "../../utils/countries_list";
 import PropTypes from 'prop-types';
 import {COLORS} from "../../variables/colors";
@@ -11,18 +12,20 @@ class CustomCountriesSelect extends React.Component {
       countries_options: get_contries_select_options(props.current_language),
       current_language: props.current_language,
       disabled: props.disabled,
+      form_error: props.form_error,
       icon_url: props.icon_url,
       placeholder: props.placeholder,
       open: false,
       type_select: props.type_select,
       test_id: props.test_id,
       value: props.value,
-    }
+    };
   }
 
   static propTypes = {
     current_language: PropTypes.string,
     disabled: PropTypes.bool,
+    form_error: PropTypes.string,
     icon_url: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.object
@@ -38,6 +41,7 @@ class CustomCountriesSelect extends React.Component {
   static defaultProps = {
     current_language: "fr",
     disabled: false,
+    form_error: "",
     icon_url: null,
     iconStyle: null,
     onSelect: () => {},
@@ -51,6 +55,10 @@ class CustomCountriesSelect extends React.Component {
     var return_new_state = false;
     if(props.current_language !== state.current_language) {
       new_state.current_language = props.current_language;
+      return_new_state = true;
+    }
+    if(props.form_error !== state.form_error) {
+      new_state.form_error = props.form_error;
       return_new_state = true;
     }
     if(props.placeholder !== state.placeholder) {
@@ -91,10 +99,10 @@ class CustomCountriesSelect extends React.Component {
     }
   }
   render() {
-    const {current_language, icon_url, disabled, open, placeholder,
+    const {current_language, icon_url, disabled, form_error, open, placeholder,
       countries_options, test_id, value} = this.state;
     return(
-      <View style={[styles.selectContainer]}>
+      <View style={[styles.selectContainer, form_error ? styles.errorStyle : {}]}>
         <DropDownPicker
           containerStyle={[styles.containerStyle]}
           dropDownContainerStyle={styles.dropDownContainerStyle}
@@ -117,6 +125,9 @@ class CustomCountriesSelect extends React.Component {
         {icon_url &&
           <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
         }
+        {form_error &&
+          <ErrorComponent error={form_error} />
+        }
       </View>
     )
   }
@@ -126,6 +137,10 @@ const styles = StyleSheet.create({
     //   width: 36,
     //   height: 20,
     // },
+    errorStyle: {
+      height: 60,
+      paddingBottom: 10,
+    },
     selectContainer: {
       alignItems:'center',
       backgroundColor: '#FFFFFF',
