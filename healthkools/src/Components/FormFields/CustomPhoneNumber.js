@@ -10,6 +10,7 @@ import Overlay from 'react-native-modal-overlay';
 import CloseButton from '../Common/CloseButton';
 import CustomTouchableOpacityWithIcon from './CustomTouchableOpacityWithIcon';
 import CustomInputText from './CustomInputText';
+import ErrorComponent from "../Common/ErrorComponent";
 import { Stack, IconButton } from "@react-native-material/core";
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
 const phoneUtil = PhoneNumberUtil.getInstance();
@@ -33,6 +34,7 @@ class CustomPhoneNumber extends React.Component {
       country_select_test_id: props.country_select_test_id,
       current_language: props.current_language,
       disabled: props.disabled,
+      form_error: props.form_error,
       icon_url: props.icon_url,
       is_valid_phone_number: props.is_valid_phone_number,
       is_visible_code_select: false,
@@ -52,6 +54,7 @@ class CustomPhoneNumber extends React.Component {
     country_select_test_id: PropTypes.string,
     country_search_place_holder: PropTypes.string,
     disabled: PropTypes.bool,
+    form_error: PropTypes.string,
     is_valid_phone_number: PropTypes.bool,
     icon_url: PropTypes.oneOfType([
       PropTypes.number,
@@ -72,6 +75,7 @@ class CustomPhoneNumber extends React.Component {
     country_select_test_id: 'country_select_test_id',
     country_search_place_holder: '',
     disabled: false,
+    form_error: "",
     is_valid_phone_number: true,
     icon_url: null,
     iconStyle: {},
@@ -88,6 +92,10 @@ class CustomPhoneNumber extends React.Component {
     var return_new_state = false;
     if (props.current_language !== state.current_language) {
       new_state.current_language = props.current_language;
+      return_new_state = true;
+    }
+    if(props.form_error !== state.form_error) {
+      new_state.form_error = props.form_error;
       return_new_state = true;
     }
     if (props.value !== state.value) {
@@ -175,10 +183,10 @@ class CustomPhoneNumber extends React.Component {
     this.props.onChangeText(number, this.state.country_phone_code)
   }
   render() {
-    const {country_phone_code, country_search_place_holder, country_select_test_id, disabled, icon_url, is_valid_phone_number, is_visible_code_select, placeholder, searched_country, selected_country, test_id, underlineColorAndroid, value} = this.state;
+    const {country_phone_code, country_search_place_holder, country_select_test_id, disabled, form_error, icon_url, is_valid_phone_number, is_visible_code_select, placeholder, searched_country, selected_country, test_id, underlineColorAndroid, value} = this.state;
     return (
-      <View style={styles.componentContainer}>
-        <View style={styles.codeNumberContainerStyle} >
+      <View style={[styles.componentContainer, form_error ? styles.errorStyle : {}]}>
+        <View style={[styles.codeNumberContainerStyle, form_error ? styles.errorStyleCodeNumberContainer : {}]} >
           <View style={styles.buttonCodeContainerStyle} >
             <CustomTouchableOpacityWithIcon  onPress={() => this.openSelectCountry()}
               text={selected_country ? selected_country.phone_code_str : ''} style={styles.buttonCodeStyle}
@@ -194,6 +202,9 @@ class CustomPhoneNumber extends React.Component {
               keyboardType='number-pad' icon_url={icon_url} iconStyle={[styles.inputIcon, this.props.iconStyle]}
             />
           </View>
+          {form_error &&
+            <ErrorComponent error={form_error} />
+          }
         </View>
         <Overlay
           fullScreen
@@ -226,6 +237,13 @@ class CustomPhoneNumber extends React.Component {
   }
 }
 const styles = StyleSheet.create({
+  errorStyle: {
+    height: 60,
+  },
+  errorStyleCodeNumberContainer: {
+    height: 60,
+    paddingBottom: 10,
+  },
   componentContainer: {
     alignItems: 'center',
     backgroundColor: '#FFFFFF',

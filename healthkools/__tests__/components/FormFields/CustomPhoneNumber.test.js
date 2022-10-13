@@ -8,6 +8,8 @@ describe('CustomPhoneNumber component', () => {
     render(
       <CustomPhoneNumber current_language={current_language} />
     );
+    const components_errors_by_text = screen.queryAllByText('form_error');
+    expect(components_errors_by_text).toHaveLength(0);
   });
   test('Should contains props data', async () => {
     render(
@@ -15,6 +17,7 @@ describe('CustomPhoneNumber component', () => {
         current_language={current_language}
         test_id='test_id' country_select_test_id='country_select_test_id'
         placeholder="PlaceholderTest"
+        form_error="form_error"
       />
     );
     const phone_numbers_by_test_id = screen.queryAllByTestId('test_id');
@@ -23,6 +26,8 @@ describe('CustomPhoneNumber component', () => {
     expect(countries_select_by_test_id).toHaveLength(1);
     const phone_numbers_by_placeholder = screen.queryAllByPlaceholderText('PlaceholderTest');
     expect(phone_numbers_by_placeholder).toHaveLength(1);
+    const components_errors_by_text = screen.queryAllByText('form_error');
+    expect(components_errors_by_text).toHaveLength(1);
     // screen.debug()
 
   });
