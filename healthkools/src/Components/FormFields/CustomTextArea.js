@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image } from 'react-native';
+import ErrorComponent from "../Common/ErrorComponent";
 import PropTypes from 'prop-types';
 
 class CustomTextArea extends React.Component {
@@ -7,6 +8,7 @@ class CustomTextArea extends React.Component {
     super(props);
     this.state = {
       current_language: props.current_language,
+      form_error: props.form_error,
       icon_url: props.icon_url,
       multiline: props.multiline,
       numberOfLines: props.numberOfLines,
@@ -20,6 +22,7 @@ class CustomTextArea extends React.Component {
 
   static propTypes = {
     current_language: PropTypes.string,
+    form_error: PropTypes.string,
     icon_url: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.object,
@@ -37,6 +40,7 @@ class CustomTextArea extends React.Component {
   }
   static defaultProps = {
     current_language: 'en',
+    form_error: "",
     icon_url: null,
     multiline: false,
     numberOfLines: 1,
@@ -56,6 +60,10 @@ class CustomTextArea extends React.Component {
       new_state.current_language = props.current_language;
       return_new_state = true;
     }
+    if(props.form_error !== state.form_error) {
+      new_state.form_error = props.form_error;
+      return_new_state = true;
+    }
     if (props.placeholder !== state.placeholder) {
       new_state.placeholder = props.placeholder;
       return_new_state = true;
@@ -67,9 +75,9 @@ class CustomTextArea extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {icon_url, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
+    const {icon_url, form_error, placeholder, secureTextEntry, test_id, underlineColorAndroid, value, multiline, numberOfLines} = this.state;
     return (
-      <View style={styles.textAreaContainer}>
+      <View style={[styles.textAreaContainer, form_error ? styles.errorStyle : {}]}>
         <TextInput
           multiline={multiline}
           numberOfLines={numberOfLines}
@@ -91,11 +99,18 @@ class CustomTextArea extends React.Component {
         {icon_url &&
           <Image style={styles.inputIcon} source={icon_url}/>
         }
+        {form_error &&
+          <ErrorComponent error={form_error} />
+        }
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
+  errorStyle: {
+    height: 60,
+    paddingBottom: 10,
+  },
   textAreaContainer: {
     alignItems: 'center',
     backgroundColor: '#FFFFFF',

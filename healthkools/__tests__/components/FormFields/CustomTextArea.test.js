@@ -8,6 +8,8 @@ describe('CustomTextArea component', () => {
     render(
       <CustomTextArea current_language={current_language} />
     );
+    const components_errors_by_text = screen.queryAllByText('form_error');
+    expect(components_errors_by_text).toHaveLength(0);
   });
   test('Should contains props data', async () => {
     render(
@@ -15,12 +17,15 @@ describe('CustomTextArea component', () => {
         current_language={current_language}
         test_id='test_id'
         placeholder="PlaceholderTest"
+        form_error="form_error"
       />
     );
     const textareas_by_test_id = screen.queryAllByTestId('test_id');
     expect(textareas_by_test_id).toHaveLength(1);
     const textareas_by_placeholder = screen.queryAllByPlaceholderText('PlaceholderTest');
     expect(textareas_by_placeholder).toHaveLength(1);
+    const components_errors_by_text = screen.queryAllByText('form_error');
+    expect(components_errors_by_text).toHaveLength(1);
     // screen.debug()
 
   });
