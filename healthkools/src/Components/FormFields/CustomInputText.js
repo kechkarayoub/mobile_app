@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image } from 'react-native';
+import ErrorComponent from "../Common/ErrorComponent";
 import PropTypes from 'prop-types';
 
 class CustomInputText extends React.Component {
@@ -7,6 +8,7 @@ class CustomInputText extends React.Component {
     super(props);
     this.state = {
       current_language: props.current_language,
+      form_error: props.form_error,
       icon_url: props.icon_url,
       keyboardType: props.keyboardType || "default",
       placeholder: props.placeholder,
@@ -20,6 +22,7 @@ class CustomInputText extends React.Component {
   static propTypes = {
     containerStyle: PropTypes.object,
     current_language: PropTypes.string,
+    form_error: PropTypes.string,
     icon_url: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.object,
@@ -41,6 +44,7 @@ class CustomInputText extends React.Component {
   static defaultProps = {
     containerStyle: null,
     current_language: 'en',
+    form_error: "",
     icon_url: null,
     iconStyle: null,
     keyboardType: '',
@@ -60,6 +64,10 @@ class CustomInputText extends React.Component {
       new_state.current_language = props.current_language;
       return_new_state = true;
     }
+    if(props.form_error !== state.form_error) {
+      new_state.form_error = props.form_error;
+      return_new_state = true;
+    }
     if (props.placeholder !== state.placeholder) {
       new_state.placeholder = props.placeholder;
       return_new_state = true;
@@ -71,9 +79,9 @@ class CustomInputText extends React.Component {
     return return_new_state ? new_state : null;
   }
   render() {
-    const {icon_url, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
+    const {icon_url, form_error, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
     return (
-      <View style={this.props.containerStyle || styles.inputContainer}>
+      <View style={[this.props.containerStyle || styles.inputContainer, , form_error ? styles.errorStyle : {}]}>
         <TextInput
           onChangeText={(value) => {
             if(this.props.onChangeText){
@@ -94,11 +102,18 @@ class CustomInputText extends React.Component {
         {icon_url &&
           <Image style={[styles.inputIcon, this.props.iconStyle]} source={icon_url}/>
         }
+        {form_error &&
+          <ErrorComponent error={form_error} />
+        }
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
+  errorStyle: {
+    height: 60,
+    paddingBottom: 10,
+  },
   inputContainer: {
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
