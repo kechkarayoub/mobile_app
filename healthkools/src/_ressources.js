@@ -1,4 +1,5 @@
 const addressIcon = require("./assets/icons/address.png");
+const birthdayIcon = require("./assets/icons/birthday.png");
 const countryIcon = require("./assets/icons/country.png");
 const emailIcon = require("./assets/icons/email.png");
 const nameIcon = require("./assets/icons/name.png");
@@ -12,6 +13,7 @@ const flag_fr = require('./assets/flags/flag-fr-16.png');
 
 export const icons = {
   addressIcon,
+  birthdayIcon,
   countryIcon,
   emailIcon,
   nameIcon,
