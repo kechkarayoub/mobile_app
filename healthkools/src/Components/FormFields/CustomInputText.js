@@ -81,7 +81,7 @@ class CustomInputText extends React.Component {
   render() {
     const {icon_url, form_error, keyboardType, placeholder, secureTextEntry, test_id, underlineColorAndroid, value} = this.state;
     return (
-      <View style={[this.props.containerStyle || styles.inputContainer, , form_error ? styles.errorStyle : {}]}>
+      <View style={[this.props.containerStyle || styles.inputContainer, form_error ? styles.errorStyle : {}]}>
         <TextInput
           onChangeText={(value) => {
             if(this.props.onChangeText){
