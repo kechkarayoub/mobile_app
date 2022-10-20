@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     placeholder: {
       color: "grey",
       opacity: 0.8,
+      paddingLeft: 5,
     },
 });
 export default CustomCountriesSelect;
