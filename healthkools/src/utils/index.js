@@ -8,6 +8,15 @@ const phoneUtil = PhoneNumberUtil.getInstance();
 // if(supported_languages.indexOf(locale_splited) !== -1){
 //   current_language = locale_splited;
 // }
+export const get_date_format = (moment_obj) => {
+  return moment_obj.format("DD/MM/YYYY");
+};
+export const get_datetime_format = (moment_obj) => {
+  return moment_obj.format("DD/MM/YYYY hh:mm");
+};
+export const get_time_format = (moment_obj) => {
+  return moment_obj.format("hh:mm");
+};
 export const get_current_languages = async (callback) => {
   await get('currentlanguage', cl => {
     callback(cl);
