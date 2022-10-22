@@ -12,7 +12,10 @@ class CustomTouchableOpacity extends React.Component {
     style: PropTypes.object,
     test_id: PropTypes.string,
     text: PropTypes.string,
-    textStyle: PropTypes.object,
+    textStyle: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
+    ]),
   }
   static defaultProps = {
     is_not_button: false,
