@@ -84,7 +84,6 @@ export const get = async (key, callback) => {
     return ret;
   })
   .catch(err => {
-    console.warn(err.message);
       console.log("err.name: ", err.name);
     switch (err.name) {
       case 'NotFoundError':

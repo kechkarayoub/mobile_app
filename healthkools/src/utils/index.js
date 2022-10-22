@@ -12,10 +12,10 @@ export const get_date_format = (moment_obj) => {
   return moment_obj.format("DD/MM/YYYY");
 };
 export const get_datetime_format = (moment_obj) => {
-  return moment_obj.format("DD/MM/YYYY hh:mm");
+  return moment_obj.format("DD/MM/YYYY HH:mm");
 };
 export const get_time_format = (moment_obj) => {
-  return moment_obj.format("hh:mm");
+  return moment_obj.format("HH:mm");
 };
 export const get_current_languages = async (callback) => {
   await get('currentlanguage', cl => {
@@ -23,20 +23,34 @@ export const get_current_languages = async (callback) => {
   });
 };
 export const get_local_number_from_international = (international_number) => {
+  var international_number_ = international_number;
+  if(international_number && international_number.charAt(0) !== "0" && international_number.charAt(0) !== "+"){
+    international_number_ = "+" + international_number_;
+  }
   try{
-    var pu = phoneUtil.parse(international_number);
-    var country_code = pu.getCountryCode();
-    if(international_number.indexOf("+" + country_code) !== -1){
-      return international_number.replace("+" + country_code, "0");
+    var pu = phoneUtil.parse(international_number_);
+    if(!phoneUtil.isValidNumber(pu)){
+      return international_number;
     }
-    return international_number.replace(country_code, "0");
+    var country_code = pu.getCountryCode();
+    if(international_number_.indexOf("+" + country_code) !== -1){
+      return international_number_.replace("+" + country_code, "0");
+    }
+    return international_number_.replace(country_code, "0");
   } catch(err){
     return international_number;
   }
 };
 export const get_country_phone_code_from_number = (international_number) => {
+  var international_number_ = international_number;
+  if(international_number && international_number.charAt(0) !== "0" && international_number.charAt(0) !== "+"){
+    international_number_ = "+" + international_number_;
+  }
   try{
-    var pu = phoneUtil.parse(international_number);
+    var pu = phoneUtil.parse(international_number_);
+    if(!phoneUtil.isValidNumber(pu)){
+      return "";
+    }
     var country_phone_code = pu.getCountryCode();
     if(country_phone_code){
       country_phone_code += "";
