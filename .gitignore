@@ -19,6 +19,30 @@ healthkools/web-build/
 healthkools/yarn.lock
 healthkools/yarn-error.log
 
+node_modules
+.env
+
 # macOS
 .DS_Store
 /healthkools/node_modules/
+
+
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+### build fodler
+build/
+/.env
+
+# testing
+/coverage
+**/coverage
+**/__snapshots__
+
+# production
+/build
