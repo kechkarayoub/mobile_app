@@ -80,19 +80,16 @@ class SignUp extends React.Component {
       });
     }
   }
-  // static get propTypes() {
-  //   return {
-  //     birthday: PropTypes.date,
-  //     current_language: PropTypes.string,
-  //     error_messages: PropTypes.object,
-  //     gender: PropTypes.string,
-  //     invalid_messages: PropTypes.object,
-  //     is_valid_phone_number: PropTypes.boolean,
-  //     navigation: PropTypes.object,
-  //     phone_number: PropTypes.string,
-  //     formatted_phone_number: PropTypes.string,
-  //   };
-  // }
+  static propTypes = {
+    current_language: PropTypes.string,
+    navigation: PropTypes.oneOfType([
+      PropTypes.object,
+    ]),
+  }
+  static defaultProps = {
+    current_language: 'en',
+    navigation: null,
+  }
   componentDidUpdate(prevProps, prevState){
     var new_state = {}, set_state = false;
     if(prevState.current_language !== this.state.current_language){
