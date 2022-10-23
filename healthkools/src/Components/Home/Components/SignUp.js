@@ -1,11 +1,14 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Alert, ImageBackground, } from 'react-native';
 import CustomInputText from '../../FormFields/CustomInputText';
+// import CustomDatePicker1 from '../../FormFields/CustomDatePicker1';
+import CustomDatePicker from '../../FormFields/CustomDatePicker';
 import CustomTextArea from '../../FormFields/CustomTextArea';
 import CustomPhoneNumber from '../../FormFields/CustomPhoneNumber';
 import CustomCountriesSelect from '../../FormFields/CustomCountriesSelect';
 import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
 import {get_contry_by_code} from "../../../utils/countries_list";
+import { get_geo_info, check_if_email_or_username_exists_api_get } from '../../../services/api';
 // import {set_locale, t} from '../../../i18n'
 import { connect } from 'react-redux'
 import {t} from '../../../i18n';
@@ -28,6 +31,7 @@ class SignUp extends React.Component {
       email: "",
       error_messages: {},
       first_name: "",
+      form_errors: {},
       gender: "",
       invalid_messages: {},
       is_valid_phone_number: false,
@@ -41,6 +45,7 @@ class SignUp extends React.Component {
       valid_messages: {},
     }
     this.geo_info_api_done = true;
+    this.getGeoInfo();
     if(!t("Arabic")){
       // Initialize t translation function) if it is not initistialised
       setTimeout(() => {
@@ -57,6 +62,24 @@ class SignUp extends React.Component {
     }
     return return_new_state ? new_state : null;
   }
+
+  getGeoInfo = () => {
+    if(this.geo_info_api_done){
+      this.geo_info_api_done = false;
+      const api_key = process.env.REACT_APP_GEOLOCATION_DB_API_KEY;
+      get_geo_info(api_key).then(res => {
+        this.geo_info_api_done = true;
+        var selected_country = res.country_code && get_contry_by_code(res.country_code);
+        this.setState({
+          country_code: res.country_code,
+          country_phone_code: selected_country.phone_code_str,
+        });
+      })
+      .catch(err => {
+        this.geo_info_api_done = true;
+      });
+    }
+  }
   // static get propTypes() {
   //   return {
   //     birthday: PropTypes.date,
@@ -71,8 +94,17 @@ class SignUp extends React.Component {
   //   };
   // }
   componentDidUpdate(prevProps, prevState){
+    var new_state = {}, set_state = false;
     if(prevState.current_language !== this.state.current_language){
-      this.setState({current_language: this.state.current_languag})
+      new_state.current_language = this.state.current_language;
+      set_state = true;
+    }
+    // else if(Object.keys(prevState.form_errors).join("_") !== Object.keys(this.state.form_errors).join("_")){
+    //   new_state.form_errors = this.state.form_errors;
+    //   set_state = true;
+    // }
+    if(set_state){
+      this.setState(new_state);
     }
   }
   onClickListener = (viewId) => {
@@ -97,7 +129,8 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const {address, country_code, country_phone_code, current_language, email, first_name,
+    const {address, birthday, country_code, country_phone_code, current_language, email,
+      form_errors, first_name,
       last_name, password, password_confirmation, phone_number, formatted_phone_number,
       username, is_valid_phone_number} = this.state;
 
@@ -106,34 +139,80 @@ class SignUp extends React.Component {
           <ImageBackground source={logos.logo} style={styles.background}/>
           <ScrollView contentContainerStyle={styles.scrollView}>
               <CustomInputText placeholder={t("First name")} underlineColorAndroid='transparent'
-                onChangeText={first_name => this.setState({first_name: first_name})}
+                onChangeText={first_name => {
+                  // this.state.form_errors.first_name = "this field is required!";
+                  // this.state.form_errors.last_name = "this field is required!";
+                  // this.state.form_errors.country_code = "this field is required!";
+                  // this.state.form_errors.email = "this field is required!";
+                  // this.state.form_errors.username = "this field is required!";
+                  // this.state.form_errors.password = "this field is required!";
+                  // this.state.form_errors.password_confirmation = "this field is required!";
+                  // this.state.form_errors.phone_number = "this field is required!";
+                  // this.state.form_errors.address = "this field is required!";
+                  // this.state.form_errors.birthday = "this field is required!";
+                  var new_state = {first_name: first_name};
+                  delete this.state.form_errors.first_name;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }}
                 icon_url={icons.nameIcon} value={first_name} current_language={current_language}
                 test_id={"first_name"} type_input="first_name" iconStyle={{height:20}}
+                form_error={form_errors.first_name}
               />
               <CustomInputText placeholder={t("Last name")} underlineColorAndroid='transparent'
-                onChangeText={last_name => this.setState({last_name: last_name})}
+                onChangeText={last_name => {
+                  var new_state = {last_name: last_name};
+                  delete this.state.form_errors.last_name;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }}
                 icon_url={icons.nameIcon} value={last_name} current_language={current_language}
                 test_id={"last_name"} type_input="last_name" iconStyle={{height:20}}
+                form_error={form_errors.last_name}
               />
               <CustomInputText placeholder={t("Email")} underlineColorAndroid='transparent'
-                onChangeText={email => this.setState({email: email})} value={email}
+                onChangeText={email => {
+                  var new_state = {email: email};
+                  delete this.state.form_errors.email;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }} value={email}
                 icon_url={icons.emailIcon}  iconStyle={{height:26, width: 25, marginRight: 18}}
                 current_language={current_language} test_id={"email"}  type_input="email"
+                form_error={form_errors.email}
               />
               <CustomInputText placeholder={t("Username")} underlineColorAndroid='transparent'
-                onChangeText={username => this.setState({username: username})} value={username}
+                onChangeText={username => {
+                  var new_state = {username: username};
+                  delete this.state.form_errors.username;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }} value={username}
                 icon_url={icons.usernameIcon}
                 current_language={current_language} test_id={"username"} type_input="username"
+                form_error={form_errors.username}
               />
               <CustomInputText placeholder={t("Password")} underlineColorAndroid='transparent' secureTextEntry={true}
-                onChangeText={password => this.setState({password: password})}
+                onChangeText={password => {
+                  var new_state = {password: password};
+                  delete this.state.form_errors.password;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }}
                 icon_url={icons.passwordIcon} value={password} current_language={current_language}
                 test_id={"password"} type_input="password"  iconStyle={{height:28, width: 24, marginRight: 18}}
+                form_error={form_errors.password}
               />
               <CustomInputText placeholder={t("Confirm password")} underlineColorAndroid='transparent' secureTextEntry={true}
-                onChangeText={password_confirmation => this.setState({password_confirmation: password_confirmation})}
+                onChangeText={password_confirmation => {
+                  var new_state = {password_confirmation: password_confirmation};
+                  delete this.state.form_errors.password_confirmation;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }}
                 icon_url={icons.passwordIcon} value={password_confirmation} current_language={current_language}
                 test_id={"password_confirmation"} type_input="password" iconStyle={{height:28, width: 24, marginRight: 18}}
+                form_error={form_errors.password_confirmation}
               />
               <CustomCountriesSelect placeholder={t("Country")} underlineColorAndroid='transparent'
                 onSelect={(country_code) => {
@@ -144,20 +223,61 @@ class SignUp extends React.Component {
                       new_state.country_phone_code = selected_country.phone_code_str;
                     }
                   }
+                  console.log(new_state)
+                  delete this.state.form_errors.country_code;
+                  new_state.form_errors = this.state.form_errors;
                   this.setState(new_state);
                 }} value={country_code}
                 icon_url={icons.countryIcon} iconStyle={{width: 24, marginRight: 18}}
                 current_language={current_language} test_id={"country"} type_select="country"
+                form_error={form_errors.country_code}
               />
               <CustomPhoneNumber country_search_place_holder={t("Search by country or by code")} placeholder={t("Phone number")} underlineColorAndroid='transparent'
-                onChangeText={(phone_number, country_phone_code) => this.setState({phone_number: phone_number, country_phone_code: country_phone_code})} value={phone_number}
+                onChangeText={(phone_number, country_phone_code) => {
+                  var new_state = {phone_number: phone_number, country_phone_code: country_phone_code};
+                  delete this.state.form_errors.phone_number;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }} value={phone_number}
                 icon_url={icons.phoneIcon} iconStyle={{width: 25, marginRight: 10}} disabled={false} country_phone_code={country_phone_code}
                 current_language={current_language} test_id={"phone_number"} type_phone_number="phone" is_valid_phone_number={is_valid_phone_number}
+                form_error={form_errors.phone_number}
               />
               <CustomTextArea placeholder={t("Address")} underlineColorAndroid='transparent'
-                onChangeText={address => this.setState({address: address})} value={address}
+                onChangeText={address => {
+                  var new_state = {address: address};
+                  delete this.state.form_errors.address;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }} value={address}
                 icon_url={icons.addressIcon} multiline={true}
-                current_language={current_language} test_id={"address"} numberOfLines={2} type_textares="address"
+                current_language={current_language} test_id={"address"} numberOfLines={2} type_textarea="address"
+                form_error={form_errors.address}
+              />
+              {/*<CustomDatePicker1 disabled={false} display={"default"} placeholder={t("Birthday")}
+                onChange={birthday => {
+                  var new_state = {birthday: birthday};
+                  delete this.state.form_errors.birthday;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }} value={birthday}
+                icon_url={icons.birthdayIcon}
+                current_language={current_language} test_id={"birthday"} type_date="birthday"
+                form_error={form_errors.birthday}
+              />
+              */}
+              <CustomDatePicker disabled={false} placeholder={t("Birthday")}
+                mode={"date"} maximumDate={moment().toDate()}
+                minimumDate={null}
+                onChange={birthday => {
+                  var new_state = {birthday: birthday};
+                  delete this.state.form_errors.birthday;
+                  new_state.form_errors = this.state.form_errors;
+                  this.setState(new_state);
+                }} value={birthday}
+                icon_url={icons.birthdayIcon}
+                current_language={current_language} test_id={"birthday"} type_date="birthday"
+                form_error={form_errors.birthday}
               />
               <CustomTouchableOpacity onPress={() => this.onClickListener('register')}
                 text={t("Sign up")} style={styles.loginButton}
