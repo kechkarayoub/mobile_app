@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react-native';
 import CustomPhoneNumber from '../../../src/Components/FormFields/CustomPhoneNumber';
 const current_language = "en";
 
@@ -51,13 +51,14 @@ describe('CustomPhoneNumber component', () => {
     //screen.debug()
 
   });
-  test('Should Countries appear when clicking countries select button', async () => {
+  test('Should Country not change if not onChangeText prop', async () => {
     render(
       <CustomPhoneNumber
         current_language={current_language}
         test_id='test_id'  country_select_test_id='country_select_test_id'
         placeholder="PlaceholderTest"
         country_phone_code="MA"
+        onChangeText={null}
       />
     );
     const countries_select_by_test_id = screen.queryAllByTestId('country_select_test_id');
@@ -71,13 +72,49 @@ describe('CustomPhoneNumber component', () => {
     countries_select_by_country_code_213 = screen.queryAllByText('Algeria (+213)');
     expect(countries_select_by_country_code_213).toHaveLength(1);
     const country_select_by_al = screen.queryByText('Algeria (+213)');
-    fireEvent.press(country_select_by_al);
+    await act(async () => {
+      fireEvent.press(country_select_by_al);
+    });
     countries_select_by_country_code_213 = screen.queryAllByText('Algeria (+213)');
     expect(countries_select_by_country_code_213).toHaveLength(0);
     countries_select_by_country_code_212 = screen.queryAllByText('+212');
     expect(countries_select_by_country_code_212).toHaveLength(0);
     countries_select_by_country_code_213 = screen.queryAllByText('+213');
     expect(countries_select_by_country_code_213).toHaveLength(1);
+    // screen.debug()
+  });
+
+  test('Should Country change if onChangeText prop', async () => {
+    const onChangeText = jest.fn();
+    render(
+      <CustomPhoneNumber
+        current_language={current_language}
+        test_id='test_id'  country_select_test_id='country_select_test_id'
+        placeholder="PlaceholderTest"
+        country_phone_code="MA"
+        onChangeText={onChangeText}
+      />
+    );
+    const countries_select_by_test_id = screen.queryAllByTestId('country_select_test_id');
+    expect(countries_select_by_test_id).toHaveLength(1);
+    var countries_select_by_country_code_212 = screen.queryAllByText('+212');
+    expect(countries_select_by_country_code_212).toHaveLength(1);
+    var countries_select_by_country_code_213 = screen.queryAllByText('+213');
+    expect(countries_select_by_country_code_213).toHaveLength(0);
+    const country_select_by_test_id = screen.queryByTestId('country_select_test_id');
+    fireEvent.press(country_select_by_test_id);
+    countries_select_by_country_code_213 = screen.queryAllByText('Algeria (+213)');
+    expect(countries_select_by_country_code_213).toHaveLength(1);
+    const country_select_by_al = screen.queryByText('Algeria (+213)');
+    await act(async () => {
+      fireEvent.press(country_select_by_al);
+    });
+    countries_select_by_country_code_213 = screen.queryAllByText('Algeria (+213)');
+    expect(countries_select_by_country_code_213).toHaveLength(0);
+    countries_select_by_country_code_212 = screen.queryAllByText('+212');
+    expect(countries_select_by_country_code_212).toHaveLength(1);
+    countries_select_by_country_code_213 = screen.queryAllByText('+213');
+    expect(countries_select_by_country_code_213).toHaveLength(0);
     // screen.debug()
   });
   test('Should value change', async () => {

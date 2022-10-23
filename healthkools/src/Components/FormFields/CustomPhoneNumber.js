@@ -102,9 +102,9 @@ class CustomPhoneNumber extends React.Component {
       new_state.value = (props.onChangeText ? props : state).value;
       return_new_state = true;
     }
-    if (!state.value && !state.country_phone_code && props.country_phone_code !== state.country_phone_code) {
-      new_state.country_phone_code = props.country_phone_code;
-      new_state.selected_country = props.country_phone_code && get_contry_by_code(props.country_phone_code);
+    if (!state.value && props.country_phone_code !== state.country_phone_code) {
+      new_state.country_phone_code = (props.onChangeText ? props : state).country_phone_code;
+      new_state.selected_country = props.country_phone_code && get_contry_by_code(new_state.country_phone_code);
       return_new_state = true;
     }
     if (props.disabled !== state.disabled) {
@@ -155,7 +155,9 @@ class CustomPhoneNumber extends React.Component {
       is_visible_code_select: false,
       selected_country: item,
     });
-    this.props.onChangeText(this.state.value, item.phone_code_str);
+    if(this.props.onChangeText){
+      this.props.onChangeText(this.state.value, item.phone_code_str);
+    }
   }
 
   keyExtractor = (item, index) => {
@@ -180,7 +182,9 @@ class CustomPhoneNumber extends React.Component {
   }
 
   inputTextChange = number => {
-    this.props.onChangeText(number, this.state.country_phone_code)
+    if(this.props.onChangeText){
+      this.props.onChangeText(number, this.state.country_phone_code);
+    }
   }
   render() {
     const {country_phone_code, country_search_place_holder, country_select_test_id, disabled, form_error, icon_url, is_valid_phone_number, is_visible_code_select, placeholder, searched_country, selected_country, test_id, underlineColorAndroid, value} = this.state;
@@ -196,7 +200,7 @@ class CustomPhoneNumber extends React.Component {
           </View>
           <View style={styles.phoneInputContainerStyle}>
             <CustomInputText placeholder={placeholder} underlineColorAndroid='transparent'
-              onChangeText={this.props.onChangeText ? (text) => this.inputTextChange(text) : null} style={styles.phoneInputStyle}
+              onChangeText={this.props.onChangeText ? (text) => this.inputTextChange(text) : (text) => this.setState({value: text})} style={styles.phoneInputStyle}
               value={value} containerStyle={styles.phoneInputContainerStyle2}
               test_id={test_id} type_input="phone_number"
               keyboardType='number-pad' icon_url={icon_url} iconStyle={[styles.inputIcon, this.props.iconStyle]}
