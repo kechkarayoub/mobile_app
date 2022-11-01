@@ -7,6 +7,7 @@ import CustomTextArea from '../../FormFields/CustomTextArea';
 import CustomPhoneNumber from '../../FormFields/CustomPhoneNumber';
 import CustomCountriesSelect from '../../FormFields/CustomCountriesSelect';
 import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
+import CustomTSNotice from '../../Common/CustomTSNotice';
 import {get_contry_by_code} from "../../../utils/countries_list";
 import { get_geo_info, check_if_email_or_username_exists_api_get } from '../../../services/api';
 // import {set_locale, t} from '../../../i18n'
@@ -40,6 +41,7 @@ class SignUp extends React.Component {
       password_sign_in: "",
       password_confirmation: "",
       phone_number: "",
+      registration_label: props.registration_label,
       formatted_phone_number: "",
       username: "",
       valid_messages: {},
@@ -58,6 +60,10 @@ class SignUp extends React.Component {
     var return_new_state = false;
     if (props.current_language !== state.current_language) {
       new_state.current_language = props.current_language;
+      return_new_state = true;
+    }
+    if (props.registration_label !== state.registration_label) {
+      new_state.registration_label = props.registration_label;
       return_new_state = true;
     }
     return return_new_state ? new_state : null;
@@ -82,18 +88,24 @@ class SignUp extends React.Component {
   }
   static propTypes = {
     current_language: PropTypes.string,
+    registration_label: PropTypes.string,
     navigation: PropTypes.oneOfType([
       PropTypes.object,
     ]),
   }
   static defaultProps = {
     current_language: 'en',
+    registration_label: 'Sign up',
     navigation: null,
   }
   componentDidUpdate(prevProps, prevState){
     var new_state = {}, set_state = false;
     if(prevState.current_language !== this.state.current_language){
       new_state.current_language = this.state.current_language;
+      set_state = true;
+    }
+    if(prevState.registration_label !== this.state.registration_label){
+      new_state.registration_label = this.state.registration_label;
       set_state = true;
     }
     // else if(Object.keys(prevState.form_errors).join("_") !== Object.keys(this.state.form_errors).join("_")){
@@ -126,7 +138,7 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const {address, birthday, country_code, country_phone_code, current_language, email,
+    const {address, birthday, country_code, country_phone_code, current_language, registration_label, email,
       form_errors, first_name,
       last_name, password, password_confirmation, phone_number, formatted_phone_number,
       username, is_valid_phone_number} = this.state;
@@ -220,7 +232,6 @@ class SignUp extends React.Component {
                       new_state.country_phone_code = selected_country.phone_code_str;
                     }
                   }
-                  console.log(new_state)
                   delete this.state.form_errors.country_code;
                   new_state.form_errors = this.state.form_errors;
                   this.setState(new_state);
@@ -276,6 +287,7 @@ class SignUp extends React.Component {
                 current_language={current_language} test_id={"birthday"} type_date="birthday"
                 form_error={form_errors.birthday}
               />
+              <CustomTSNotice {...this.props} current_language={current_language} registration_label={registration_label} />
               <CustomTouchableOpacity onPress={() => this.onClickListener('register')}
                 text={t("Sign up")} style={styles.loginButton}
               />

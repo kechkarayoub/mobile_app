@@ -15,11 +15,33 @@ class HomeStackNavigator extends React.Component  {
       this.state = {
         current_language: props.current_language,
       };
+      this.registration_label = t("Sign up");
       if(!t("Arabic")){
         // Initialize t translation function) if it is not initistialised
         setTimeout(() => {
           this.setState({current_language: this.state.current_language});
+          this.registration_label = t("Sign up");
         }, 10);
+      }
+    }
+    static getDerivedStateFromProps(props, state) {
+      var new_state = {};
+      var return_new_state = false;
+      if (props.current_language !== state.current_language) {
+        new_state.current_language = props.current_language;
+        return_new_state = true;
+      }
+      return return_new_state ? new_state : null;
+    }
+    componentDidUpdate(prevProps, prevState){
+      var new_state = {}, set_state = false;
+      if(prevState.current_language !== this.state.current_language){
+        new_state.current_language = this.state.current_language;
+        set_state = true;
+        this.registration_label = t("Sign up");
+      }
+      if(set_state){
+        this.setState(new_state);
       }
     }
     // static get propTypes() {
@@ -43,8 +65,8 @@ class HomeStackNavigator extends React.Component  {
             <Stack.Screen name="SignIn" options={{title: t("Sign in")}}>
               {props => <SignIn {...props} t={t}/>}
             </Stack.Screen>
-            <Stack.Screen name="SignUp" options={{title: t("Sign up")}}>
-              {props => <SignUp {...props} t={t} />}
+            <Stack.Screen name="SignUp" options={{title: this.registration_label}}>
+              {props => <SignUp {...props} t={t} registration_label={this.registration_label} />}
             </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
