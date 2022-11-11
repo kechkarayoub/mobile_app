@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, Alert, View, Linking } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Text, Alert, View, Linking } from 'react-native';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import {t} from '../../i18n';
@@ -92,12 +92,12 @@ class CustomTSNotice extends React.Component {
   }
   renderTermsOfService = () => {
     const {current_language, terms_of_services_articles} = this.state;
-    return <View style={{}}>
+    return <View style={styles.TSContainerStyle}>
       {terms_of_services_articles.map((terms_of_services_article, idx) => {
           return <View key={idx} style={styles.articleStyle}>
             <View  style={styles.articleTitleStyle}>
               <View><Text style={styles.articleTitleNumberStyle}>{t("Item") + " " + (idx + 1) + ": "}</Text></View>
-              <View>{terms_of_services_article.title[current_language]()}</View>
+              <View style={{ flexShrink: 1 }}>{terms_of_services_article.title[current_language]()}</View>
             </View>
             {terms_of_services_article.paragraphs.map((paragraph, idx_p) => {
               return <View key={idx_p} style={styles.paragraphStyle}>
@@ -120,11 +120,11 @@ class CustomTSNotice extends React.Component {
     </View>
   }
   renderCookiePolicy = () => {
-    return <View style={{}}>
+    return <View style={styles.TSContainerStyle}>
     </View>
   }
   renderDataUsePolicy = () => {
-    return <View style={{}}>
+    return <View style={styles.TSContainerStyle}>
     </View>
   }
   render() {
@@ -151,11 +151,13 @@ class CustomTSNotice extends React.Component {
                 </View>
                 <CloseButton name='close'  containerStyle={styles.iconCloseStyle} onPress={this.closeOverlay} />
               </View>
-              <View style={{}}>
+              <SafeAreaView style={{}}>
+              <ScrollView style={styles.TSOverlayContainerStyle}>
                 {open_terms_of_service && this.renderTermsOfService()}
                 {open_cookie_policy && this.renderCookiePolicy()}
                 {open_data_use_policy && this.renderDataUsePolicy()}
-              </View>
+              </ScrollView>
+              </SafeAreaView>
             </View>
           </Overlay>
         }
@@ -165,6 +167,13 @@ class CustomTSNotice extends React.Component {
 }
 const styles = StyleSheet.create({
   articleStyle: {},
+  TSContainerStyle: {
+    marginBottom: 15,
+  },
+  TSOverlayContainerStyle: {
+    height: '93%',
+    padding: 5,
+  },
   articleTitleStyle: {
     justifyContent: 'flex-start',
     display: 'flex',
