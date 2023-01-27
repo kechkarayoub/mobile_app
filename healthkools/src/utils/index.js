@@ -11,6 +11,20 @@ const phoneUtil = PhoneNumberUtil.getInstance();
 export const get_date_format = (moment_obj) => {
   return moment_obj.format("DD/MM/YYYY");
 };
+export const line_return = (nbr_line_return) => {
+  try{
+    nbr_line_return = parseInt(nbr_line_return) || 1;
+  }
+  catch{
+    nbr_line_return = 1;
+  }
+  var i = 0;
+  var res = "";
+  while(i < nbr_line_return){
+    res += "\n";
+  }
+  return res;
+};
 export const get_datetime_format = (moment_obj) => {
   return moment_obj.format("DD/MM/YYYY HH:mm");
 };
