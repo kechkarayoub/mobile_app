@@ -243,12 +243,12 @@ class CustomTSNotice extends React.Component {
                 </View>
                 <CloseButton name='close'  containerStyle={styles.iconCloseStyle} onPress={this.closeOverlay} />
               </View>
-              <SafeAreaView style={{}}>
-              <ScrollView style={styles.TSOverlayContainerStyle}>
-                {open_terms_of_service && this.renderTermsOfService()}
-                {open_cookie_policy && this.renderCookiePolicy()}
-                {open_data_use_policy && this.renderDataUsePolicy()}
-              </ScrollView>
+              <SafeAreaView style={{flex: 1}}>
+                <ScrollView style={styles.TSOverlayContainerStyle} contentContainerStyle={styles.TSContentContainerStyle}>
+                  {open_terms_of_service && this.renderTermsOfService()}
+                  {open_cookie_policy && this.renderCookiePolicy()}
+                  {open_data_use_policy && this.renderDataUsePolicy()}
+                </ScrollView>
               </SafeAreaView>
             </View>
           </Overlay>
@@ -266,6 +266,9 @@ const styles = StyleSheet.create({
     height: '93%',
     padding: 5,
   },
+  TSContentContainerStyle:{
+    flexGrow: 1,
+   },
   articleTitleStyle: {
     justifyContent: 'flex-start',
     display: 'flex',

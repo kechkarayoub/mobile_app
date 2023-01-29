@@ -18,7 +18,6 @@ export const get_data_use_policy_articles = (data, handleOpenUrl) => {
                 </>
             },
             fr: () => {
-              console.log("hhhhhhhhhhhhhhhhhhhhhh: ", render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle))
                 return <>
                   <Text style={styles.paragraphContentStyle}>{`La présente politique décrit les informations que nous traitons pour le fonctionnement de `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` et d'autres fonctionnalités et produits proposés par `}{render_term_service_custom_item(data.company_name || "company_name")}{`.`}</Text>
                 </>
