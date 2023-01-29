@@ -4,22 +4,23 @@ import {COLORS} from "../../variables/colors";
 import {line_return} from "../../utils";
 import {render_term_service_link, render_term_service_custom_item} from "./utils";
 
-export const get_intro_items = (data, handleOpenUrl) => {
+export const get_data_use_policy_articles = (data, handleOpenUrl) => {
     return {
         intro: {
             ar: () => {
                 return <>
-                  <Text style={styles.paragraphContentStyle}>{`توضح هذه السياسة المعلومات التي نتولى معالجتها بهدف دعم ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} وغيرها من المنتجات والميزات التي تقدمها شركة ${render_term_service_custom_item(data.company_name || "company_name")}.`}</Text>
+                  <Text style={styles.paragraphContentStyle}>{`توضح هذه السياسة المعلومات التي نتولى معالجتها بهدف دعم `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` وغيرها من المنتجات والميزات التي تقدمها شركة `}{render_term_service_custom_item(data.company_name || "company_name")}{`.`}</Text>
                 </>
             },
             en: () => {
                 return <>
-                  <Text style={styles.paragraphContentStyle}>{`This Policy describes the information we process to support ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} and other products and features offered by ${render_term_service_custom_item(data.company_name || "company_name")}.`}</Text>
+                  <Text style={styles.paragraphContentStyle}>{`This Policy describes the information we process to support `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` and other products and features offered by `}{render_term_service_custom_item(data.company_name || "company_name")}{`.`}</Text>
                 </>
             },
             fr: () => {
+              console.log("hhhhhhhhhhhhhhhhhhhhhh: ", render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle))
                 return <>
-                  <Text style={styles.paragraphContentStyle}>{`La présente politique décrit les informations que nous traitons pour le fonctionnement de ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} et d'autres fonctionnalités et produits proposés par ${render_term_service_custom_item(data.company_name || "company_name")}.`}</Text>
+                  <Text style={styles.paragraphContentStyle}>{`La présente politique décrit les informations que nous traitons pour le fonctionnement de `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` et d'autres fonctionnalités et produits proposés par `}{render_term_service_custom_item(data.company_name || "company_name")}{`.`}</Text>
                 </>
             },
         },
@@ -33,17 +34,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                 intro: {
                     ar: () => {
                         return <>
-                          <Text style={styles.paragraphContentStyle}>{`حتى نتمكن من توفير خدمات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}، يجب علينا معالجة معلومات عنك. وتعتمد أنواع المعلومات التي نجمعها على طبيعة استخدامك لمنتجاتنا.`}</Text>
+                          <Text style={styles.paragraphContentStyle}>{`حتى نتمكن من توفير خدمات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`، يجب علينا معالجة معلومات عنك. وتعتمد أنواع المعلومات التي نجمعها على طبيعة استخدامك لمنتجاتنا.`}</Text>
                         </>
                     },
                     en: () => {
                         return <>
-                          <Text style={styles.paragraphContentStyle}>{`To provide the ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} services, we must process information about you. The type of information that we collect depends on how you use our products.`}</Text>
+                          <Text style={styles.paragraphContentStyle}>{`To provide the `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` services, we must process information about you. The type of information that we collect depends on how you use our products.`}</Text>
                         </>
                     },
                     fr: () => {
                         return <>
-                          <Text style={styles.paragraphContentStyle}>{`Pour fournir les services ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}, nous devons traiter des informations vous concernant. Les types d'informations que nous recueillons dépendent de la manière dont vous utilisez nos produits.`}</Text>
+                          <Text style={styles.paragraphContentStyle}>{`Pour fournir les services `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`, nous devons traiter des informations vous concernant. Les types d'informations que nous recueillons dépendent de la manière dont vous utilisez nos produits.`}</Text>
                         </>
                     },
                 },
@@ -51,51 +52,51 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`الأمور التي تقوم بها وتقدم معلومات عنها.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`الأمور التي تقوم بها وتقدم معلومات عنها.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Things that you do and provide.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Things that you do and provide.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Informations et contenus que vous fournissez.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Informations et contenus que vous fournissez.`}</Text>
                             </>
                         },
                         list_items: [
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("المعلومات وعناصر المحتوى التي تقدمها.")} نجمع عناصر المحتوى والاتصالات والمعلومات الأخرى التي توفرها عند استخدام منتجاتنا، بما في ذلك عند قيامك بالتسجيل للحصول على حساب. ويمكن لذلك أن يتضمن المعلومات الموجودة في المحتوى الذي توفره أو معلومات عن هذا المحتوى (كبيانات التعريف) مثل موقع صورة وتاريخ إنشاء الملف. تقوم أنظمتنا تلقائيًا بمعالجة المحتوى والاتصالات التي تقدمها أنت والآخرون لتحليل السياق وما يتضمنه المحتوى والاتصالات للأغراض الموضّحة أدناه.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("المعلومات وعناصر المحتوى التي تقدمها.")}{` نجمع عناصر المحتوى والاتصالات والمعلومات الأخرى التي توفرها عند استخدام منتجاتنا، بما في ذلك عند قيامك بالتسجيل للحصول على حساب. ويمكن لذلك أن يتضمن المعلومات الموجودة في المحتوى الذي توفره أو معلومات عن هذا المحتوى (كبيانات التعريف) مثل موقع صورة وتاريخ إنشاء الملف. تقوم أنظمتنا تلقائيًا بمعالجة المحتوى والاتصالات التي تقدمها أنت والآخرون لتحليل السياق وما يتضمنه المحتوى والاتصالات للأغراض الموضّحة أدناه.`}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Information and content you provide.")} We collect the content, communications and other information you provide when you use our products, including when you sign up for an account, create or share content and message or communicate with others. Our systems automatically process content and communications that you and others provide to analyse context and what's in them for the purposes described below.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Information and content you provide.")}{` We collect the content, communications and other information you provide when you use our products, including when you sign up for an account, create or share content and message or communicate with others. Our systems automatically process content and communications that you and others provide to analyse context and what's in them for the purposes described below.`}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Informations et contenus que vous fournissez.")} Nous recueillons le contenu, les communications ainsi que d'autres informations que vous fournissez lorsque vous utilisez nos produits, notamment lorsque vous créez un compte. Nos systèmes traitent automatiquement le contenu et les communications que vous et d'autres fournissez afin d'analyser le contexte et ce qu'ils contiennent aux fins décrites ci-dessous.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Informations et contenus que vous fournissez.")}{` Nous recueillons le contenu, les communications ainsi que d'autres informations que vous fournissez lorsque vous utilisez nos produits, notamment lorsque vous créez un compte. Nos systèmes traitent automatiquement le contenu et les communications que vous et d'autres fournissez afin d'analyser le contexte et ce qu'ils contiennent aux fins décrites ci-dessous.`}</Text>
                                     </>
                                 },
                             },
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("استخدامك.")} نجمع المعلومات التي تتعلق باستخدامك لمنتجاتنا، مثل أنواع المحتوى التي تعرضها أو تتفاعل معها والميزات التي تستخدمها وكذلك أوقات الأنشطة التي تقوم بها ومعدل تكرارها والمدة الزمنية لها. على سبيل المثال، نقوم بتسجيل وقت استخدامك لمنتجاتنا ومتى كانت آخر مرة قمت فيها باستخدامها.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("استخدامك.")}{` نجمع المعلومات التي تتعلق باستخدامك لمنتجاتنا، مثل أنواع المحتوى التي تعرضها أو تتفاعل معها والميزات التي تستخدمها وكذلك أوقات الأنشطة التي تقوم بها ومعدل تكرارها والمدة الزمنية لها. على سبيل المثال، نقوم بتسجيل وقت استخدامك لمنتجاتنا ومتى كانت آخر مرة قمت فيها باستخدامها.`}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Your usage.")} We collect information about how you use our products, such as the types of content that you view or engage with, the features you use, the actions you take, frequency and duration of your activities. For example, we log when you're using and have last used our products.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Your usage.")}{` We collect information about how you use our products, such as the types of content that you view or engage with, the features you use, the actions you take, frequency and duration of your activities. For example, we log when you're using and have last used our products.`}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Votre utilisation.")} Nous recueillons des informations concernant la manière dont vous utilisez nos produits, telles que les types de contenu que vous consultez ou avec lesquels vous interagissez, les fonctionnalités que vous utilisez, les actions que vous réalisez, et l'heure, la fréquence et la durée de vos activités. Par exemple, nous enregistrons quand vous utilisez et quand vous avez utilisé pour la dernière fois nos produits.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Votre utilisation.")}{` Nous recueillons des informations concernant la manière dont vous utilisez nos produits, telles que les types de contenu que vous consultez ou avec lesquels vous interagissez, les fonctionnalités que vous utilisez, les actions que vous réalisez, et l'heure, la fréquence et la durée de vos activités. Par exemple, nous enregistrons quand vous utilisez et quand vous avez utilisé pour la dernière fois nos produits.`}</Text>
                                     </>
                                 },
                             },
@@ -104,17 +105,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`معلومات الجهاز.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`معلومات الجهاز.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Device information.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Device information.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Informations sur les appareils.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Informations sur les appareils.`}</Text>
                             </>
                         },
                         list_items: [
@@ -138,119 +139,119 @@ export const get_intro_items = (data, handleOpenUrl) => {
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("سمات الجهاز:")} معلومات مثل نظام التشغيل والأجهزة وإصدارات البرامج ومستوى شحن البطارية وقوة الإشارة ومساحة التخزين المتوفرة ونوع المتصفح وأسماء وأنواع التطبيقات والملفات والمكونات الإضافية.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("سمات الجهاز:")}{` معلومات مثل نظام التشغيل والأجهزة وإصدارات البرامج ومستوى شحن البطارية وقوة الإشارة ومساحة التخزين المتوفرة ونوع المتصفح وأسماء وأنواع التطبيقات والملفات والمكونات الإضافية.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Device attributes:")} information such as the operating system, hardware and software versions, battery level, signal strength, available storage space, browser type, app and file names and types, and plugins.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Device attributes:")}{` information such as the operating system, hardware and software versions, battery level, signal strength, available storage space, browser type, app and file names and types, and plugins.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Attributs des appareils :")} des informations telles que le système d'exploitation, les versions matérielles et logicielles, le niveau de batterie, l'intensité du signal, l'espace de stockage disponible, le type de navigateur, le nom et le type des applications et des fichiers, ainsi que les plugins.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Attributs des appareils :")}{` des informations telles que le système d'exploitation, les versions matérielles et logicielles, le niveau de batterie, l'intensité du signal, l'espace de stockage disponible, le type de navigateur, le nom et le type des applications et des fichiers, ainsi que les plugins.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("عمليات تشغيل الجهاز:")} المعلومات التي تتعلق بعمليات التشغيل والسلوكيات التي يتم إجراؤها على الجهاز، على سبيل المثال هل يتم عرض الإطار في المقدمة أم يتم إرساله إلى الخلفية، أو حركات الماوس (والتي يمكن أن تساعد في تمييز المستخدمين البشريين من البرامج التلقائية).`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("عمليات تشغيل الجهاز:")}{` المعلومات التي تتعلق بعمليات التشغيل والسلوكيات التي يتم إجراؤها على الجهاز، على سبيل المثال هل يتم عرض الإطار في المقدمة أم يتم إرساله إلى الخلفية، أو حركات الماوس (والتي يمكن أن تساعد في تمييز المستخدمين البشريين من البرامج التلقائية).`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Device operations:")} information about operations and behaviours performed on the device, such as whether a window is in the foreground or background, or mouse movements (which can help distinguish humans from bots).`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Device operations:")}{` information about operations and behaviours performed on the device, such as whether a window is in the foreground or background, or mouse movements (which can help distinguish humans from bots).`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Activités sur l'appareil :")} les informations concernant les opérations et les comportements sur l'appareil, par exemple, lorsqu'une fenêtre est mise au premier plan ou en arrière plan, ainsi que les mouvements de la souris (permettant de différencier les humains des bots).`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Activités sur l'appareil :")}{` les informations concernant les opérations et les comportements sur l'appareil, par exemple, lorsqu'une fenêtre est mise au premier plan ou en arrière plan, ainsi que les mouvements de la souris (permettant de différencier les humains des bots).`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("المعرفات:")} المعرفات الفريدة ومعرفات الأجهزة وغيرها من المعرفات، مثل معرفات الألعاب أو التطبيقات أو الحسابات التي تستخدمها، ومعرفات الجهاز العائلي (أو غيرها من المعرفات الفريدة بالنسبة إلى منتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} التي ترتبط بنفس الجهاز أو الحساب).`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("المعرفات:")}{` المعرفات الفريدة ومعرفات الأجهزة وغيرها من المعرفات، مثل معرفات الألعاب أو التطبيقات أو الحسابات التي تستخدمها، ومعرفات الجهاز العائلي (أو غيرها من المعرفات الفريدة بالنسبة إلى منتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` التي ترتبط بنفس الجهاز أو الحساب).`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Identifiers:")} unique identifiers, device IDs and other identifiers, such as from games, apps or accounts that you use, and Family Device IDs (or other identifiers unique to ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products associated with the same device or account).`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Identifiers:")}{` unique identifiers, device IDs and other identifiers, such as from games, apps or accounts that you use, and Family Device IDs (or other identifiers unique to `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products associated with the same device or account).`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Identifiants :")} les identifiants uniques, identifiants d'appareils et autres identifiants, notamment ceux provenant de jeux, d'applications ou de comptes que vous utilisez, et les identifiants d'appareils familiaux (ou autres identifiants propres aux produits des entités ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} associés à un même appareil ou compte).`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Identifiants :")}{` les identifiants uniques, identifiants d'appareils et autres identifiants, notamment ceux provenant de jeux, d'applications ou de comptes que vous utilisez, et les identifiants d'appareils familiaux (ou autres identifiants propres aux produits des entités `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` associés à un même appareil ou compte).`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("إشارات الجهاز:")} إشارات Bluetooth والمعلومات التي تتعلق بأقرب نقاط وصول إلى Wi-Fi أو الإشارات الخاصة به أو أبراج الهواتف الخلوية.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("إشارات الجهاز:")}{` إشارات Bluetooth والمعلومات التي تتعلق بأقرب نقاط وصول إلى Wi-Fi أو الإشارات الخاصة به أو أبراج الهواتف الخلوية.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Device signals:")} Bluetooth signals, information about nearby Wi-Fi access points, beacons and mobile phone masts.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Device signals:")}{` Bluetooth signals, information about nearby Wi-Fi access points, beacons and mobile phone masts.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Signaux des appareils :")} signaux Bluetooth et informations concernant les points d'accès Wi-Fi, les balises et les tours de télécommunication à proximité.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Signaux des appareils :")}{` signaux Bluetooth et informations concernant les points d'accès Wi-Fi, les balises et les tours de télécommunication à proximité.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("بيانات من إعدادات الجهاز:")} المعلومات التي تسمح لنا بتلقيها من إعدادات الجهاز التي تقوم بتشغيلها، مثل الوصول إلى موقعك عبر نظام تحديد المواقع العالمي "GPS" أو الكاميرا أو الصور.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("بيانات من إعدادات الجهاز:")}{` المعلومات التي تسمح لنا بتلقيها من إعدادات الجهاز التي تقوم بتشغيلها، مثل الوصول إلى موقعك عبر نظام تحديد المواقع العالمي "GPS" أو الكاميرا أو الصور.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Data from device settings:")} information you allow us to receive through device settings that you turn on, such as access to your GPS location, camera or photos.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Data from device settings:")}{` information you allow us to receive through device settings that you turn on, such as access to your GPS location, camera or photos.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Données issues des paramètres de l'appareil :")} les informations que vous nous autorisez à recevoir par le biais des paramètres de l'appareil que vous activez, notamment l'accès à votre localisation GPS, à votre appareil photo ou à vos photos.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Données issues des paramètres de l'appareil :")}{` les informations que vous nous autorisez à recevoir par le biais des paramètres de l'appareil que vous activez, notamment l'accès à votre localisation GPS, à votre appareil photo ou à vos photos.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("الشبكة وعمليات الاتصال:")} معلومات مثل اسم شركة تشغيل هاتفك المحمول أو موفر خدمة الإنترنت واللغة والمنطقة الزمنية ورقم الهاتف المحمول وعنوان IP وسرعة الاتصال بالإنترنت و، في بعض الحالات، معلومات حول الأجهزة الأخرى الموجودة بالجوار أو المتصلة بنفس الشبكة التي تستخدمها.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("الشبكة وعمليات الاتصال:")}{` معلومات مثل اسم شركة تشغيل هاتفك المحمول أو موفر خدمة الإنترنت واللغة والمنطقة الزمنية ورقم الهاتف المحمول وعنوان IP وسرعة الاتصال بالإنترنت و، في بعض الحالات، معلومات حول الأجهزة الأخرى الموجودة بالجوار أو المتصلة بنفس الشبكة التي تستخدمها.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Network and connections:")}  information such as the name of your mobile operator or ISP, language, time zone, mobile phone number, IP address, connection speed and, in some cases, information about other devices that are nearby or on your network.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Network and connections:")}{`  information such as the name of your mobile operator or ISP, language, time zone, mobile phone number, IP address, connection speed and, in some cases, information about other devices that are nearby or on your network.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Réseau et connexion :")} des informations telles que le nom de votre opérateur mobile ou de votre fournisseur d'accès à Internet, votre langue, votre fuseau horaire, votre numéro de téléphone mobile, votre adresse IP, votre vitesse de connexion et, dans certains cas, des informations concernant d'autres appareils situés à proximité ou sur votre réseau.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Réseau et connexion :")}{` des informations telles que le nom de votre opérateur mobile ou de votre fournisseur d'accès à Internet, votre langue, votre fuseau horaire, votre numéro de téléphone mobile, votre adresse IP, votre vitesse de connexion et, dans certains cas, des informations concernant d'autres appareils situés à proximité ou sur votre réseau.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("بيانات ملفات تعريف الارتباط:")} البيانات التي يتم تخزينها من ملفات تعريف الارتباط على جهازك، بما في ذلك معرفات ملفات تعريف الارتباط والإعدادات.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("بيانات ملفات تعريف الارتباط:")}{` البيانات التي يتم تخزينها من ملفات تعريف الارتباط على جهازك، بما في ذلك معرفات ملفات تعريف الارتباط والإعدادات.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Cookie data:")} data from cookies stored on your device, including cookie IDs and settings.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Cookie data:")}{` data from cookies stored on your device, including cookie IDs and settings.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Données issues des cookies :")} données provenant des cookies enregistrés sur votre appareil, notamment les identifiants et paramètres des cookies.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Données issues des cookies :")}{` données provenant des cookies enregistrés sur votre appareil, notamment les identifiants et paramètres des cookies.`}</Text>
                                             </>
                                         },
                                     },
@@ -261,17 +262,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`معلومات من الشركاء.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`معلومات من الشركاء.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Information from partners.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Information from partners.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Informations fournies par les partenaires.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Informations fournies par les partenaires.`}</Text>
                             </>
                         },
                         list_items: [
@@ -305,17 +306,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                 intro: {
                     ar: () => {
                         return <>
-                          <Text style={styles.paragraphContentStyle}>{`نستخدم المعلومات التي نحصل عليها (وفقًا للاختيارات التي تحددها) بهدف توفير ودعم منتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} والخدمات المرتبطة بها. وفيما يلي طريقة القيام بذلك:`}</Text>
+                          <Text style={styles.paragraphContentStyle}>{`نستخدم المعلومات التي نحصل عليها (وفقًا للاختيارات التي تحددها) بهدف توفير ودعم منتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` والخدمات المرتبطة بها. وفيما يلي طريقة القيام بذلك:`}</Text>
                         </>
                     },
                     en: () => {
                         return <>
-                          <Text style={styles.paragraphContentStyle}>{`We use the information that we have (subject to choices you make) to provide and support the ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products and related services. Here's how:`}</Text>
+                          <Text style={styles.paragraphContentStyle}>{`We use the information that we have (subject to choices you make) to provide and support the `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products and related services. Here's how:`}</Text>
                         </>
                     },
                     fr: () => {
                         return <>
-                          <Text style={styles.paragraphContentStyle}>{`Nous utilisons les informations à notre disposition (en fonction des choix que vous effectuez) afin de fournir et d'assurer le fonctionnement des produits ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} et les services associés. Nous procédons comme suit :`}</Text>
+                          <Text style={styles.paragraphContentStyle}>{`Nous utilisons les informations à notre disposition (en fonction des choix que vous effectuez) afin de fournir et d'assurer le fonctionnement des produits `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` et les services associés. Nous procédons comme suit :`}</Text>
                         </>
                     },
                 },
@@ -323,17 +324,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`توفير منتجاتنا وإضفاء طابع شخصي عليها وتحسينها.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`توفير منتجاتنا وإضفاء طابع شخصي عليها وتحسينها.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Provide, personalise and improve our products.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Provide, personalise and improve our products.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Proposer, personnaliser et améliorer nos produits.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Proposer, personnaliser et améliorer nos produits.`}</Text>
                             </>
                         },
                         list_items: [
@@ -357,68 +358,68 @@ export const get_intro_items = (data, handleOpenUrl) => {
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item(`معلومات على منتجات ${data.site_name || "site_name"} والأجهزة:`)} نقوم بربط المعلومات التي تتعلق بأنشطتك التي تقوم بها على الأجهزة ومنتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} المختلفة بهدف تقديم تجربة أكثر تفصيلاً وملاءمة واتساقًا على جميع منتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} التي تستخدمها. على سبيل المثال يمكننا أن نجعل تجربتك أكثر سلاسة، على سبيل المثال، من خلال القيام تلقائيًا بتعبئة معلومات التسجيل الخاصة بك (مثل رقم هاتفك) من أحد منتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} عند التسجيل للحصول على حساب في منتج آخر.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item(`معلومات على منتجات ${data.site_name || "site_name"} والأجهزة:`)}{` نقوم بربط المعلومات التي تتعلق بأنشطتك التي تقوم بها على الأجهزة ومنتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` المختلفة بهدف تقديم تجربة أكثر تفصيلاً وملاءمة واتساقًا على جميع منتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` التي تستخدمها. على سبيل المثال يمكننا أن نجعل تجربتك أكثر سلاسة، على سبيل المثال، من خلال القيام تلقائيًا بتعبئة معلومات التسجيل الخاصة بك (مثل رقم هاتفك) من أحد منتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` عند التسجيل للحصول على حساب في منتج آخر.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item(`Information across ${data.site_name || "site_name"} products and devices:`)} We connect information about your activities on different ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products and devices to provide a more tailored and consistent experience on all ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products that you use, wherever you use them. For example, we can make your experience more seamless, for example, by automatically filling in your registration information (such as your phone number) from one ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} product when you sign up for an account on a different product.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item(`Information across ${data.site_name || "site_name"} products and devices:`)}{` We connect information about your activities on different `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products and devices to provide a more tailored and consistent experience on all `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products that you use, wherever you use them. For example, we can make your experience more seamless, for example, by automatically filling in your registration information (such as your phone number) from one `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` product when you sign up for an account on a different product.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item(`Informations sur l'ensemble des produits ${data.site_name || "site_name"} et des appareils :`)} nous relions les informations concernant vos activités sur les différents produits ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} et appareils afin de vous fournir une expérience plus personnalisée et plus cohérente sur l'ensemble des produits ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} que vous utilisez, quel que soit le support sur lequel vous les utilisez. Par exemple, nous pouvons faire en sorte que votre expérience soit plus fluide, par exemple en remplissant automatiquement vos informations d'inscription (notamment votre numéro téléphone) à partir d'un produit ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} lorsque vous créez un compte sur un autre produit.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item(`Informations sur l'ensemble des produits ${data.site_name || "site_name"} et des appareils :`)}{` nous relions les informations concernant vos activités sur les différents produits `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` et appareils afin de vous fournir une expérience plus personnalisée et plus cohérente sur l'ensemble des produits `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` que vous utilisez, quel que soit le support sur lequel vous les utilisez. Par exemple, nous pouvons faire en sorte que votre expérience soit plus fluide, par exemple en remplissant automatiquement vos informations d'inscription (notamment votre numéro téléphone) à partir d'un produit `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` lorsque vous créez un compte sur un autre produit.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("معلومات مرتبطة بالموقع:")} نستخدم المعلومات المرتبطة بالموقع - مثل الموقع الحالي ومكان إقامتك والأماكن التي تفضل الذهاب إليها، بهدف توفير منتجاتنا وإضفاء طابع شخصي عليها وتحسينها، بما في ذلك الإعلانات، لك وللآخرين. قد تستند المعلومات المرتبطة بالموقع إلى أشياء مثل موقع الجهاز المحدد بدقة (إذا سمحت لنا بالحصول عليه) وعناوين IP والمعلومات التي يتم الحصول عليها من استخدامك واستخدام الآخرين لمنتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("معلومات مرتبطة بالموقع:")}{` نستخدم المعلومات المرتبطة بالموقع - مثل الموقع الحالي ومكان إقامتك والأماكن التي تفضل الذهاب إليها، بهدف توفير منتجاتنا وإضفاء طابع شخصي عليها وتحسينها، بما في ذلك الإعلانات، لك وللآخرين. قد تستند المعلومات المرتبطة بالموقع إلى أشياء مثل موقع الجهاز المحدد بدقة (إذا سمحت لنا بالحصول عليه) وعناوين IP والمعلومات التي يتم الحصول عليها من استخدامك واستخدام الآخرين لمنتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Location-related information:")} We use location-related information – such as your current location, where you live, the places you like to go – to provide, personalise and improve our products, including ads, for you and others. Location-related information can be based on things such as precise device location (if you've allowed us to collect it), IP addresses and information from your and others' use of ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Location-related information:")}{` We use location-related information – such as your current location, where you live, the places you like to go – to provide, personalise and improve our products, including ads, for you and others. Location-related information can be based on things such as precise device location (if you've allowed us to collect it), IP addresses and information from your and others' use of `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Informations géographiques :")} nous utilisons des informations géographiques (comme votre position actuelle, le lieu où vous résidez, les endroits où vous aimez aller) afin de proposer, de personnaliser et d'améliorer nos produits, notamment les publicités, pour vous et les autres. Ces informations géographiques peuvent provenir notamment de l'emplacement précis des appareils (si vous nous avez autorisés à les recueillir), des adresses IP et des informations concernant votre utilisation (et celle des autres) des produits ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Informations géographiques :")}{` nous utilisons des informations géographiques (comme votre position actuelle, le lieu où vous résidez, les endroits où vous aimez aller) afin de proposer, de personnaliser et d'améliorer nos produits, notamment les publicités, pour vous et les autres. Ces informations géographiques peuvent provenir notamment de l'emplacement précis des appareils (si vous nous avez autorisés à les recueillir), des adresses IP et des informations concernant votre utilisation (et celle des autres) des produits `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("أبحاث وتطوير المنتجات:")} نستخدم المعلومات المتوفرة لدينا من أجل تطوير منتجاتنا واختبارها وتحسينها، بما في ذلك من خلال تنفيذ استطلاعات الرأي والأبحاث واختبار المنتجات والميزات الجديدة واستكشاف المشكلات المرتبطة بها وحلها.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("أبحاث وتطوير المنتجات:")}{` نستخدم المعلومات المتوفرة لدينا من أجل تطوير منتجاتنا واختبارها وتحسينها، بما في ذلك من خلال تنفيذ استطلاعات الرأي والأبحاث واختبار المنتجات والميزات الجديدة واستكشاف المشكلات المرتبطة بها وحلها.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Product research and development:")} We use the information we have to develop, test and improve our products, including by conducting surveys and research, and testing and troubleshooting new products and features.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Product research and development:")}{` We use the information we have to develop, test and improve our products, including by conducting surveys and research, and testing and troubleshooting new products and features.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Recherche et développement des produits :")} Nous utilisons les informations à notre disposition pour développer, tester et améliorer nos produits, notamment en réalisant des sondages et des recherches, et en testant et en dépannant les nouveaux produits et les nouvelles fonctionnalités.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Recherche et développement des produits :")}{` Nous utilisons les informations à notre disposition pour développer, tester et améliorer nos produits, notamment en réalisant des sondages et des recherches, et en testant et en dépannant les nouveaux produits et les nouvelles fonctionnalités.`}</Text>
                                             </>
                                         },
                                     },
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("الإعلانات وغيرها من المحتوى المُموَّل:")} نستخدم المعلومات المتوفرة لدينا عنك، بما في ذلك المعلومات المتعلقة باهتماماتك وإجراءاتك وجهات التواصل، لتحديد الإعلانات والعروض وغيرها من المحتوى المُموَّل الذي نعرضه عليك وإضفاء طابع شخصي عليها.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("الإعلانات وغيرها من المحتوى المُموَّل:")}{` نستخدم المعلومات المتوفرة لدينا عنك، بما في ذلك المعلومات المتعلقة باهتماماتك وإجراءاتك وجهات التواصل، لتحديد الإعلانات والعروض وغيرها من المحتوى المُموَّل الذي نعرضه عليك وإضفاء طابع شخصي عليها.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Ads and other sponsored content:")} We use the information we have about you – including information about your interests, actions and connections – to select and personalise ads, offers and other sponsored content that we show you.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Ads and other sponsored content:")}{` We use the information we have about you – including information about your interests, actions and connections – to select and personalise ads, offers and other sponsored content that we show you.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`${render_term_service_custom_item("Publicités et autres contenus sponsorisés :")} nous utilisons les informations vous concernant à notre disposition (notamment les informations concernant vos centres d'intérêt, vos actions et vos connexions) pour sélectionner et pour personnaliser les publicités, les offres et les autres contenus sponsorisés que nous vous montrons.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{render_term_service_custom_item("Publicités et autres contenus sponsorisés :")}{` nous utilisons les informations vous concernant à notre disposition (notamment les informations concernant vos centres d'intérêt, vos actions et vos connexions) pour sélectionner et pour personnaliser les publicités, les offres et les autres contenus sponsorisés que nous vous montrons.`}</Text>
                                             </>
                                         },
                                     },
@@ -429,17 +430,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`توفير خدمات القياس والتحليلات وغيرها من خدمات الأنشطة التجارية.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`توفير خدمات القياس والتحليلات وغيرها من خدمات الأنشطة التجارية.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Providing measurement, analytics and other business services.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Providing measurement, analytics and other business services.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Fournir des mesures, des analyses et d'autres services professionnels.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Fournir des mesures, des analyses et d'autres services professionnels.`}</Text>
                             </>
                         },
                         list_items: [
@@ -465,34 +466,34 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`تعزيز السلامة والنزاهة والأمان.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`تعزيز السلامة والنزاهة والأمان.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Promoting safety, integrity and security.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Promoting safety, integrity and security.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Favoriser la sûreté, l'intégrité et la sécurité.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Favoriser la sûreté, l'intégrité et la sécurité.`}</Text>
                             </>
                         },
                         list_items: [
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`نستخدم المعلومات المتوفرة لدينا للتحقق من الحسابات والأنشطة ومواجهة السلوكيات الضارة واكتشاف محاولات تقديم محتوى غير مهم أو احتيالي وغيرها من التجارب السيئة ومنعها، والمحافظة على نزاهة منتجاتنا، بالإضافة إلى تعزيز السلامة والأمان داخل منتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} وخارجها. `}</Text>
+                                      <Text style={styles.listItemContentStyle}>{`نستخدم المعلومات المتوفرة لدينا للتحقق من الحسابات والأنشطة ومواجهة السلوكيات الضارة واكتشاف محاولات تقديم محتوى غير مهم أو احتيالي وغيرها من التجارب السيئة ومنعها، والمحافظة على نزاهة منتجاتنا، بالإضافة إلى تعزيز السلامة والأمان داخل منتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` وخارجها. `}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`We use the information that we have to verify accounts and activity, combat harmful conduct, detect and prevent spam and other bad experiences, maintain the integrity of our products, and promote safety and security on and off of ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{`We use the information that we have to verify accounts and activity, combat harmful conduct, detect and prevent spam and other bad experiences, maintain the integrity of our products, and promote safety and security on and off of `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products.`}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`Nous utilisons les informations à notre disposition pour vérifier les comptes et les activités, pour lutter contre les comportements dangereux, pour détecter et prévenir le contenu indésirable et toutes autres expériences négatives, pour préserver l'intégrité de nos produits et pour favoriser la sûreté et la sécurité sur les produits ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} et en dehors de ceux-ci.`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{`Nous utilisons les informations à notre disposition pour vérifier les comptes et les activités, pour lutter contre les comportements dangereux, pour détecter et prévenir le contenu indésirable et toutes autres expériences négatives, pour préserver l'intégrité de nos produits et pour favoriser la sûreté et la sécurité sur les produits `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` et en dehors de ceux-ci.`}</Text>
                                     </>
                                 },
                             },
@@ -501,17 +502,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`التواصل معك.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`التواصل معك.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Communicate with you.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Communicate with you.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Communiquer avec vous.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Communiquer avec vous.`}</Text>
                             </>
                         },
                         list_items: [
@@ -537,17 +538,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`الأبحاث والابتكار للأعمال الخيرية.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`الأبحاث والابتكار للأعمال الخيرية.`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Researching and innovating for social good.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Researching and innovating for social good.`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Faire de la recherche et innover pour le bien-être social.`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Faire de la recherche et innover pour le bien-être social.`}</Text>
                             </>
                         },
                         list_items: [
@@ -599,51 +600,51 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`المشاركة على منتجات ${data.site_name || "site_name"}`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`المشاركة على منتجات ${data.site_name || "site_name"}`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Sharing on ${data.site_name || "site_name"} products`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Sharing on ${data.site_name || "site_name"} products`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`Partage sur les produits ${data.site_name || "site_name"}`}</Text>
+                              <Text style={styles.paragraphTitleContentStyle}>{`Partage sur les produits ${data.site_name || "site_name"}`}</Text>
                             </>
                         },
                         list_items: [
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("المعلومات العامة:")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("المعلومات العامة:")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Public information:")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Public information:")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Les informations publiques :")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Les informations publiques :")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
                                     {
                                         ar: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`المعلومات العامة يمكن لأي شخص رؤيتها سواء كان داخل أو خارج منتجاتنا، حتى وإن لم يكن له حساب لدينا. وتتضمن هذه المعلومات العامة اسم المستخدم وأي معلومات تقوم بمشاركتها مع الجمهور العام والمعلومات المتوفرة في ملفك الشخصي العام. يمكنك أنت والأشخاص الآخرون الذين يستخدمون ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}، وكذلك نحن توفير صلاحية الوصول إلى المعلومات العامة أو إرسالها إلى أي شخص داخل منتجاتنا أو خارجها، بما في ذلك في منتجات ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} الأخرى، أو في نتائج البحث، أو عبر الأدوات وواجهات API. ويمكن كذلك ظهور المعلومات العامة أو الوصول إليها أو إعادة مشاركتها أو تنزيلها عبر خدمات تابعة لجهات خارجية مثل محركات البحث وواجهات API والوسائط غير المتصلة بالإنترنت مثل التلفزيون، وعبر التطبيقات ومواقع الويب والخدمات الأخرى التي تندمج مع منتجاتنا.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{`المعلومات العامة يمكن لأي شخص رؤيتها سواء كان داخل أو خارج منتجاتنا، حتى وإن لم يكن له حساب لدينا. وتتضمن هذه المعلومات العامة اسم المستخدم وأي معلومات تقوم بمشاركتها مع الجمهور العام والمعلومات المتوفرة في ملفك الشخصي العام. يمكنك أنت والأشخاص الآخرون الذين يستخدمون `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`، وكذلك نحن توفير صلاحية الوصول إلى المعلومات العامة أو إرسالها إلى أي شخص داخل منتجاتنا أو خارجها، بما في ذلك في منتجات `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` الأخرى، أو في نتائج البحث، أو عبر الأدوات وواجهات API. ويمكن كذلك ظهور المعلومات العامة أو الوصول إليها أو إعادة مشاركتها أو تنزيلها عبر خدمات تابعة لجهات خارجية مثل محركات البحث وواجهات API والوسائط غير المتصلة بالإنترنت مثل التلفزيون، وعبر التطبيقات ومواقع الويب والخدمات الأخرى التي تندمج مع منتجاتنا.`}</Text>
                                             </>
                                         },
                                         en: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`Public information can be seen by anyone, on or off our products, including if they don't have an account. This includes your username, any information you share with a public audience, information in your public profile. You, other people using ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}, and we can provide access to or send public information to anyone on or off our products, including in other ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)} products, in search results or through tools and APIs. Public information can also be seen, accessed, reshared or downloaded through third-party services such as search engines, APIs and offline media such as TV, and by apps, websites and other services that integrate with our products.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{`Public information can be seen by anyone, on or off our products, including if they don't have an account. This includes your username, any information you share with a public audience, information in your public profile. You, other people using `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`, and we can provide access to or send public information to anyone on or off our products, including in other `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{` products, in search results or through tools and APIs. Public information can also be seen, accessed, reshared or downloaded through third-party services such as search engines, APIs and offline media such as TV, and by apps, websites and other services that integrate with our products.`}</Text>
                                             </>
                                         },
                                         fr: () => {
                                             return <>
-                                              <Text style={styles.subListItemContentStyle}>{`Les informations publiques peuvent être vues par tout le monde, sur nos produits ou en dehors, même par les personnes qui n'ont pas de compte. Cela inclut votre nom d'utilisateur, toute information publique que vous partagez avec tout le monde, les informations figurant dans votre profil public. Vous, d'autres personnes utilisant ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}, et nous pouvons accorder un accès à des informations publiques ou envoyer de telles informations à n'importe qui sur nos produits ou en dehors, y compris sur les autres produits des entités ${render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}, dans les résultats de recherche ou par le biais des outils et des API. Il est également possible de consulter, de repartager ou de télécharger les informations publiques au moyen de services tiers, notamment les moteurs de recherche, les API et les médias hors ligne comme la télévision, et au moyen d'applications, de sites web et d'autres services intégrés dans nos produits.`}</Text>
+                                              <Text style={styles.subListItemContentStyle}>{`Les informations publiques peuvent être vues par tout le monde, sur nos produits ou en dehors, même par les personnes qui n'ont pas de compte. Cela inclut votre nom d'utilisateur, toute information publique que vous partagez avec tout le monde, les informations figurant dans votre profil public. Vous, d'autres personnes utilisant `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`, et nous pouvons accorder un accès à des informations publiques ou envoyer de telles informations à n'importe qui sur nos produits ou en dehors, y compris sur les autres produits des entités `}{render_term_service_link(data.site_url || "site_url", data.site_url || "site_url", handleOpenUrl, styles.linkStyle)}{`, dans les résultats de recherche ou par le biais des outils et des API. Il est également possible de consulter, de repartager ou de télécharger les informations publiques au moyen de services tiers, notamment les moteurs de recherche, les API et les médias hors ligne comme la télévision, et au moyen d'applications, de sites web et d'autres services intégrés dans nos produits.`}</Text>
                                             </>
                                         },
                                     },
@@ -652,17 +653,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("الأشخاص والحسابات الذين تتواصل معهم وتشارك معهم عناصر المحتوى.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("الأشخاص والحسابات الذين تتواصل معهم وتشارك معهم عناصر المحتوى.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("People and accounts that you share and communicate with")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("People and accounts that you share and communicate with")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Personnes et comptes avec lesquels vous communiquez et partagez du contenu")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Personnes et comptes avec lesquels vous communiquez et partagez du contenu")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -688,17 +689,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("المعلومات المتعلقة بحالة نشاطك أو تواجدك على منتجاتنا.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("المعلومات المتعلقة بحالة نشاطك أو تواجدك على منتجاتنا.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Information about your active status or presence on our products.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Information about your active status or presence on our products.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Informations relatives à votre statut actif ou à votre présence sur nos produits.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Informations relatives à votre statut actif ou à votre présence sur nos produits.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -724,17 +725,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("التطبيقات أو المواقع أو الخدمات الأخرى التابعة لجهات خارجية والتي تستخدم منتجاتنا أو تتكامل معها.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("التطبيقات أو المواقع أو الخدمات الأخرى التابعة لجهات خارجية والتي تستخدم منتجاتنا أو تتكامل معها.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Apps, websites and third-party integrations on or using our products.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Apps, websites and third-party integrations on or using our products.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Applications, sites web et services tiers intégrés à nos produits ou utilisant nos produits.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Applications, sites web et services tiers intégrés à nos produits ou utilisant nos produits.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -760,17 +761,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("مالك جديد.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("مالك جديد.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("New owner.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("New owner.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Nouveau propriétaire.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Nouveau propriétaire.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -798,34 +799,34 @@ export const get_intro_items = (data, handleOpenUrl) => {
                     {
                         ar: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`${render_term_service_custom_item("المشاركة مع شركاء تابعين لجهات خارجية")}${line_return(1)}نتعاون مع شركاء تابعيين لجهات خارجية يساعدوننا في تقديم منتجاتنا وتحسينها، حتى نتمكن من توفير خدماتنا للجميع في كافة أنحاء العالم. لا نبيع أيًا من معلوماتك إلى أي شخص، ولن يحدث هذا مطلقًا. كما نفرض أيضًا قيودًا صارمة على كيفية استخدام شركائنا للبيانات التي نوفرها لهم وكيفية الإفصاح عنها. وفيما يلي أنواع الجهات الخارجية التي نشارك المعلومات معها:`}</Text>
+                              <Text style={styles.paragraphContentStyle}>{render_term_service_custom_item("المشاركة مع شركاء تابعين لجهات خارجية")}{line_return(1)}{`نتعاون مع شركاء تابعيين لجهات خارجية يساعدوننا في تقديم منتجاتنا وتحسينها، حتى نتمكن من توفير خدماتنا للجميع في كافة أنحاء العالم. لا نبيع أيًا من معلوماتك إلى أي شخص، ولن يحدث هذا مطلقًا. كما نفرض أيضًا قيودًا صارمة على كيفية استخدام شركائنا للبيانات التي نوفرها لهم وكيفية الإفصاح عنها. وفيما يلي أنواع الجهات الخارجية التي نشارك المعلومات معها:`}</Text>
                             </>
                         },
                         en: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`${render_term_service_custom_item("Sharing with third-party partners")}${line_return(1)}We work with third-party partners who help us and improve our products, which makes it possible to provide services to all people around the world. We don't sell any of your information to anyone and we never will. We also impose strict restrictions on how our partners can use and disclose the data we provide. Here are the types of third parties that we share information with:`}</Text>
+                              <Text style={styles.paragraphContentStyle}>{render_term_service_custom_item("Sharing with third-party partners")}{line_return(1)}{`We work with third-party partners who help us and improve our products, which makes it possible to provide services to all people around the world. We don't sell any of your information to anyone and we never will. We also impose strict restrictions on how our partners can use and disclose the data we provide. Here are the types of third parties that we share information with:`}</Text>
                             </>
                         },
                         fr: () => {
                             return <>
-                              <Text style={styles.paragraphContentStyle}>{`${render_term_service_custom_item("Partage avec des partenaires tiers")}${line_return(1)}Nous collaborons avec des partenaires tiers qui nous aident à améliorer nos produits, ce qui nous permet de proposer des services dans le monde entier. Nous ne vendons aucune de vos informations à quiconque et nous ne le ferons jamais. Nous imposons également des restrictions strictes quant à la façon dont les partenaires peuvent utiliser et révéler les données que nous leur communiquons. Voici les types de tiers avec lesquels nous partageons des informations :`}</Text>
+                              <Text style={styles.paragraphContentStyle}>{render_term_service_custom_item("Partage avec des partenaires tiers")}{line_return(1)}{`Nous collaborons avec des partenaires tiers qui nous aident à améliorer nos produits, ce qui nous permet de proposer des services dans le monde entier. Nous ne vendons aucune de vos informations à quiconque et nous ne le ferons jamais. Nous imposons également des restrictions strictes quant à la façon dont les partenaires peuvent utiliser et révéler les données que nous leur communiquons. Voici les types de tiers avec lesquels nous partageons des informations :`}</Text>
                             </>
                         },
                         list_items: [
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("الشركاء الذين يستخدمون خدمات التحليل التي نوفرها.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("الشركاء الذين يستخدمون خدمات التحليل التي نوفرها.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Partners who use our analytics services.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Partners who use our analytics services.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Partenaires qui utilisent le service d'analyse.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Partenaires qui utilisent le service d'analyse.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -851,17 +852,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("المعلنون.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("المعلنون.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Advertisers.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Advertisers.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Annonceurs.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Annonceurs.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -887,17 +888,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("شركاء القياس.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("شركاء القياس.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Measurement partners.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Measurement partners.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Partenaires de mesure.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Partenaires de mesure.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -923,17 +924,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("الباحثون والأكاديميون.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("الباحثون والأكاديميون.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Researchers and academics.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Researchers and academics.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Chercheurs et universitaires.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Chercheurs et universitaires.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -959,17 +960,17 @@ export const get_intro_items = (data, handleOpenUrl) => {
                             {
                                 ar: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("إنفاذ القانون أو المتطلبات القانونية.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("إنفاذ القانون أو المتطلبات القانونية.")}</Text>
                                     </>
                                 },
                                 en: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Law enforcement or legal requests.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Law enforcement or legal requests.")}</Text>
                                     </>
                                 },
                                 fr: () => {
                                     return <>
-                                      <Text style={styles.listItemContentStyle}>{`${render_term_service_custom_item("Forces de l'ordre ou demandes légales.")}`}</Text>
+                                      <Text style={styles.listItemContentStyle}>{render_term_service_custom_item("Forces de l'ordre ou demandes légales.")}</Text>
                                     </>
                                 },
                                 sub_list_items: [
@@ -1060,6 +1061,11 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       flexWrap: 'wrap',
       textAlign: 'justify',
+    },
+    paragraphTitleContentStyle: {
+      fontWeight: "bold",
+      fontSize: 13,
+      color: COLORS.secondary_color,
     },
     listItemContentStyle: {
       justifyContent: 'flex-start',

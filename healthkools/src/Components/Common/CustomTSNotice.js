@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import {t} from '../../i18n';
 import {get_terms_service_notice, get_terms_of_services_articles} from '../terms_of_service/terms_of_service';
+import {get_data_use_policy_articles} from '../terms_of_service/data_use_policy';
+import {get_cookies_policy_articles} from '../terms_of_service/cookies_policy';
 import Overlay from 'react-native-modal-overlay';
 import CloseButton from './CloseButton';
 import {COLORS} from "../../variables/colors";
@@ -20,6 +22,8 @@ class CustomTSNotice extends React.Component {
       open_terms_of_service: false,
       registration_label: props.registration_label,
       terms_of_services_articles: get_terms_of_services_articles(this.data, (url) => this.handleOpenUrl(url)),
+      data_use_policy_articles: get_data_use_policy_articles(this.data, (url) => this.handleOpenUrl(url)),
+      cookies_policy_articles: get_cookies_policy_articles(this.data, (url) => this.handleOpenUrl(url)),
     };
   }
   static getDerivedStateFromProps(props, state) {
@@ -120,11 +124,99 @@ class CustomTSNotice extends React.Component {
     </View>
   }
   renderCookiePolicy = () => {
+    const {current_language, cookies_policy_articles} = this.state;
     return <View style={styles.TSContainerStyle}>
+      <View  style={styles.paragraphStyle}>
+        {cookies_policy_articles.intro[current_language]()}
+      </View>
+      {cookies_policy_articles.items.map((cookies_policy_article, idx) => {
+          return <View key={idx} style={styles.articleStyle}>
+            <View  style={styles.articleTitleStyle}>
+              {/*<View><Text style={styles.articleTitleNumberStyle}>{t("Item") + " " + (idx + 1) + ": "}</Text></View>*/}
+              <View style={{ flexShrink: 1 }}>{cookies_policy_article.title[current_language]()}</View>
+            </View>
+            {cookies_policy_article.intro &&
+              <View  style={styles.paragraphStyle}>
+                {cookies_policy_article.intro[current_language]()}
+              </View>
+            }
+            {cookies_policy_article.paragraphs.map((paragraph, idx_p) => {
+              return <View key={idx_p} style={styles.paragraphStyle}>
+                <View style={styles.paragraphContentStyle}>
+                  {paragraph[current_language]()}
+                </View>
+                {paragraph.list_items &&
+                  <View style={styles.paragraphListItemsContentStyle}>
+                    {paragraph.list_items.map((li, idx_li) => {
+                      return <View key={idx_p + "_" + idx_li} style={styles.paragraphStyle}>
+                        <View  style={styles.paragraphItemStyle}>
+                          {li[current_language]()}
+                        </View>
+                        {li.sub_list_items &&
+                          <View style={styles.paragraphSubListItemsContentStyle}>
+                            {li.sub_list_items.map((sli, idx_sli) => {
+                              return <View key={idx_p + "_" + idx_li + "_" + idx_sli} style={styles.paragraphItemStyle}>
+                                {sli[current_language]()}
+                              </View>
+                            })}
+                          </View>
+                        }
+                      </View>
+                    })}
+                  </View>
+                }
+              </View>
+            })}
+          </View>
+        })}
     </View>
   }
   renderDataUsePolicy = () => {
+    const {current_language, data_use_policy_articles} = this.state;
     return <View style={styles.TSContainerStyle}>
+      <View  style={styles.paragraphStyle}>
+        {data_use_policy_articles.intro[current_language]()}
+      </View>
+      {data_use_policy_articles.items.map((data_use_policy_article, idx) => {
+          return <View key={idx} style={styles.articleStyle}>
+            <View  style={styles.articleTitleStyle}>
+              {/*<View><Text style={styles.articleTitleNumberStyle}>{t("Item") + " " + (idx + 1) + ": "}</Text></View>*/}
+              <View style={{ flexShrink: 1 }}>{data_use_policy_article.title[current_language]()}</View>
+            </View>
+            {data_use_policy_article.intro &&
+              <View  style={styles.paragraphStyle}>
+                {data_use_policy_article.intro[current_language]()}
+              </View>
+            }
+            {data_use_policy_article.paragraphs.map((paragraph, idx_p) => {
+              return <View key={idx_p} style={styles.paragraphStyle}>
+                <View style={styles.paragraphContentStyle}>
+                  {paragraph[current_language]()}
+                </View>
+                {paragraph.list_items &&
+                  <View style={styles.paragraphListItemsContentStyle}>
+                    {paragraph.list_items.map((li, idx_li) => {
+                      return <View key={idx_p + "_" + idx_li} style={styles.paragraphStyle}>
+                        <View  style={styles.paragraphItemStyle}>
+                          {li[current_language]()}
+                        </View>
+                        {li.sub_list_items &&
+                          <View style={styles.paragraphSubListItemsContentStyle}>
+                            {li.sub_list_items.map((sli, idx_sli) => {
+                              return <View key={idx_p + "_" + idx_li + "_" + idx_sli} style={styles.paragraphItemStyle}>
+                                {sli[current_language]()}
+                              </View>
+                            })}
+                          </View>
+                        }
+                      </View>
+                    })}
+                  </View>
+                }
+              </View>
+            })}
+          </View>
+        })}
     </View>
   }
   render() {
@@ -190,6 +282,7 @@ const styles = StyleSheet.create({
   paragraphContentStyle: {
   },
   paragraphListItemsContentStyle: {},
+  paragraphSubListItemsContentStyle: {},
   paragraphItemStyle: {},
   titleStyle: {
     justifyContent: 'center',

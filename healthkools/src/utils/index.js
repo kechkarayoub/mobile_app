@@ -22,6 +22,7 @@ export const line_return = (nbr_line_return) => {
   var res = "";
   while(i < nbr_line_return){
     res += "\n";
+    i++;
   }
   return res;
 };
