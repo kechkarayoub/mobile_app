@@ -1,7 +1,6 @@
 import axios from "axios";
-import { set, get, clear } from "../Store/locale";
+import { set, get, clear } from "src/Store/locale";
 
-// import {get_instanceID_info} from './cms/api'
 
 const instance = axios.create({ baseURL: process.env.REACT_APP_URL_BACKEND });
 
@@ -45,15 +44,6 @@ export const check_if_email_or_username_exists_api_get = (data) => {
 };
 
 
-export const feeds_api_get = (api_key, url) => {
-  return axios.get('https://api.rss2json.com/v1/api.json?api_key='+api_key+'&rss_url=' + url)
-  .then(res => {
-    return res.data;
-  })
-  .catch(err => {
-    console.log(err);
-  });
-};
 
 
 export const get_geo_info = (api_key) => {

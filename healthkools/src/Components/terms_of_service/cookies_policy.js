@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import {COLORS} from "../../variables/colors";
-import {line_return} from "../../utils";
-import {render_term_service_link, render_term_service_custom_item} from "./utils";
+import {COLORS} from "src/variables/colors";
+import {line_return} from "src/utils";
+import {render_term_service_link, render_term_service_custom_item} from "src/Components/terms_of_service/utils";
 
 export const get_cookies_policy_articles = (data, handleOpenUrl) => {
     return {

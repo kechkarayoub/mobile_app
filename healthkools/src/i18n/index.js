@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 // import { I18nextProvider } from 'react-i18next';
 // import { Updates } from 'expo';
-import * as config from './config';
-import date from './date';
-// import languageDetector from './language_detector';
-// import translationLoader from './translation_loader';
+import * as config from 'src/i18n/config';
+import date from 'src/i18n/date';
+// import languageDetector from 'src/i18n/language_detector';
+// import translationLoader from 'src/i18n/translation_loader';
 import { I18nManager as RNI18nManager } from 'react-native';
 import 'intl-pluralrules'
 const i18n = {

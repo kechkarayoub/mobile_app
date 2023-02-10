@@ -1,11 +1,11 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
-import LanguagePicker from '../../../src/Components/Common/LanguagePicker';
+import LanguagePicker from 'src/Components/Common/LanguagePicker';
 import { Provider } from 'react-redux'
-import store from '../../../src/Store/configureStore'
-import {set} from '../../../src/Store/locale';
-import i18n from '../../../src/i18n';
-import {get_current_languages} from '../../../src/utils'
+import store from 'src/Store/configureStore'
+import {set} from 'src/Store/locale';
+import i18n from 'src/i18n';
+import {get_current_languages} from 'src/utils'
 import renderer from 'react-test-renderer';
 import { I18nextProvider } from 'react-i18next';
 const current_language = "fr";

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
-import CustomTextArea from '../../../src/Components/FormFields/CustomTextArea';
+import CustomTextArea from 'src/Components/FormFields/CustomTextArea';
 const current_language = "en";
 
 describe('CustomTextArea component', () => {

@@ -3,11 +3,11 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux'
 
-import {flags} from "../../_ressources";
+import {flags} from "src/_ressources";
 import PropTypes from 'prop-types';
-import {set} from '../../Store/locale';
-import {t} from '../../i18n';
-import {COLORS} from "../../variables/colors";
+import {set} from 'src/Store/locale';
+import {t} from 'src/i18n';
+import {COLORS} from "src/variables/colors";
 
 class LanguagePicker extends React.Component {
   constructor(props) {

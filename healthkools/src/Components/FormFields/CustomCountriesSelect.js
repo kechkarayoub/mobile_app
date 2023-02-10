@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import ErrorComponent from "../Common/ErrorComponent";
-import {get_contries_select_options} from "../../utils/countries_list";
+import ErrorComponent from "src/Components/Common/ErrorComponent";
+import {get_contries_select_options} from "src/utils/countries_list";
 import PropTypes from 'prop-types';
-import {COLORS} from "../../variables/colors";
+import {COLORS} from "src/variables/colors";
 class CustomCountriesSelect extends React.Component {
   constructor(props) {
     super(props);

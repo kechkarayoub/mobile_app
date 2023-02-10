@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
-import CustomCountriesSelect from '../../../src/Components/FormFields/CustomCountriesSelect';
+import CustomCountriesSelect from 'src/Components/FormFields/CustomCountriesSelect';
 const current_language = "en";
 
 describe('CustomCountriesSelect component', () => {

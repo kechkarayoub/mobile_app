@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Text, Alert, View, Linking } from 'react-native';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import {t} from '../../i18n';
-import {get_terms_service_notice, get_terms_of_services_articles} from '../terms_of_service/terms_of_service';
-import {get_data_use_policy_articles} from '../terms_of_service/data_use_policy';
-import {get_cookies_policy_articles} from '../terms_of_service/cookies_policy';
+import {t} from 'src/i18n';
+import {get_terms_service_notice, get_terms_of_services_articles} from 'src/Components/terms_of_service/terms_of_service';
+import {get_data_use_policy_articles} from 'src/Components/terms_of_service/data_use_policy';
+import {get_cookies_policy_articles} from 'src/Components/terms_of_service/cookies_policy';
 import Overlay from 'react-native-modal-overlay';
-import CloseButton from './CloseButton';
-import {COLORS} from "../../variables/colors";
-import { get_data } from "../terms_of_service/data";
+import CloseButton from 'src/Components/Common/CloseButton';
+import {COLORS} from "src/variables/colors";
+import { get_data } from "src/Components/terms_of_service/data";
 
 class CustomTSNotice extends React.Component {
   constructor(props) {

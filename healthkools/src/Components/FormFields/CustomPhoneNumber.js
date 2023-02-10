@@ -4,13 +4,13 @@ import { View, StyleSheet, FlatList, Text, Image } from 'react-native'
 
 import Flag from 'react-native-flags';
 import PropTypes from 'prop-types'
-import {get_local_number_from_international, get_country_phone_code_from_number} from "../../utils";
-import {get_countries, get_contry_by_code} from "../../utils/countries_list";
+import {get_local_number_from_international, get_country_phone_code_from_number} from "src/utils";
+import {get_countries, get_contry_by_code} from "src/utils/countries_list";
 import Overlay from 'react-native-modal-overlay';
-import CloseButton from '../Common/CloseButton';
-import CustomTouchableOpacityWithIcon from './CustomTouchableOpacityWithIcon';
-import CustomInputText from './CustomInputText';
-import ErrorComponent from "../Common/ErrorComponent";
+import CloseButton from 'src/Components/Common/CloseButton';
+import CustomTouchableOpacityWithIcon from 'src/Components/FormFields/CustomTouchableOpacityWithIcon';
+import CustomInputText from 'src/Components/FormFields/CustomInputText';
+import ErrorComponent from "src/Components/Common/ErrorComponent";
 import { Stack, IconButton } from "@react-native-material/core";
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
 const phoneUtil = PhoneNumberUtil.getInstance();

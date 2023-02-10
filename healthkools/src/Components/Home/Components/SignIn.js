@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Alert, ImageBackground } from 'react-native';
-import CustomInputText from '../../FormFields/CustomInputText';
-import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
-// import {set_locale, t} from '../../../i18n'
+import CustomInputText from 'src/Components/FormFields/CustomInputText';
+import CustomTouchableOpacity from 'src/Components/FormFields/CustomTouchableOpacity';
+// import {set_locale, t} from 'src/i18n'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import {set} from '../../../Store/locale';
-import {t} from '../../../i18n';
-import {COLORS} from "../../../variables/colors";
-import {icons, logos} from "../../../_ressources";
+import {set} from 'src/Store/locale';
+import {t} from 'src/i18n';
+import {COLORS} from "src/variables/colors";
+import {icons, logos} from "src/_ressources";
 class SignIn extends React.Component {
   constructor(props) {
     super(props);

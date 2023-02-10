@@ -1,22 +1,22 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Alert, ImageBackground, } from 'react-native';
-import CustomInputText from '../../FormFields/CustomInputText';
-// import CustomDatePicker1 from '../../FormFields/CustomDatePicker1';
-import CustomDatePicker from '../../FormFields/CustomDatePicker';
-import CustomTextArea from '../../FormFields/CustomTextArea';
-import CustomPhoneNumber from '../../FormFields/CustomPhoneNumber';
-import CustomCountriesSelect from '../../FormFields/CustomCountriesSelect';
-import CustomTouchableOpacity from '../../FormFields/CustomTouchableOpacity';
-import CustomTSNotice from '../../Common/CustomTSNotice';
-import {get_contry_by_code} from "../../../utils/countries_list";
-import { get_geo_info, check_if_email_or_username_exists_api_get } from '../../../services/api';
-// import {set_locale, t} from '../../../i18n'
+import CustomInputText from 'src/Components/FormFields/CustomInputText';
+// import CustomDatePicker1 from 'src/Components/FormFields/CustomDatePicker1';
+import CustomDatePicker from 'src/Components/FormFields/CustomDatePicker';
+import CustomTextArea from 'src/Components/FormFields/CustomTextArea';
+import CustomPhoneNumber from 'src/Components/FormFields/CustomPhoneNumber';
+import CustomCountriesSelect from 'src/Components/FormFields/CustomCountriesSelect';
+import CustomTouchableOpacity from 'src/Components/FormFields/CustomTouchableOpacity';
+import CustomTSNotice from 'src/Components/Common/CustomTSNotice';
+import {get_contry_by_code} from "src/utils/countries_list";
+import { get_geo_info, check_if_email_or_username_exists_api_get } from 'src/services/api';
+// import {set_locale, t} from src/i18n'
 import { connect } from 'react-redux'
-import {t} from '../../../i18n';
+import {t} from 'src/i18n';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import {COLORS} from "../../../variables/colors";
-import {icons, logos} from "../../../_ressources";
+import {COLORS} from "src/variables/colors";
+import {icons, logos} from "src/_ressources";
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
 const phoneUtil = PhoneNumberUtil.getInstance();
 class SignUp extends React.Component {

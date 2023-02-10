@@ -1,4 +1,4 @@
-import { get } from "../../Store/locale";
+import { get } from "src/Store/locale";
 const code_mode = process.env.REACT_APP_CODE_MODE;
 export const get_data = () => {
     return {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react-native';
 import {get_date_format, get_datetime_format, get_time_format, get_current_languages, get_local_number_from_international, get_country_phone_code_from_number} from '../../src/utils/index';
-import {set} from '../../src/Store/locale';
+import {set} from 'src/Store/locale';
 import moment from "moment";
 
 

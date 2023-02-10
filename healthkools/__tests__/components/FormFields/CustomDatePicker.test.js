@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react-native';
-import CustomDatePicker from '../../../src/Components/FormFields/CustomDatePicker';
+import CustomDatePicker from 'src/Components/FormFields/CustomDatePicker';
 import moment from 'moment';
-import {get_date_format} from "../../../src/utils/index";
+import {get_date_format} from "src/utils/index";
 const current_language = "en";
 
 describe('CustomDatePicker component', () => {

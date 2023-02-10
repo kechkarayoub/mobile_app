@@ -1,4 +1,4 @@
-import * as config from './config';
+import * as config from 'src/i18n/config';
 const translationLoader = {
     type: 'backend',
     init: () => {},

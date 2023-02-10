@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import {COLORS} from "../../variables/colors";
-import {render_term_service_link, render_term_service_custom_item} from "./utils";
+import {COLORS} from "src/variables/colors";
+import {render_term_service_link, render_term_service_custom_item} from "src/Components/terms_of_service/utils";
 
 export const get_terms_of_services_articles = (data, handleOpenUrl) => {
     return [

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
-import ErrorComponent from '../../../src/Components/Common/ErrorComponent';
+import ErrorComponent from 'src/Components/Common/ErrorComponent';
 
 describe('ErrorComponent component', () => {
   test('Should render without crash', async () => {

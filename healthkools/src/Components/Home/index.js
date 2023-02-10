@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
-import HomeStackNavigator from './Navigation/HomeStackNavigator';
-import LanguagePicker from '../Common/LanguagePicker';
+import HomeStackNavigator from 'src/Components/Home/Navigation/HomeStackNavigator';
+import LanguagePicker from 'src/Components/Common/LanguagePicker';
 import PropTypes from 'prop-types';
-import {COLORS} from "../../variables/colors";
+import {COLORS} from "src/variables/colors";
 
 class Home extends React.Component {
   constructor(props) {

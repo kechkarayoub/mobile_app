@@ -1,7 +1,7 @@
 import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Localization from 'expo-localization';
-import {supported_languages} from '../../config/global';
+import {supported_languages} from 'src/config/global';
 
 const locale_storage = new Storage({
   // maximum capacity, default 1000 key-ids

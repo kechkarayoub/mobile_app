@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, I18nManager as RNI18nManager } from 'react-native';
-import Home from './Components/Home';
-import i18n from './i18n';
+import Home from 'src/Components/Home';
+import i18n from 'src/i18n';
 import * as Updates from 'expo-updates'
 import { connect } from 'react-redux'
-import {get_current_languages} from './utils'
+import {get_current_languages} from 'src/utils'
 import { I18nextProvider } from 'react-i18next';
 import PropTypes from 'prop-types';
 class AppInit extends Component{

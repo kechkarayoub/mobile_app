@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react-native';
-import CustomPhoneNumber from '../../../src/Components/FormFields/CustomPhoneNumber';
+import CustomPhoneNumber from 'src/Components/FormFields/CustomPhoneNumber';
 const current_language = "en";
 
 describe('CustomPhoneNumber component', () => {

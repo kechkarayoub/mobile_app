@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
-import CustomTouchableOpacity from '../../../src/Components/FormFields/CustomTouchableOpacity';
+import CustomTouchableOpacity from 'src/Components/FormFields/CustomTouchableOpacity';
 
 describe('CustomTouchableOpacity component', () => {
   test('Should render without crash', async () => {

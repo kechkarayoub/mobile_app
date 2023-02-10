@@ -1,6 +1,6 @@
 // import * as Localization from 'expo-localization';
-// import {supported_languages} from '../config/global';
-import {get} from '../Store/locale';
+// import {supported_languages} from 'src/config/global';
+import {get} from 'src/Store/locale';
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
 const phoneUtil = PhoneNumberUtil.getInstance();
 // var current_language = "fr";

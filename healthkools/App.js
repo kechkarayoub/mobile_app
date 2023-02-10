@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Provider } from 'react-redux'
-import Store from './src/Store/configureStore'
-import AppInit from './src/AppInit'
+import Store from 'src/Store/configureStore'
+import AppInit from 'src/AppInit'
 class App extends Component{
   constructor(props) {
     super(props);

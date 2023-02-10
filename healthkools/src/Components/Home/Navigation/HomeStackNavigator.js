@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SignIn from '../Components/SignIn';
-import SignUp from '../Components/SignUp';
+import SignIn from 'src/Components/Home/Components/SignIn';
+import SignUp from 'src/Components/Home/Components/SignUp';
 import React from 'react';
 import { connect } from 'react-redux'
 
 import PropTypes from 'prop-types';
-import {t} from '../../../i18n';
+import {t} from 'src/i18n';
 import { StyleSheet } from 'react-native';
 const Stack = createNativeStackNavigator();
 class HomeStackNavigator extends React.Component  {

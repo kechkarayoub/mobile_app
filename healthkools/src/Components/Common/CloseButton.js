@@ -4,7 +4,7 @@ import { Stack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 import PropTypes from 'prop-types';
-import {COLORS} from "../../variables/colors";
+import {COLORS} from "src/variables/colors";
 const BUTTON_SIZE = 25
 const BORDER_WIDTH = 1
 

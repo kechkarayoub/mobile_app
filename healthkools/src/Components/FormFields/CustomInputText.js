@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image } from 'react-native';
-import ErrorComponent from "../Common/ErrorComponent";
+import ErrorComponent from "src/Components/Common/ErrorComponent";
 import PropTypes from 'prop-types';
 
 class CustomInputText extends React.Component {

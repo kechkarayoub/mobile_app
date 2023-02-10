@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
-import CloseButton from '../../../src/Components/Common/CloseButton';
+import CloseButton from 'src/Components/Common/CloseButton';
 
 describe('CloseButton component', () => {
   test('Should render without crash', async () => {

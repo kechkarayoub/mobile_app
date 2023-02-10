@@ -10,7 +10,16 @@ module.exports = function (api) {
         moduleName: "@env",
         path: ".env"
       }
-    ]
+    ],
+    [
+      'module-resolver',
+      {
+        root: ['.'],
+        alias: {
+          '@src': './src',
+        },
+      },
+    ],
   ];
 
   return {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
-import {logos} from '../../images';
+import {logos} from 'src/images';
 
 class Header extends React.Component {
     render() {

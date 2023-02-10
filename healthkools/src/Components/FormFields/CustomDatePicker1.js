@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Image } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import ErrorComponent from "../Common/ErrorComponent";
-import CustomTouchableOpacity from "./CustomTouchableOpacity";
-import {get_date_format} from "../../utils/index";
+import ErrorComponent from "src/Components/Common/ErrorComponent";
+import CustomTouchableOpacity from "src/Components/Common/CustomTouchableOpacity";
+import {get_date_format} from "src/utils/index";
 import PropTypes from 'prop-types';
 import moment from 'moment';
 

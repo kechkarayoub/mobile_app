@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import {COLORS} from "../../variables/colors";
+import {COLORS} from "src/variables/colors";
 
 
 export const render_term_service_link = (link_url, link_label, onOpen, style) => {
