@@ -8,6 +8,8 @@ const phoneUtil = PhoneNumberUtil.getInstance();
 // if(supported_languages.indexOf(locale_splited) !== -1){
 //   current_language = locale_splited;
 // }
+
+export const COLORS = ["#f36422", "#ffee02", "#f070a9", "#00adef", "#7cc142", "#d02b49"];
 export const get_date_format = (moment_obj) => {
   return moment_obj.format("DD/MM/YYYY");
 };
@@ -76,3 +78,8 @@ export const get_country_phone_code_from_number = (international_number) => {
     return "";
   }
 };
+
+
+export const get_random_color = () => {
+  return COLORS[Math.floor(Math.random() * COLORS.length)];
+}

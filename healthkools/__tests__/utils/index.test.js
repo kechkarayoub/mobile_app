@@ -1,9 +1,15 @@
-import React from 'react';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react-native';
-import {get_date_format, get_datetime_format, get_time_format, get_current_languages, get_local_number_from_international, get_country_phone_code_from_number} from '../../src/utils/index';
+import {COLORS, get_country_phone_code_from_number, get_current_languages, get_date_format, 
+  get_datetime_format, get_local_number_from_international, get_random_color, get_time_format} from 'src/utils/index';
 import {set} from 'src/Store/locale';
 import moment from "moment";
 
+describe('Get_random_color function', () => {
+  test('Test get_random_color', () => {
+      var random_color = get_random_color();
+      var index_color = COLORS.indexOf(random_color);
+      expect(index_color).not.toBe(-1);
+  });
+});
 
 describe('Test get_date_format', () => {
   test('Should render correct string', async () => {
