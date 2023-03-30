@@ -8,6 +8,7 @@ import CustomPhoneNumber from 'src/Components/FormFields/CustomPhoneNumber';
 import CustomCountriesSelect from 'src/Components/FormFields/CustomCountriesSelect';
 import CustomTouchableOpacity from 'src/Components/FormFields/CustomTouchableOpacity';
 import CustomTSNotice from 'src/Components/Common/CustomTSNotice';
+//import InitialsColor from 'src/Components/Common/InitialsColor';
 import {get_contry_by_code} from "src/utils/countries_list";
 import { get_geo_info, check_if_email_or_username_exists_api_get } from 'src/services/api';
 // import {set_locale, t} from src/i18n'
@@ -18,6 +19,7 @@ import moment from 'moment';
 import {COLORS} from "src/variables/colors";
 import {icons, logos} from "src/_ressources";
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
+import { get_random_color} from "src/utils/index";
 const phoneUtil = PhoneNumberUtil.getInstance();
 class SignUp extends React.Component {
   constructor(props) {
@@ -34,6 +36,7 @@ class SignUp extends React.Component {
       first_name: "",
       form_errors: {},
       gender: "",
+      initials_bg_color: get_random_color(),
       invalid_messages: {},
       is_valid_phone_number: false,
       last_name: "",
@@ -130,7 +133,7 @@ class SignUp extends React.Component {
   }
 
   handleRegister = () => {
-    var {formatted_phone_number, phone_number} = this.state;
+    var {formatted_phone_number, phone_number, initials_bg_color} = this.state;
     var phone_number_valid = false;
     if(formatted_phone_number){
       try {phone_number_valid = phoneUtil.isValidNumber(phoneUtil.parse(formatted_phone_number));}catch (error){}
@@ -139,7 +142,7 @@ class SignUp extends React.Component {
 
   render() {
     const {address, birthday, country_code, country_phone_code, current_language, registration_label, email,
-      form_errors, first_name,
+      form_errors, first_name, initials_bg_color,
       last_name, password, password_confirmation, phone_number, formatted_phone_number,
       username, is_valid_phone_number} = this.state;
 
@@ -147,6 +150,9 @@ class SignUp extends React.Component {
         <View style={styles.body}>
           <ImageBackground source={logos.logo} style={styles.background}/>
           <ScrollView contentContainerStyle={styles.scrollView}>
+              {/* <InitialsColor initials={(last_name ? last_name.charAt(0) : "") + (first_name ? first_name.charAt(0) : "")} bg_color={initials_bg_color}
+              /> */}
+
               <CustomInputText placeholder={t("First name")} underlineColorAndroid='transparent'
                 onChangeText={first_name => {
                   // this.state.form_errors.first_name = "this field is required!";
