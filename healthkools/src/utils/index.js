@@ -1,4 +1,4 @@
-// import * as Localization from 'expo-localization';
+//import * as Localization from 'react-native-localize';
 // import {supported_languages} from 'src/config/global';
 import {get} from 'src/Store/locale';
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';

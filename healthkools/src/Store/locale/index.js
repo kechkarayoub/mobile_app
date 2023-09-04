@@ -1,6 +1,6 @@
 import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Localization from 'expo-localization';
+import * as Localization from 'react-native-localize';
 import {supported_languages} from 'src/config/global';
 
 const locale_storage = new Storage({

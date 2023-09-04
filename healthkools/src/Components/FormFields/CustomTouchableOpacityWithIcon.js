@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { Stack, IconButton } from "@react-native-material/core";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import {Ionicons,MaterialCommunityIcons,FontAwesome5} from '@expo/vector-icons';
+import Icon from "react-native-vector-icons/FontAwesome";
+import {Ionicons,MaterialCommunityIcons,FontAwesome5} from "react-native-vector-icons/FontAwesome";
 const BUTTON_SIZE = 30
 
 class CustomTouchableOpacityWithIcon extends React.Component {

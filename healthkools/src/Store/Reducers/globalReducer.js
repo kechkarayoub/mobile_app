@@ -1,4 +1,4 @@
-import * as Localization from 'expo-localization';
+import * as Localization from 'react-native-localize';
 import {supported_languages} from 'src/config/global';
 var current_language = "fr";
 var locale_splited = Localization.locale.split("-")[0];

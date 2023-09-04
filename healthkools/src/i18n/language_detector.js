@@ -1,4 +1,4 @@
-import * as Localization from 'expo-localization';
+import * as Localization from 'react-native-localize';
 const languageDetector = {
     type: 'languageDetector',
     async: true,

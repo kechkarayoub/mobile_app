@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity,StyleSheet, Text} from 'react-native';
 import { Stack, IconButton } from "@react-native-material/core";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import PropTypes from 'prop-types';
 import {COLORS} from "src/variables/colors";

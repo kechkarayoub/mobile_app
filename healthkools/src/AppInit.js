@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, View, I18nManager as RNI18nManager } from 'react-native';
 import Home from 'src/Components/Home';
 import i18n from 'src/i18n';
-import * as Updates from 'expo-updates'
+import { DevSettings } from 'react-native';
 import { connect } from 'react-redux'
 import {get_current_languages} from 'src/utils'
 import { I18nextProvider } from 'react-i18next';
@@ -55,7 +55,8 @@ class AppInit extends Component{
                   // RN won't set the layout direction if we
                   // don't restart the app's JavaScript.
                   if(reload){
-                    Updates.reloadAsync();
+                    // Trigger a reload of the app (similar to Expo updates)
+                    DevSettings.reload();
                   }
               }
               i18n.services.pluralResolver.addRule('pl', {
