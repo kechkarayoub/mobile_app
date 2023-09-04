@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 
 
 // Load environment variables from .env
-dotenv.config({ path: './src/.env' });
+//dotenv.config({ path: './src/.env' });
+dotenv.config();
 
 module.exports = {
   mode: process.env.WEBPACK_MODE,
@@ -25,10 +26,45 @@ module.exports = {
         },
       },
       {
-        test: /\.js$/,
-        include: /node_modules\/.*/,
+        test: /\.(js|jsx)$/,
+        include: /node_modules\/react-native-dropdown-picker\/.*/,
         use: {
-          loader: 'babel-loader', // You may need to adjust the loader depending on your project's configuration
+          loader: 'babel-loader', // Add your chosen transpiler/loader
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: /node_modules\/react-native-flags\/.*/,
+        use: {
+          loader: 'babel-loader', // Add your chosen transpiler/loader
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: /node_modules\/react-native-modal-overlay\/.*/,
+        use: {
+          loader: 'babel-loader', // Add your chosen transpiler/loader
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: /node_modules\/react-native-animatable\/.*/,
+        use: {
+          loader: 'babel-loader', // Add your chosen transpiler/loader
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: /node_modules\/react-native-vector-icons\/.*/,
+        use: {
+          loader: 'babel-loader', // Add your chosen transpiler/loader
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: /node_modules\/react-native\/.*/,
+        use: {
+          loader: 'babel-loader', // Add your chosen transpiler/loader
         },
       },
       // CSS and style files
